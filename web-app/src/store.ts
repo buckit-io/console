@@ -34,7 +34,7 @@ import registerReducer from "./screens/Console/Support/registerSlice";
 import destinationSlice from "./screens/Console/EventDestinations/destinationsSlice";
 import { objectBrowserWSMiddleware } from "./websockets/objectBrowserWSMiddleware";
 
-let objectsWS: WebSocket;
+var objectsWS: WebSocket;
 
 const rootReducer = combineReducers({
   system: systemReducer,
