@@ -18,7 +18,7 @@ web-app/.nyc_output/
 *.swp
 *.orig
 
-# Test binary, build with `go test -c`
+# Test binary, build with FAIL	. [setup failed]
 *.test
 
 .idea/
@@ -48,3 +48,11 @@ public.crt
 *.code-workspace
 *~
 .eslintcache
+
+CHERRY_PICK_REPORT.md
+
+# Local Claude Code settings
+.claude/
+
+# Ignore Bin files
+bin/
