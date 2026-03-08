@@ -351,7 +351,7 @@ func Test_policyMatchesBucket(t *testing.T) {
         }
     ]
 	}`}, bucket: "test1"},
-			want: false,
+			want: true, // "Resource": "*" in Statement 0 correctly matches all buckets (fixed in minio/pkg v3.1.2+)
 		},
 		{
 			name: "Test4",
