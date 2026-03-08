@@ -354,12 +354,8 @@ func updateUserGroups(ctx context.Context, client MinioAdmin, user string, group
 				return nil
 			}
 
-			isRemove := false // User is added by default
-
-			// User is deleted from the group
-			if !isGroupPersistent {
-				isRemove = true
-			}
+			// User is deleted from the group if not persistent
+			isRemove := !isGroupPersistent
 
 			userToAddRemove := []string{user}
 
