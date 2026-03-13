@@ -40,10 +40,10 @@ Please subscribe to our [paid subscription plans](https://min.io/pricing) for 24
 
 ## Regression
 <!-- Is this issue a regression? (Yes / No) -->
-<!-- If Yes, optionally please include the MinIO version or commit id or PR# that caused this regression, if you have these details. -->
+<!-- If Yes, optionally please include the BuckIt version or commit id or PR# that caused this regression, if you have these details. -->
 
 ## Your Environment
 <!--- Include as many relevant details about the environment you experienced the bug in -->
-* MinIO version used (`minio --version`):
+* BuckIt version used (`minio --version`):
 * Server setup and configuration:
 * Operating System and version (`uname -a`):

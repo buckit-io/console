@@ -1,8 +1,8 @@
-# MinIO Console
+# BuckIt Console
 
 ![build](https://github.com/getbuckit/console/workflows/Go/badge.svg) ![license](https://img.shields.io/badge/license-AGPL%20V3-blue)
 
-A graphical user interface for [MinIO](https://github.com/minio/minio)
+A graphical user interface for [BuckIt](https://github.com/minio/minio)
 
 | Object Browser                     | Dashboard                     | Creating a bucket             |
 |------------------------------------|-------------------------------|-------------------------------|
@@ -11,7 +11,7 @@ A graphical user interface for [MinIO](https://github.com/minio/minio)
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 **Table of Contents**
 
-- [MinIO Console](#minio-console)
+- [BuckIt Console](#minio-console)
   - [Install](#install)
     - [Build from source](#build-from-source)
   - [Setup](#setup)
@@ -25,13 +25,13 @@ A graphical user interface for [MinIO](https://github.com/minio/minio)
 
 <!-- markdown-toc end -->
 
-MinIO Console is a library that provides a management and browser UI overlay for the MinIO Server.
+BuckIt Console is a library that provides a management and browser UI overlay for the BuckIt Server.
 
 ## Setup
 
-All `console` needs is a MinIO user with admin privileges and URL pointing to your MinIO deployment.
+All `console` needs is a BuckIt user with admin privileges and URL pointing to your BuckIt deployment.
 
-> Note: We don't recommend using MinIO's Operator Credentials
+> Note: We don't recommend using BuckIt's Operator Credentials
 
 ### 1. Create a user `console` using `mc`
 
@@ -135,7 +135,7 @@ export CONSOLE_PBKDF_PASSPHRASE=SECRET
 # Required to encrypt JWT payload
 export CONSOLE_PBKDF_SALT=SECRET
 
-# MinIO Endpoint
+# BuckIt Endpoint
 export CONSOLE_MINIO_SERVER=http://localhost:9000
 ```
 
@@ -182,7 +182,7 @@ Following tree structure is expected for supporting multiple domains:
 
 ## Connect Console to a Minio using TLS and a self-signed certificate
 
-Copy the MinIO `ca.crt` under `~/.console/certs/CAs`, then:
+Copy the BuckIt `ca.crt` under `~/.console/certs/CAs`, then:
 
 ```sh
 export CONSOLE_MINIO_SERVER=https://localhost:9000

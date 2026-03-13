@@ -1,4 +1,4 @@
-# MinIO Console Server Contribution Guide [![Slack](https://slack.min.io/slack?type=svg)](https://slack.min.io)
+# BuckIt Console Server Contribution Guide [![Slack](https://slack.min.io/slack?type=svg)](https://slack.min.io)
 
 This is a REST portal server created using [go-swagger](https://github.com/go-swagger/go-swagger)
 
@@ -67,7 +67,7 @@ request. After a Pull Request gets peer reviewed and approved, it will be merged
 
 ### How does ``console`` manages dependencies?
 
-``MinIO`` uses `go mod` to manage its dependencies.
+``BuckIt`` uses `go mod` to manage its dependencies.
 
 - Run `go get foo/bar` in the source folder to add the dependency to `go.mod` file.
 

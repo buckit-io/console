@@ -1,6 +1,6 @@
-# Systemd service for MinIO Console
+# Systemd service for BuckIt Console
 
-Systemd script for MinIO Console.
+Systemd script for BuckIt Console.
 
 ## Installation
 
@@ -10,7 +10,7 @@ Systemd script for MinIO Console.
 
 ## Create the Environment configuration file
 
-This file serves as input to MinIO Console systemd service.
+This file serves as input to BuckIt Console systemd service.
 
 ```sh
 $ cat <<EOT >> /etc/default/minio-console
@@ -23,7 +23,7 @@ CONSOLE_PBKDF_PASSPHRASE=CHANGEME
 # required to encrypt JWT payload
 CONSOLE_PBKDF_SALT=CHANGEME
 
-# MinIO Endpoint
+# BuckIt Endpoint
 CONSOLE_MINIO_SERVER=http://minio.endpoint:9000
 
 EOT

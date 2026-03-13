@@ -38,7 +38,7 @@ Additional Changes:
 Bug Fix:
 
 - Fixed directory listing
-- Fix MinIO videos link
+- Fix BuckIt videos link
 
 Additional Changes:
 
@@ -61,7 +61,7 @@ Additional Changes:
 
 - Improved Drives List visualization
 - Improved WS request logic
-- Updated License page with current MinIO plans.
+- Updated License page with current BuckIt plans.
 
 ## Release v1.6.1
 
@@ -130,7 +130,7 @@ Bug Fix:
 - Fixed vulnerability
 - Used URL-safe base64 enconding for Share API
 - Made Prefix field optional when Adding Tier
-- Added Console user agent in MinIO Admin Client
+- Added Console user agent in BuckIt Admin Client
 
 ## Release v1.2.0
 
@@ -311,7 +311,7 @@ Features:
 
 Bug Fix:
 
-- Disabled input fields for Subscription features if MinIO is not registered
+- Disabled input fields for Subscription features if BuckIt is not registered
 
 ## Release v0.36.0
 
@@ -408,7 +408,7 @@ Bug Fix:
 
 Features:
 
-- Added MinIO Console Help Menu
+- Added BuckIt Console Help Menu
 - Updated UI Menu components
 
 Bug Fix:
