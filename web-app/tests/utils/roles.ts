@@ -14,7 +14,7 @@ export const admin = Role(
   async (t) => {
     await t
       .typeText("#accessKey", "minioadmin")
-      .typeText("#secretKey", "minioadmin")
+      .typeText("#secretKey", "pHc2r5q5!5")
       .click(submitButton);
   },
   { preserveUrl: true },

@@ -22,7 +22,7 @@ jobs:
     runs-on: [ubuntu-latest]
     strategy:
       matrix:
-        go-version: [1.23.x]
+        go-version: [1.25.x]
         os: [ubuntu-latest]
     steps:
       - name: Check out code
@@ -64,7 +64,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        go-version: [1.23.x]
+        go-version: [1.25.x]
         os: [ubuntu-latest]
     steps:
       - name: Check out code
@@ -112,7 +112,7 @@ jobs:
     runs-on: [ubuntu-latest]
     strategy:
       matrix:
-        go-version: [1.23.x]
+        go-version: [1.25.x]
     steps:
       # To build minio image, we need to clone the repository first
       - name: Clone github.com/minio/minio
@@ -150,7 +150,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        go-version: [1.23.x]
+        go-version: [1.25.x]
         os: [ubuntu-latest]
     steps:
       - name: Check out code
@@ -189,7 +189,7 @@ jobs:
     timeout-minutes: 10
     strategy:
       matrix:
-        go-version: [1.23.x]
+        go-version: [1.25.x]
         os: [ubuntu-latest]
     steps:
       - name: Check out code
@@ -225,7 +225,7 @@ jobs:
           (CONSOLE_SUBPATH=/console/subpath ./console server ) & (make test-initialize-minio-nginx)
 
       - name: Install TestCafe
-        run: npm install testcafe@3.5.0
+        run: npm install testcafe@3.7.4
 
       - name: Run TestCafe Tests
         run: npx testcafe "chrome:headless" web-app/tests/subpath-nginx/ -q --skip-js-errors -c 3
@@ -243,7 +243,7 @@ jobs:
     timeout-minutes: 10
     strategy:
       matrix:
-        go-version: [1.23.x]
+        go-version: [1.25.x]
         os: [ubuntu-latest]
     steps:
       - name: Check out code
@@ -279,7 +279,7 @@ jobs:
           (./console server) & (make initialize-permissions)
 
       - name: Install TestCafe
-        run: npm install testcafe@3.5.0
+        run: npm install testcafe@3.7.4
 
       - name: Run TestCafe Tests
         run: npx testcafe "chrome:headless" web-app/tests/permissions-1/ -q --skip-js-errors -c 3
@@ -296,7 +296,7 @@ jobs:
     timeout-minutes: 10
     strategy:
       matrix:
-        go-version: [1.23.x]
+        go-version: [1.25.x]
         os: [ubuntu-latest]
     steps:
       - name: Check out code
@@ -331,7 +331,7 @@ jobs:
           (./console server) & (make initialize-permissions)
 
       - name: Install TestCafe
-        run: npm install testcafe@3.5.0
+        run: npm install testcafe@3.7.4
 
       - name: Run TestCafe Tests
         run: npx testcafe "chrome:headless" web-app/tests/permissions-2/ -q --skip-js-errors -c 3
@@ -348,7 +348,7 @@ jobs:
     timeout-minutes: 10
     strategy:
       matrix:
-        go-version: [1.23.x]
+        go-version: [1.25.x]
         os: [ubuntu-latest]
     steps:
       - name: Check out code
@@ -383,7 +383,7 @@ jobs:
           (./console server) & (make initialize-permissions)
 
       - name: Install TestCafe
-        run: npm install testcafe@3.5.0
+        run: npm install testcafe@3.7.4
 
       - name: Run TestCafe Tests
         run: npx testcafe "chrome:headless" web-app/tests/permissions-3/ -q --skip-js-errors -c 3
@@ -400,7 +400,7 @@ jobs:
     timeout-minutes: 15
     strategy:
       matrix:
-        go-version: [1.23.x]
+        go-version: [1.25.x]
         os: [ubuntu-latest]
     steps:
       - name: Check out code
@@ -435,7 +435,7 @@ jobs:
           (./console server) & (make initialize-permissions)
 
       - name: Install TestCafe
-        run: npm install testcafe@3.5.0
+        run: npm install testcafe@3.7.4
 
       - name: Run TestCafe Tests
         timeout-minutes: 10
@@ -448,7 +448,7 @@ jobs:
     runs-on: [ubuntu-latest]
     strategy:
       matrix:
-        go-version: [1.23.x]
+        go-version: [1.25.x]
         os: [ubuntu-latest]
     steps:
       - name: Check out code
@@ -483,7 +483,7 @@ jobs:
           (./console server) & (make initialize-permissions)
 
       - name: Install TestCafe
-        run: npm install testcafe@3.5.0
+        run: npm install testcafe@3.7.4
 
       - name: Run TestCafe Tests
         timeout-minutes: 5
@@ -496,7 +496,7 @@ jobs:
     runs-on: [ubuntu-latest]
     strategy:
       matrix:
-        go-version: [1.23.x]
+        go-version: [1.25.x]
         os: [ubuntu-latest]
     steps:
       - name: Check out code
@@ -531,7 +531,7 @@ jobs:
           (./console server) & (make initialize-permissions)
 
       - name: Install TestCafe
-        run: npm install testcafe@3.5.0
+        run: npm install testcafe@3.7.4
 
       - name: Run TestCafe Tests
         timeout-minutes: 5
@@ -544,7 +544,7 @@ jobs:
     runs-on: [ubuntu-latest]
     strategy:
       matrix:
-        go-version: [1.22.x]
+        go-version: [1.25.x]
         os: [ubuntu-latest]
     steps:
       - name: Check out code
@@ -578,7 +578,7 @@ jobs:
         run: |
           (./console server) & (make initialize-permissions)
       - name: Install TestCafe
-        run: npm install testcafe@3.5.0
+        run: npm install testcafe@3.7.4
 
       - name: Run TestCafe Tests
         timeout-minutes: 5
@@ -591,7 +591,7 @@ jobs:
     runs-on: [ubuntu-latest]
     strategy:
       matrix:
-        go-version: [1.22.x]
+        go-version: [1.25.x]
         os: [ubuntu-latest]
     steps:
       - name: Check out code
@@ -626,7 +626,7 @@ jobs:
           (./console server) & (make initialize-permissions)
 
       - name: Install TestCafe
-        run: npm install testcafe@3.5.0
+        run: npm install testcafe@3.7.4
 
       - name: Run TestCafe Tests
         timeout-minutes: 5
@@ -639,7 +639,7 @@ jobs:
     runs-on: [ubuntu-latest]
     strategy:
       matrix:
-        go-version: [1.23.x]
+        go-version: [1.25.x]
         os: [ubuntu-latest]
     steps:
       - name: Check out code
@@ -674,7 +674,7 @@ jobs:
           (./console server) & (make initialize-permissions)
 
       - name: Install TestCafe
-        run: npm install testcafe@3.5.0
+        run: npm install testcafe@3.7.4
 
       - name: Run TestCafe Tests
         run: npx testcafe "chrome:headless" web-app/tests/permissions-A/ --skip-js-errors -c 3
@@ -690,7 +690,7 @@ jobs:
     runs-on: [ubuntu-latest]
     strategy:
       matrix:
-        go-version: [1.23.x]
+        go-version: [1.25.x]
         os: [ubuntu-latest]
     steps:
       - name: Check out code
@@ -725,7 +725,7 @@ jobs:
           (./console server) & (make initialize-permissions)
 
       - name: Install TestCafe
-        run: npm install testcafe@3.5.0
+        run: npm install testcafe@3.7.4
 
       - name: Run TestCafe Tests
         run: npx testcafe "chrome:headless" web-app/tests/permissions-B/ --skip-js-errors -c 3
@@ -743,7 +743,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        go-version: [1.23.x]
+        go-version: [1.25.x]
         os: [ubuntu-latest]
     steps:
       - name: Check out code
@@ -778,7 +778,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        go-version: [1.23.x]
+        go-version: [1.25.x]
         os: [ubuntu-latest]
     steps:
       - name: Check out code
@@ -815,7 +815,7 @@ jobs:
 
     strategy:
       matrix:
-        go-version: [1.23.x]
+        go-version: [1.25.x]
 
     steps:
       - name: Check out code
@@ -857,10 +857,16 @@ jobs:
           echo "Get git version to build MinIO Image";
           VERSION=`git rev-parse HEAD`;
           echo $VERSION;
+          echo "Build MinIO binary";
+          make build;
+          echo "Stage files for Docker build";
+          GOARCH=$(go env GOARCH);
+          cp minio minio-${GOARCH}.${VERSION};
+          touch minio-${GOARCH}.${VERSION}.minisig;
+          sha256sum minio-${GOARCH}.${VERSION} > minio-${GOARCH}.${VERSION}.sha256sum;
           echo "Create MinIO image";
-          make docker VERSION=$VERSION;
+          docker build --build-arg TARGETARCH=${GOARCH} --build-arg RELEASE=${VERSION} -q --no-cache -t minio/minio:$VERSION . -f Dockerfile;
 
-          docker build -q --no-cache -t minio/minio:$VERSION . -f Dockerfile
           echo "Jumping back to console repository to run the integration test"
           cd $GITHUB_WORKSPACE;
           echo "We are going to use the built image on test-integration";
@@ -911,7 +917,7 @@ jobs:
 
     strategy:
       matrix:
-        go-version: [1.22.x]
+        go-version: [1.25.x]
 
     steps:
       - name: Check out code
@@ -955,10 +961,16 @@ jobs:
           echo "Get git version to build MinIO Image";
           VERSION=`git rev-parse HEAD`;
           echo $VERSION;
+          echo "Build MinIO binary";
+          make build;
+          echo "Stage files for Docker build";
+          GOARCH=$(go env GOARCH);
+          cp minio minio-${GOARCH}.${VERSION};
+          touch minio-${GOARCH}.${VERSION}.minisig;
+          sha256sum minio-${GOARCH}.${VERSION} > minio-${GOARCH}.${VERSION}.sha256sum;
           echo "Create MinIO image";
-          make docker VERSION=$VERSION;
+          docker build --build-arg TARGETARCH=${GOARCH} --build-arg RELEASE=${VERSION} -q --no-cache -t minio/minio:$VERSION . -f Dockerfile;
 
-          docker build -q --no-cache -t minio/minio:$VERSION . -f Dockerfile
           echo "Jumping back to console repository to run the integration test"
           cd $GITHUB_WORKSPACE;
 
@@ -993,7 +1005,7 @@ jobs:
 
     strategy:
       matrix:
-        go-version: [1.23.x]
+        go-version: [1.25.x]
 
     steps:
       - name: Check out code
@@ -1048,10 +1060,16 @@ jobs:
           echo "Get git version to build MinIO Image";
           VERSION=`git rev-parse HEAD`;
           echo $VERSION;
+          echo "Build MinIO binary";
+          make build;
+          echo "Stage files for Docker build";
+          GOARCH=$(go env GOARCH);
+          cp minio minio-${GOARCH}.${VERSION};
+          touch minio-${GOARCH}.${VERSION}.minisig;
+          sha256sum minio-${GOARCH}.${VERSION} > minio-${GOARCH}.${VERSION}.sha256sum;
           echo "Create MinIO image";
-          make docker VERSION=$VERSION;
+          docker build --build-arg TARGETARCH=${GOARCH} --build-arg RELEASE=${VERSION} -q --no-cache -t minio/minio:$VERSION . -f Dockerfile;
 
-          docker build -q --no-cache -t minio/minio:$VERSION . -f Dockerfile
           echo "Jumping back to console repository to run the integration test"
           cd $GITHUB_WORKSPACE;
 
@@ -1078,7 +1096,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        go-version: [1.23.x]
+        go-version: [1.25.x]
         os: [ubuntu-latest]
     steps:
       - name: Check out code
@@ -1223,7 +1241,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        go-version: [1.23.x]
+        go-version: [1.25.x]
         os: [ubuntu-latest]
     steps:
       - name: Check out code
@@ -1265,7 +1283,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        go-version: [1.23.x]
+        go-version: [1.25.x]
         os: [ubuntu-latest]
     steps:
       - name: Check out code
@@ -1305,7 +1323,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        go-version: [1.23.x]
+        go-version: [1.25.x]
         os: [ubuntu-latest]
     steps:
       - name: Check out code
@@ -1333,7 +1351,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        go-version: [1.23.x]
+        go-version: [1.25.x]
         os: [ubuntu-latest]
     steps:
       - name: Check out code
@@ -1360,7 +1378,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        go-version: [1.23.x]
+        go-version: [1.25.x]
         os: [ubuntu-latest]
     steps:
       - name: Check out code
@@ -1388,7 +1406,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        go-version: [1.23.x]
+        go-version: [1.25.x]
         os: [ubuntu-latest]
     steps:
       - name: Check out code
@@ -1416,7 +1434,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        go-version: [1.23.x]
+        go-version: [1.25.x]
         os: [ubuntu-latest]
     steps:
       - name: Check out code

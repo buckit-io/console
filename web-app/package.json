@@ -47,6 +47,11 @@
       "react/jsx-no-target-blank": "off"
     }
   },
+  "jest": {
+    "transformIgnorePatterns": [
+      "/node_modules/(?!mds/).+\\.js$"
+    ]
+  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -86,10 +91,11 @@
     "react-app-rewire-hot-loader": "^2.0.1",
     "react-app-rewired": "^2.2.1",
     "react-scripts": "5.0.1",
-    "testcafe": "3.7.2",
+    "testcafe": "3.7.4",
     "typescript": "^5.5.3"
   },
   "resolutions": {
+    "@types/react": "18.3.18",
     "nth-check": "^2.0.1",
     "yaml": "^2.4.2",
     "postcss": "^8.4.38",

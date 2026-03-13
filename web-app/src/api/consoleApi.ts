@@ -1,5 +1,6 @@
 /* eslint-disable */
 /* tslint:disable */
+// @ts-nocheck
 /*
  * ---------------------------------------------------------------
  * ## THIS FILE WAS GENERATED VIA SWAGGER-TYPESCRIPT-API        ##
@@ -9,14 +10,54 @@
  * ---------------------------------------------------------------
  */
 
-export interface AccountChangePasswordRequest {
-  current_secret_key: string;
-  new_secret_key: string;
+export enum ObjectRetentionUnit {
+  Days = "days",
+  Years = "years",
 }
 
-export interface ChangeUserPasswordRequest {
-  selectedUser: string;
-  newSecretKey: string;
+export enum ObjectRetentionMode {
+  Governance = "governance",
+  Compliance = "compliance",
+}
+
+export enum ObjectLegalHoldStatus {
+  Enabled = "enabled",
+  Disabled = "disabled",
+}
+
+export enum NofiticationService {
+  Webhook = "webhook",
+  Amqp = "amqp",
+  Kafka = "kafka",
+  Mqtt = "mqtt",
+  Nats = "nats",
+  Nsq = "nsq",
+  Mysql = "mysql",
+  Postgres = "postgres",
+  Elasticsearch = "elasticsearch",
+  Redis = "redis",
+}
+
+export enum NotificationEventType {
+  Put = "put",
+  Delete = "delete",
+  Get = "get",
+  Replica = "replica",
+  Ilm = "ilm",
+  Scanner = "scanner",
+}
+
+/** @default "user" */
+export enum PolicyEntity {
+  User = "user",
+  Group = "group",
+}
+
+/** @default "PRIVATE" */
+export enum BucketAccess {
+  PRIVATE = "PRIVATE",
+  PUBLIC = "PUBLIC",
+  CUSTOM = "CUSTOM",
 }
 
 /** @default "sse-s3" */
@@ -25,11 +66,14 @@ export enum BucketEncryptionType {
   SseKms = "sse-kms",
 }
 
-/** @default "PRIVATE" */
-export enum BucketAccess {
-  PRIVATE = "PRIVATE",
-  PUBLIC = "PUBLIC",
-  CUSTOM = "CUSTOM",
+export interface AccountChangePasswordRequest {
+  current_secret_key: string;
+  new_secret_key: string;
+}
+
+export interface ChangeUserPasswordRequest {
+  selectedUser: string;
+  newSecretKey: string;
 }
 
 export interface UserServiceAccountItem {
@@ -185,12 +229,6 @@ export interface Policy {
   policy?: string;
 }
 
-/** @default "user" */
-export enum PolicyEntity {
-  User = "user",
-  Group = "group",
-}
-
 export interface SetPolicyRequest {
   entityType: PolicyEntity;
   entityName: string;
@@ -289,15 +327,6 @@ export interface SetConfigRequest {
   key_values: ConfigurationKV[];
   /** Used if configuration is an event notification's target */
   arn_resource_id?: string;
-}
-
-export enum NotificationEventType {
-  Put = "put",
-  Delete = "delete",
-  Get = "get",
-  Replica = "replica",
-  Ilm = "ilm",
-  Scanner = "scanner",
 }
 
 export interface NotificationConfig {
@@ -629,19 +658,6 @@ export interface UpdateUserGroups {
   groups: string[];
 }
 
-export enum NofiticationService {
-  Webhook = "webhook",
-  Amqp = "amqp",
-  Kafka = "kafka",
-  Mqtt = "mqtt",
-  Nats = "nats",
-  Nsq = "nsq",
-  Mysql = "mysql",
-  Postgres = "postgres",
-  Elasticsearch = "elasticsearch",
-  Redis = "redis",
-}
-
 export interface NotificationEndpointItem {
   service?: NofiticationService;
   account_id?: string;
@@ -847,18 +863,8 @@ export interface LogSearchResponse {
   results?: object;
 }
 
-export enum ObjectLegalHoldStatus {
-  Enabled = "enabled",
-  Disabled = "disabled",
-}
-
 export interface PutObjectLegalHoldRequest {
   status: ObjectLegalHoldStatus;
-}
-
-export enum ObjectRetentionMode {
-  Governance = "governance",
-  Compliance = "compliance",
 }
 
 export interface PutObjectRetentionRequest {
@@ -873,11 +879,6 @@ export interface PutObjectTagsRequest {
 
 export interface PutBucketTagsRequest {
   tags?: any;
-}
-
-export enum ObjectRetentionUnit {
-  Days = "days",
-  Years = "years",
 }
 
 export interface PutBucketRetentionRequest {
@@ -1530,6 +1531,7 @@ type CancelToken = Symbol | string | number;
 
 export enum ContentType {
   Json = "application/json",
+  JsonApi = "application/vnd.api+json",
   FormData = "multipart/form-data",
   UrlEncoded = "application/x-www-form-urlencoded",
   Text = "text/plain",
@@ -1596,12 +1598,20 @@ export class HttpClient<SecurityDataType = unknown> {
       input !== null && (typeof input === "object" || typeof input === "string")
         ? JSON.stringify(input)
         : input,
+    [ContentType.JsonApi]: (input: any) =>
+      input !== null && (typeof input === "object" || typeof input === "string")
+        ? JSON.stringify(input)
+        : input,
     [ContentType.Text]: (input: any) =>
       input !== null && typeof input !== "string"
         ? JSON.stringify(input)
         : input,
-    [ContentType.FormData]: (input: any) =>
-      Object.keys(input || {}).reduce((formData, key) => {
+    [ContentType.FormData]: (input: any) => {
+      if (input instanceof FormData) {
+        return input;
+      }
+
+      return Object.keys(input || {}).reduce((formData, key) => {
         const property = input[key];
         formData.append(
           key,
@@ -1612,7 +1622,8 @@ export class HttpClient<SecurityDataType = unknown> {
               : `${property}`,
         );
         return formData;
-      }, new FormData()),
+      }, new FormData());
+    },
     [ContentType.UrlEncoded]: (input: any) => this.toQueryString(input),
   };
 
@@ -1698,13 +1709,14 @@ export class HttpClient<SecurityDataType = unknown> {
             : payloadFormatter(body),
       },
     ).then(async (response) => {
-      const r = response.clone() as HttpResponse<T, E>;
+      const r = response as HttpResponse<T, E>;
       r.data = null as unknown as T;
       r.error = null as unknown as E;
 
+      const responseToParse = responseFormat ? response.clone() : response;
       const data = !responseFormat
         ? r
-        : await response[responseFormat]()
+        : await responseToParse[responseFormat]()
             .then((data) => {
               if (r.ok) {
                 r.data = data;
@@ -2123,7 +2135,7 @@ export class Api<
       objectList: SelectedUsers,
       params: RequestParams = {},
     ) =>
-      this.request<File, ApiError>({
+      this.request<Blob, ApiError>({
         path: `/buckets/${encodeURIComponent(bucketName)}/objects/download-multiple`,
         method: "POST",
         body: objectList,
@@ -2153,7 +2165,7 @@ export class Api<
       },
       params: RequestParams = {},
     ) =>
-      this.request<File, ApiError>({
+      this.request<Blob, ApiError>({
         path: `/buckets/${encodeURIComponent(bucketName)}/objects/download`,
         method: "GET",
         query: query,
@@ -3019,6 +3031,7 @@ export class Api<
         method: "POST",
         body: body,
         secure: true,
+        type: ContentType.Json,
         format: "json",
         ...params,
       }),
@@ -3122,6 +3135,7 @@ export class Api<
         method: "POST",
         body: body,
         secure: true,
+        type: ContentType.Json,
         format: "json",
         ...params,
       }),
@@ -3360,6 +3374,7 @@ export class Api<
         method: "POST",
         body: body,
         secure: true,
+        type: ContentType.Json,
         format: "json",
         ...params,
       }),
@@ -3383,6 +3398,7 @@ export class Api<
         method: "POST",
         body: body,
         secure: true,
+        type: ContentType.Json,
         format: "json",
         ...params,
       }),
@@ -4028,7 +4044,7 @@ export class Api<
      * @secure
      */
     profilingStop: (params: RequestParams = {}) =>
-      this.request<File, ApiError>({
+      this.request<Blob, ApiError>({
         path: `/profiling/stop`,
         method: "POST",
         secure: true,
@@ -4531,7 +4547,7 @@ export class Api<
       },
       params: RequestParams = {},
     ) =>
-      this.request<File, ApiError>({
+      this.request<Blob, ApiError>({
         path: `/admin/inspect`,
         method: "GET",
         query: query,
@@ -5023,7 +5039,7 @@ export class Api<
      * @request GET:/download-shared-object/{url}
      */
     downloadSharedObject: (url: string, params: RequestParams = {}) =>
-      this.request<File, ApiError>({
+      this.request<Blob, ApiError>({
         path: `/download-shared-object/${encodeURIComponent(url)}`,
         method: "GET",
         ...params,

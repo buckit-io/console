@@ -58,7 +58,7 @@ swagger-console:
 	@echo "Generating swagger server code from yaml"
 	@swagger generate server -A console --main-package=management --server-package=api --exclude-main -P models.Principal -f ./swagger.yml -r NOTICE
 	@echo "Generating typescript api"
-	@npx swagger-typescript-api -p ./swagger.yml -o ./web-app/src/api -n consoleApi.ts --custom-config generator.config.js
+	@npx swagger-typescript-api generate -p ./swagger.yml -o ./web-app/src/api -n consoleApi.ts --custom-config generator.config.js
 	@git restore api/server.go
 
 
@@ -187,37 +187,37 @@ test-sso-integration:
 	@(cd sso-integration && go test -coverpkg=../api -c -tags testrunmain . && mkdir -p coverage && ./sso-integration.test -test.v -test.run "^Test*" -test.coverprofile=coverage/sso-system.out)
 
 test-permissions-1:
-	@(docker run -v /data1 -v /data2 -v /data3 -v /data4 -d --name minio --rm -p 9000:9000 quay.io/minio/minio:latest server /data{1...4})
+	@(docker run -v /data1 -v /data2 -v /data3 -v /data4 -d --name minio --rm -p 9000:9000 -e MINIO_ROOT_USER="minioadmin" -e MINIO_ROOT_PASSWORD="pHc2r5q5!5" quay.io/minio/minio:latest server /data{1...4})
 	@(env bash $(PWD)/web-app/tests/scripts/permissions.sh "web-app/tests/permissions-1/")
 	@(docker stop minio)
 
 test-permissions-2:
-	@(docker run -v /data1 -v /data2 -v /data3 -v /data4 -d --name minio --rm -p 9000:9000 quay.io/minio/minio:latest server /data{1...4})
+	@(docker run -v /data1 -v /data2 -v /data3 -v /data4 -d --name minio --rm -p 9000:9000 -e MINIO_ROOT_USER="minioadmin" -e MINIO_ROOT_PASSWORD="pHc2r5q5!5" quay.io/minio/minio:latest server /data{1...4})
 	@(env bash $(PWD)/web-app/tests/scripts/permissions.sh "web-app/tests/permissions-2/")
 	@(docker stop minio)
 
 test-permissions-3:
-	@(docker run -v /data1 -v /data2 -v /data3 -v /data4 -d --name minio --rm -p 9000:9000 quay.io/minio/minio:latest server /data{1...4})
+	@(docker run -v /data1 -v /data2 -v /data3 -v /data4 -d --name minio --rm -p 9000:9000 -e MINIO_ROOT_USER="minioadmin" -e MINIO_ROOT_PASSWORD="pHc2r5q5!5" quay.io/minio/minio:latest server /data{1...4})
 	@(env bash $(PWD)/web-app/tests/scripts/permissions.sh "web-app/tests/permissions-3/")
 	@(docker stop minio)
 
 test-permissions-4:
-	@(docker run -v /data1 -v /data2 -v /data3 -v /data4 -d --name minio --rm -p 9000:9000 quay.io/minio/minio:latest server /data{1...4})
+	@(docker run -v /data1 -v /data2 -v /data3 -v /data4 -d --name minio --rm -p 9000:9000 -e MINIO_ROOT_USER="minioadmin" -e MINIO_ROOT_PASSWORD="pHc2r5q5!5" quay.io/minio/minio:latest server /data{1...4})
 	@(env bash $(PWD)/web-app/tests/scripts/permissions.sh "web-app/tests/permissions-4/")
 	@(docker stop minio)
 
 test-permissions-5:
-	@(docker run -v /data1 -v /data2 -v /data3 -v /data4 -d --name minio --rm -p 9000:9000 quay.io/minio/minio:latest server /data{1...4})
+	@(docker run -v /data1 -v /data2 -v /data3 -v /data4 -d --name minio --rm -p 9000:9000 -e MINIO_ROOT_USER="minioadmin" -e MINIO_ROOT_PASSWORD="pHc2r5q5!5" quay.io/minio/minio:latest server /data{1...4})
 	@(env bash $(PWD)/web-app/tests/scripts/permissions.sh "web-app/tests/permissions-5/")
 	@(docker stop minio)
 
 test-permissions-6:
-	@(docker run -v /data1 -v /data2 -v /data3 -v /data4 -d --name minio --rm -p 9000:9000 quay.io/minio/minio:latest server /data{1...4})
+	@(docker run -v /data1 -v /data2 -v /data3 -v /data4 -d --name minio --rm -p 9000:9000 -e MINIO_ROOT_USER="minioadmin" -e MINIO_ROOT_PASSWORD="pHc2r5q5!5" quay.io/minio/minio:latest server /data{1...4})
 	@(env bash $(PWD)/web-app/tests/scripts/permissions.sh "web-app/tests/permissions-6/")
 	@(docker stop minio)
 
 test-permissions-7:
-	@(docker run -v /data1 -v /data2 -v /data3 -v /data4 -d --name minio --rm -p 9000:9000 quay.io/minio/minio:latest server /data{1...4})
+	@(docker run -v /data1 -v /data2 -v /data3 -v /data4 -d --name minio --rm -p 9000:9000 -e MINIO_ROOT_USER="minioadmin" -e MINIO_ROOT_PASSWORD="pHc2r5q5!5" quay.io/minio/minio:latest server /data{1...4})
 	@(env bash $(PWD)/web-app/tests/scripts/permissions.sh "web-app/tests/permissions-7/")
 	@(docker stop minio)
 
@@ -225,7 +225,7 @@ test-apply-permissions:
 	@(env bash $(PWD)/web-app/tests/scripts/initialize-env.sh)
 
 test-start-docker-minio:
-	@(docker run -v /data1 -v /data2 -v /data3 -v /data4 -d --name minio --rm -p 9000:9000 quay.io/minio/minio:latest server /data{1...4})
+	@(docker run -v /data1 -v /data2 -v /data3 -v /data4 -d --name minio --rm -p 9000:9000 -e MINIO_ROOT_USER="minioadmin" -e MINIO_ROOT_PASSWORD="pHc2r5q5!5" quay.io/minio/minio:latest server /data{1...4})
 
 initialize-permissions: test-start-docker-minio test-apply-permissions
 	@echo "Done initializing permissions test"

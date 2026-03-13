@@ -93,7 +93,7 @@ test("IAM Policy can be set on User", async (t) => {
     .click(elements.assignPoliciesButton)
     .typeText(elements.searchResourceInput, constants.TEST_ASSIGN_POLICY_NAME)
     .click(userCheckbox)
-    .click(elements.saveButton)
+    .click(elements.saveUserPolicyButton)
     .expect(policyListItemExists)
     .ok();
 });

@@ -25,7 +25,26 @@ export const uploadButton = Selector("button:enabled").withAttribute(
 );
 export const createPolicyButton =
   Selector("button:enabled").withText("Create Policy");
-export const saveButton = Selector("button:enabled").withText("Save");
+export const saveButton = Selector("#save-user").with({
+  timeout: 10000,
+  visibilityCheck: true,
+});
+export const saveGroupButton = Selector("#save-group").with({
+  timeout: 10000,
+  visibilityCheck: true,
+});
+export const savePolicyButton = Selector("#save-policy").with({
+  timeout: 10000,
+  visibilityCheck: true,
+});
+export const saveUserPolicyButton = Selector("#save-user-policy").with({
+  timeout: 10000,
+  visibilityCheck: true,
+});
+export const saveAccessRuleButton = Selector("#add-access-save").with({
+  timeout: 10000,
+  visibilityCheck: true,
+});
 export const deleteButton = Selector("button:enabled").withExactText("Delete");
 
 export const addEventDestination = Selector("button:enabled").withText(
@@ -87,6 +106,7 @@ export const filterUserInput = searchResourceInput.withAttribute(
   "Filter Users",
 );
 export const groupUserCheckbox = Selector(".ReactVirtualized__Table__row input")
+  .with({ timeout: 10000, visibilityCheck: true })
   .withAttribute("type", "checkbox")
   .withAttribute("value", constants.TEST_USER_NAME)
   .sibling("span");

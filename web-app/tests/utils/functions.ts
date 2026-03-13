@@ -31,7 +31,7 @@ export const setUpNamedBucket = (t, name) => {
     port: 9000,
     useSSL: false,
     accessKey: "minioadmin",
-    secretKey: "minioadmin",
+    secretKey: "pHc2r5q5!5",
   });
   return minioClient.makeBucket(name, "us-east-1").catch((err) => {
     console.log(err);
@@ -55,7 +55,7 @@ export const uploadNamedObjectToBucket = async (
     port: 9000,
     useSSL: false,
     accessKey: "minioadmin",
-    secretKey: "minioadmin",
+    secretKey: "pHc2r5q5!5",
   });
   return minioClient
     .fPutObject(bucketName, objectName, objectPath, {})
@@ -74,7 +74,7 @@ export const setVersionedBucket = (t, name) => {
     port: 9000,
     useSSL: false,
     accessKey: "minioadmin",
-    secretKey: "minioadmin",
+    secretKey: "pHc2r5q5!5",
   });
 
   return new Promise((resolve, reject) => {
@@ -99,7 +99,7 @@ export const cleanUpNamedBucket = (t, name) => {
     port: 9000,
     useSSL: false,
     accessKey: "minioadmin",
-    secretKey: "minioadmin",
+    secretKey: "pHc2r5q5!5",
   });
 
   return minioClient.removeBucket(name);
@@ -126,7 +126,7 @@ export const cleanUpNamedBucketAndUploads = (t, bucket) => {
       port: 9000,
       useSSL: false,
       accessKey: "minioadmin",
-      secretKey: "minioadmin",
+      secretKey: "pHc2r5q5!5",
     });
 
     var stream = minioClient.listObjects(bucket, "", true);
@@ -155,9 +155,22 @@ export const createUser = (t) => {
   return t
     .useRole(roles.admin)
     .navigateTo(`http://localhost:9090/identity/users/add-user`)
-    .typeText(elements.usersAccessKeyInput, constants.TEST_USER_NAME)
-    .typeText(elements.usersSecretKeyInput, constants.TEST_PASSWORD)
-    .click(elements.saveButton);
+    .typeText(elements.usersAccessKeyInput, constants.TEST_USER_NAME, {
+      replace: true,
+      paste: true,
+    })
+    .typeText(elements.usersSecretKeyInput, constants.TEST_PASSWORD, {
+      replace: true,
+      paste: true,
+    })
+    .expect(elements.saveButton.hasAttribute("disabled"))
+    .notOk({
+      timeout: 15000,
+      message: "Save button never became enabled",
+    })
+    .click(elements.saveButton)
+    .expect(elements.saveButton.exists)
+    .notOk({ timeout: 10000 });
 };
 
 export const cleanUpUser = (t) => {

@@ -20,4 +20,4 @@ export const SERVER_ENDPOINT = "http://localhost:9090";
 export const BUCKET_LIST_PAGE = `${SERVER_ENDPOINT}/buckets`;
 
 export const adminAccessKey = "minioadmin";
-export const adminSecretKey = "minioadmin";
+export const adminSecretKey = "pHc2r5q5!5";

@@ -41,12 +41,13 @@ const createGroup = async (t: TestController, modifier: string) => {
     )
     .typeText(elements.filterUserInput, constants.TEST_USER_NAME)
     .click(elements.groupUserCheckbox)
-    .click(elements.saveButton);
+    .click(elements.saveGroupButton);
 };
 
 fixture("For user with Groups permissions")
   .page(appBaseUrl)
   .beforeEach(async (t) => {
+    await t.navigateTo(appBaseUrl);
     await t.useRole(roles.groups);
   });
 
@@ -106,10 +107,16 @@ test.before(async (t) => {
   await t
     .useRole(roles.groups)
     .navigateTo(groupsAddPageUrl)
-    .typeText(elements.groupNameInput, constants.TEST_GROUP_NAME)
-    .typeText(elements.filterUserInput, constants.TEST_USER_NAME)
+    .typeText(elements.groupNameInput, constants.TEST_GROUP_NAME, {
+      replace: true,
+      paste: true,
+    })
+    .typeText(elements.filterUserInput, constants.TEST_USER_NAME, {
+      replace: true,
+      paste: true,
+    })
     .click(elements.groupUserCheckbox)
-    .click(elements.saveButton)
+    .click(elements.saveGroupButton)
     .wait(2000);
 });
 

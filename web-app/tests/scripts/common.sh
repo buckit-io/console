@@ -14,7 +14,7 @@
 add_alias() {
   for i in $(seq 1 4); do
     echo "... attempting to add alias $i"
-    until (mc alias set minio http://127.0.0.1:9000 minioadmin minioadmin); do
+    until (mc alias set minio http://127.0.0.1:9000 minioadmin pHc2r5q5!5); do
       echo "...waiting... for 5secs" && sleep 5
     done
   done
@@ -87,7 +87,7 @@ create_users() {
 create_buckets() {
   mc mb minio/testcafe && mc cp ./web-app/tests/uploads/test.txt minio/testcafe/write/test.txt
   mc mb minio/test && mc cp ./web-app/tests/uploads/test.txt minio/test/test.txt && mc cp ./web-app/tests/uploads/test.txt minio/test/digitalinsights/xref_cust_guid_actd-v1.txt && mc cp ./web-app/tests/uploads/test.txt minio/test/digitalinsights/test.txt
-  mc mb minio/testcondition && mc cp ./web-app/tests/uploads/test.txt minio/testcondition/test.txt && mc cp ./web-app/tests2/uploads/test.txt minio/testcondition/firstlevel/xref_cust_guid_actd-v1.txt && mc cp ./web-app/tests/uploads/test.txt minio/testcondition/firstlevel/test.txt && mc cp ./web-app/tests/uploads/test.txt minio/testcondition/firstlevel/secondlevel/test.txt && mc cp ./web-app/tests/uploads/test.txt minio/testcondition/firstlevel/secondlevel/thirdlevel/test.txt
+  mc mb minio/testcondition && mc cp ./web-app/tests/uploads/test.txt minio/testcondition/test.txt && mc cp ./web-app/tests/uploads/test.txt minio/testcondition/firstlevel/xref_cust_guid_actd-v1.txt && mc cp ./web-app/tests/uploads/test.txt minio/testcondition/firstlevel/test.txt && mc cp ./web-app/tests/uploads/test.txt minio/testcondition/firstlevel/secondlevel/test.txt && mc cp ./web-app/tests/uploads/test.txt minio/testcondition/firstlevel/secondlevel/thirdlevel/test.txt
 }
 
 assign_policies() {

@@ -21,7 +21,6 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
-	"strings"
 	"testing"
 
 	"github.com/minio/console/api/operations/system"
@@ -89,8 +88,7 @@ func TestRegisterAdminArnsHandlers(t *testing.T) {
 	modelsPrincipal := models.Principal{
 		STSAccessKeyID: "accesskey",
 	}
-	var value = api.SystemArnListHandler.Handle(ArnListParamsStruct, &modelsPrincipal)
-	str := fmt.Sprintf("%#v", value)
-	fmt.Println("value: ", str)
-	assert.Equal(strings.Contains(str, "_statusCode:403"), true)
+	value := api.SystemArnListHandler.Handle(ArnListParamsStruct, &modelsPrincipal)
+	_, isErrorResponse := value.(*system.ArnListDefault)
+	assert.True(isErrorResponse, "Expected an error response of type *ArnListDefault")
 }

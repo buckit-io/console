@@ -91,7 +91,7 @@ test("Create Policy modal can be submitted after inputs are entered", async (t) 
       paste: true,
       replace: true,
     })
-    .click(elements.saveButton);
+    .click(elements.savePolicyButton);
 }).after(async (t) => {
   // Clean up created policy
   await t
@@ -111,7 +111,7 @@ test("Created Policy can be viewed and deleted", async (t) => {
       paste: true,
       replace: true,
     })
-    .click(elements.saveButton)
+    .click(elements.savePolicyButton)
     .typeText(elements.searchResourceInput, constants.TEST_IAM_POLICY_NAME)
     .expect(iamPolicyListItemExists)
     .ok()

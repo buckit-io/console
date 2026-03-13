@@ -53,7 +53,7 @@ test
       .typeText(elements.bucketsPrefixInput, "readonlytest")
       .click(elements.bucketsAccessInput)
       .click(elements.bucketsAccessReadOnlyInput)
-      .click(elements.saveButton);
+      .click(elements.saveAccessRuleButton);
   })
   .after(async (t) => {
     // Cleanup created bucket
@@ -76,7 +76,7 @@ test
       .typeText(elements.bucketsPrefixInput, "writeonlytest")
       .click(elements.bucketsAccessInput)
       .click(elements.bucketsAccessWriteOnlyInput)
-      .click(elements.saveButton);
+      .click(elements.saveAccessRuleButton);
   })
   .after(async (t) => {
     // Cleanup created bucket
@@ -99,7 +99,7 @@ test
       .typeText(elements.bucketsPrefixInput, "readwritetest")
       .click(elements.bucketsAccessInput)
       .click(elements.bucketsAccessReadWriteInput)
-      .click(elements.saveButton);
+      .click(elements.saveAccessRuleButton);
   })
   .after(async (t) => {
     // Cleanup created bucket

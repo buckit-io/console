@@ -3020,6 +3020,32 @@ func SetBucketVersioning(bucketName string, versioning map[string]interface{}, e
 	return response, err
 }
 
+// enableBucketVersioning sends the versioning payload in the correct format
+// expected by the Console API ({"enabled": true} without wrapping).
+func enableBucketVersioning(bucketName string, endpoint, useToken *string) (*http.Response, error) {
+	requestDataJSON := []byte(`{"enabled": true}`)
+	requestDataBody := bytes.NewReader(requestDataJSON)
+	endpointURL := fmt.Sprintf("http://localhost:9090/api/v1/buckets/%s/versioning", bucketName)
+	if endpoint != nil {
+		endpointURL = fmt.Sprintf("%s/api/v1/buckets/%s/versioning", *endpoint, bucketName)
+	}
+	request, err := http.NewRequest("PUT", endpointURL, requestDataBody)
+	if err != nil {
+		log.Println(err)
+	}
+	if useToken != nil {
+		request.Header.Add("Cookie", fmt.Sprintf("token=%s", *useToken))
+	} else {
+		request.Header.Add("Cookie", fmt.Sprintf("token=%s", token))
+	}
+	request.Header.Add("Content-Type", "application/json")
+	client := &http.Client{
+		Timeout: 2 * time.Second,
+	}
+	response, err := client.Do(request)
+	return response, err
+}
+
 func TestSetBucketVersioning(t *testing.T) {
 	// Variables
 	assert := assert.New(t)
@@ -3840,9 +3866,10 @@ func TestAddRemoteBucket(t *testing.T) {
 	if !setupBucketForEndpoint(targetBucket, true, map[string]interface{}{"enabled": true}, nil, nil, assert, 200, &targetEndpoint, &targetToken) {
 		log.Println("bucket already exists")
 	}
-	_, err := SetBucketVersioning(targetBucket, map[string]interface{}{"enabled": false}, &targetURL, &targetToken)
+	// Ensure versioning is explicitly enabled on the target bucket
+	_, err := enableBucketVersioning(targetBucket, &targetEndpoint, &targetToken)
 	if err != nil {
-		log.Println("bucket already has versioning")
+		log.Println("error enabling versioning on target bucket:", err)
 	}
 
 	// 2. Add Remote Bucket
@@ -3899,9 +3926,10 @@ func TestDeleteRemoteBucket(t *testing.T) {
 	if !setupBucketForEndpoint(targetBucket, true, map[string]interface{}{"enabled": true}, nil, nil, assert, 200, &targetEndpoint, &targetToken) {
 		log.Println("bucket already exists")
 	}
-	_, err := SetBucketVersioning(targetBucket, map[string]interface{}{"enabled": false}, &targetURL, &targetToken)
+	// Ensure versioning is explicitly enabled on the target bucket
+	_, err := enableBucketVersioning(targetBucket, &targetEndpoint, &targetToken)
 	if err != nil {
-		log.Println("bucket already has versioning")
+		log.Println("error enabling versioning on target bucket:", err)
 	}
 
 	// 2. Add Remote Bucket
