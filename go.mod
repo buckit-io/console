@@ -1,4 +1,4 @@
-module github.com/minio/console
+module github.com/getbuckit/console
 
 go 1.25.0
 

@@ -19,10 +19,10 @@ package api
 import (
 	"context"
 
+	"github.com/getbuckit/console/api/operations"
+	systemApi "github.com/getbuckit/console/api/operations/system"
+	"github.com/getbuckit/console/models"
 	"github.com/go-openapi/runtime/middleware"
-	"github.com/minio/console/api/operations"
-	systemApi "github.com/minio/console/api/operations/system"
-	"github.com/minio/console/models"
 )
 
 func registerNodesHandler(api *operations.ConsoleAPI) {

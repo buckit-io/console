@@ -20,8 +20,8 @@ import (
 	"sync"
 	"sync/atomic"
 
-	"github.com/minio/console/pkg/logger/target/http"
-	"github.com/minio/console/pkg/logger/target/types"
+	"github.com/getbuckit/console/pkg/logger/target/http"
+	"github.com/getbuckit/console/pkg/logger/target/types"
 )
 
 // Target is the entity that we will receive

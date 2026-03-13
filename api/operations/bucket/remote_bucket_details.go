@@ -27,7 +27,7 @@ import (
 
 	"github.com/go-openapi/runtime/middleware"
 
-	"github.com/minio/console/models"
+	"github.com/getbuckit/console/models"
 )
 
 // RemoteBucketDetailsHandlerFunc turns a function with the right signature into a remote bucket details handler

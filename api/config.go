@@ -25,7 +25,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/minio/console/pkg/auth/idp/oauth2"
+	"github.com/getbuckit/console/pkg/auth/idp/oauth2"
 	xcerts "github.com/minio/pkg/v3/certs"
 	"github.com/minio/pkg/v3/env"
 	xnet "github.com/minio/pkg/v3/net"

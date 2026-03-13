@@ -31,7 +31,7 @@ Bug Fix:
 
 Additional Changes:
 
-- Added debug logging for console HTTP request (see [PR #3440](https://github.com/minio/console/pull/3440) for more detailed information)
+- Added debug logging for console HTTP request (see [PR #3440](https://github.com/getbuckit/console/pull/3440) for more detailed information)
 
 ## Release v1.7.0
 

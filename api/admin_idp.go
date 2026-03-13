@@ -22,10 +22,10 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/getbuckit/console/api/operations"
+	"github.com/getbuckit/console/api/operations/idp"
+	"github.com/getbuckit/console/models"
 	"github.com/go-openapi/runtime/middleware"
-	"github.com/minio/console/api/operations"
-	"github.com/minio/console/api/operations/idp"
-	"github.com/minio/console/models"
 	"github.com/minio/madmin-go/v3"
 )
 

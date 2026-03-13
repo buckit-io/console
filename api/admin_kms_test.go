@@ -23,9 +23,9 @@ import (
 	"os"
 	"testing"
 
-	"github.com/minio/console/api/operations"
-	kmsAPI "github.com/minio/console/api/operations/k_m_s"
-	"github.com/minio/console/models"
+	"github.com/getbuckit/console/api/operations"
+	kmsAPI "github.com/getbuckit/console/api/operations/k_m_s"
+	"github.com/getbuckit/console/models"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
 )

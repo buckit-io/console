@@ -23,11 +23,11 @@ import (
 	"os"
 	"testing"
 
-	"github.com/minio/console/pkg/utils"
+	"github.com/getbuckit/console/pkg/utils"
 
-	"github.com/minio/console/api/operations"
-	systemApi "github.com/minio/console/api/operations/system"
-	"github.com/minio/console/models"
+	"github.com/getbuckit/console/api/operations"
+	systemApi "github.com/getbuckit/console/api/operations/system"
+	"github.com/getbuckit/console/models"
 	"github.com/minio/madmin-go/v3"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"

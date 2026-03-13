@@ -27,7 +27,7 @@ import (
 
 	"github.com/go-openapi/runtime/middleware"
 
-	"github.com/minio/console/models"
+	"github.com/getbuckit/console/models"
 )
 
 // TiersListNamesHandlerFunc turns a function with the right signature into a tiers list names handler

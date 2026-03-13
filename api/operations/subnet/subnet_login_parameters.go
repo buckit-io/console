@@ -31,7 +31,7 @@ import (
 	"github.com/go-openapi/runtime/middleware"
 	"github.com/go-openapi/validate"
 
-	"github.com/minio/console/models"
+	"github.com/getbuckit/console/models"
 )
 
 // NewSubnetLoginParams creates a new SubnetLoginParams object

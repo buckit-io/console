@@ -21,13 +21,13 @@ import (
 	"errors"
 	"fmt"
 
+	"github.com/getbuckit/console/api/operations"
+	bucektApi "github.com/getbuckit/console/api/operations/bucket"
 	"github.com/go-openapi/runtime/middleware"
-	"github.com/minio/console/api/operations"
-	bucektApi "github.com/minio/console/api/operations/bucket"
 
 	"github.com/minio/madmin-go/v3"
 
-	"github.com/minio/console/models"
+	"github.com/getbuckit/console/models"
 )
 
 func registerBucketQuotaHandlers(api *operations.ConsoleAPI) {

@@ -39,22 +39,22 @@ import (
 
 	"github.com/google/uuid"
 
-	"github.com/minio/console/pkg/logger"
-	"github.com/minio/console/pkg/utils"
+	"github.com/getbuckit/console/pkg/logger"
+	"github.com/getbuckit/console/pkg/utils"
 	"github.com/minio/minio-go/v7/pkg/credentials"
 
 	"github.com/klauspost/compress/gzhttp"
 
-	portal_ui "github.com/minio/console/web-app"
+	portal_ui "github.com/getbuckit/console/web-app"
 	"github.com/minio/pkg/v3/env"
 	"github.com/minio/pkg/v3/mimedb"
 	xnet "github.com/minio/pkg/v3/net"
 
+	"github.com/getbuckit/console/api/operations"
+	"github.com/getbuckit/console/models"
+	"github.com/getbuckit/console/pkg/auth"
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/swag"
-	"github.com/minio/console/api/operations"
-	"github.com/minio/console/models"
-	"github.com/minio/console/pkg/auth"
 	"github.com/unrolled/secure"
 )
 

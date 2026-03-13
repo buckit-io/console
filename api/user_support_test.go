@@ -21,7 +21,7 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/minio/console/models"
+	"github.com/getbuckit/console/models"
 	"github.com/minio/madmin-go/v3"
 )
 

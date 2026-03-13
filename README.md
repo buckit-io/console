@@ -1,6 +1,6 @@
 # MinIO Console
 
-![build](https://github.com/minio/console/workflows/Go/badge.svg) ![license](https://img.shields.io/badge/license-AGPL%20V3-blue)
+![build](https://github.com/getbuckit/console/workflows/Go/badge.svg) ![license](https://img.shields.io/badge/license-AGPL%20V3-blue)
 
 A graphical user interface for [MinIO](https://github.com/minio/minio)
 
@@ -214,4 +214,4 @@ The detailed logging also includes all request and response headers (if any).
  
 # Contribute to console Project
 
-Please follow console [Contributor's Guide](https://github.com/minio/console/blob/master/CONTRIBUTING.md)
+Please follow console [Contributor's Guide](https://github.com/getbuckit/console/blob/master/CONTRIBUTING.md)

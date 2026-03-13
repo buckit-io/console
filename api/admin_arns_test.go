@@ -23,11 +23,11 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/minio/console/api/operations/system"
-	"github.com/minio/console/models"
+	"github.com/getbuckit/console/api/operations/system"
+	"github.com/getbuckit/console/models"
 
+	"github.com/getbuckit/console/api/operations"
 	"github.com/go-openapi/loads"
-	"github.com/minio/console/api/operations"
 	"github.com/minio/madmin-go/v3"
 
 	asrt "github.com/stretchr/testify/assert"

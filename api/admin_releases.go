@@ -24,12 +24,12 @@ import (
 	"net/url"
 	"time"
 
-	"github.com/minio/console/pkg/utils"
+	"github.com/getbuckit/console/pkg/utils"
 
+	"github.com/getbuckit/console/api/operations"
+	release "github.com/getbuckit/console/api/operations/release"
+	"github.com/getbuckit/console/models"
 	"github.com/go-openapi/runtime/middleware"
-	"github.com/minio/console/api/operations"
-	release "github.com/minio/console/api/operations/release"
-	"github.com/minio/console/models"
 	"github.com/minio/pkg/v3/env"
 )
 

@@ -22,11 +22,11 @@ import (
 	"strconv"
 
 	"github.com/dustin/go-humanize"
+	"github.com/getbuckit/console/api/operations"
+	"github.com/getbuckit/console/api/operations/tiering"
+	tieringApi "github.com/getbuckit/console/api/operations/tiering"
+	"github.com/getbuckit/console/models"
 	"github.com/go-openapi/runtime/middleware"
-	"github.com/minio/console/api/operations"
-	"github.com/minio/console/api/operations/tiering"
-	tieringApi "github.com/minio/console/api/operations/tiering"
-	"github.com/minio/console/models"
 	"github.com/minio/madmin-go/v3"
 )
 

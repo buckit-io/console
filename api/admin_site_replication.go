@@ -19,11 +19,11 @@ package api
 import (
 	"context"
 
+	"github.com/getbuckit/console/api/operations"
+	siteRepApi "github.com/getbuckit/console/api/operations/site_replication"
+	"github.com/getbuckit/console/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/runtime/middleware"
-	"github.com/minio/console/api/operations"
-	siteRepApi "github.com/minio/console/api/operations/site_replication"
-	"github.com/minio/console/models"
 	"github.com/minio/madmin-go/v3"
 )
 

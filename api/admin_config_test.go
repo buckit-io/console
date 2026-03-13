@@ -27,7 +27,7 @@ import (
 	"github.com/go-openapi/swag"
 	"github.com/stretchr/testify/assert"
 
-	"github.com/minio/console/models"
+	"github.com/getbuckit/console/models"
 	"github.com/minio/madmin-go/v3"
 )
 

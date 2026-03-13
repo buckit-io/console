@@ -27,8 +27,8 @@ import (
 	"net/http"
 	"time"
 
+	xhttp "github.com/getbuckit/console/pkg/http"
 	"github.com/mattn/go-ieproxy"
-	xhttp "github.com/minio/console/pkg/http"
 	"github.com/tidwall/gjson"
 
 	"github.com/minio/madmin-go/v3"

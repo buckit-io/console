@@ -20,15 +20,15 @@ import (
 	"context"
 	"net/http"
 
-	authApi "github.com/minio/console/api/operations/auth"
+	authApi "github.com/getbuckit/console/api/operations/auth"
 
-	"github.com/minio/console/pkg/auth"
+	"github.com/getbuckit/console/pkg/auth"
 
+	"github.com/getbuckit/console/api/operations"
+	accountApi "github.com/getbuckit/console/api/operations/account"
+	"github.com/getbuckit/console/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/runtime/middleware"
-	"github.com/minio/console/api/operations"
-	accountApi "github.com/minio/console/api/operations/account"
-	"github.com/minio/console/models"
 )
 
 func registerAccountHandlers(api *operations.ConsoleAPI) {

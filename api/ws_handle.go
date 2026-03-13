@@ -29,11 +29,11 @@ import (
 
 	"github.com/minio/madmin-go/v3"
 
-	"github.com/minio/console/pkg/utils"
+	"github.com/getbuckit/console/pkg/utils"
 
+	"github.com/getbuckit/console/models"
+	"github.com/getbuckit/console/pkg/auth"
 	errorsApi "github.com/go-openapi/errors"
-	"github.com/minio/console/models"
-	"github.com/minio/console/pkg/auth"
 	"github.com/minio/websocket"
 )
 

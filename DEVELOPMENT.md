@@ -62,7 +62,7 @@ In the MinIO repository open `go.mod` and after the first `require()` directive 
 )
 
 replace (
-github.com/minio/console => "../console"
+github.com/getbuckit/console => "../console"
 )
 
 require (

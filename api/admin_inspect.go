@@ -23,11 +23,11 @@ import (
 	"net/http"
 	"strings"
 
+	"github.com/getbuckit/console/api/operations"
+	inspectApi "github.com/getbuckit/console/api/operations/inspect"
+	"github.com/getbuckit/console/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/runtime/middleware"
-	"github.com/minio/console/api/operations"
-	inspectApi "github.com/minio/console/api/operations/inspect"
-	"github.com/minio/console/models"
 	"github.com/minio/madmin-go/v3"
 	"github.com/secure-io/sio-go"
 )

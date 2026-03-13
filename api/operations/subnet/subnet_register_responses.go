@@ -27,7 +27,7 @@ import (
 
 	"github.com/go-openapi/runtime"
 
-	"github.com/minio/console/models"
+	"github.com/getbuckit/console/models"
 )
 
 // SubnetRegisterOKCode is the HTTP code returned for type SubnetRegisterOK

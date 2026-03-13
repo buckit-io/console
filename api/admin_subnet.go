@@ -25,15 +25,15 @@ import (
 	"net/url"
 	"os"
 
-	"github.com/minio/console/pkg/utils"
+	"github.com/getbuckit/console/pkg/utils"
 
-	xhttp "github.com/minio/console/pkg/http"
+	xhttp "github.com/getbuckit/console/pkg/http"
 
+	"github.com/getbuckit/console/api/operations"
+	subnetApi "github.com/getbuckit/console/api/operations/subnet"
+	"github.com/getbuckit/console/models"
+	"github.com/getbuckit/console/pkg/subnet"
 	"github.com/go-openapi/runtime/middleware"
-	"github.com/minio/console/api/operations"
-	subnetApi "github.com/minio/console/api/operations/subnet"
-	"github.com/minio/console/models"
-	"github.com/minio/console/pkg/subnet"
 	"github.com/minio/madmin-go/v3"
 )
 
