@@ -21,7 +21,7 @@ export default function Copyright() {
   return (
     <Box className={"muted"} sx={{ textAlign: "center" }}>
       {"Copyright © "}
-      <a href="https://min.io/?ref=con">MinIO</a> {new Date().getFullYear()}
+      <a href="https://min.io/?ref=con">Buckit</a> {new Date().getFullYear()}
       {"."}
     </Box>
   );

@@ -19,9 +19,11 @@ import { GlobalStyles, ThemeHandler } from "mds";
 import "react-virtualized/styles.css";
 
 import { generateOverrideTheme } from "./utils/stylesUtils";
+import { buckitLightTheme, buckitDarkTheme } from "./buckitTheme";
 import "./index.css";
 import { useSelector } from "react-redux";
 import { AppState } from "./store";
+import merge from "lodash/merge";
 
 interface IStyleHandler {
   children: React.ReactNode;
@@ -33,10 +35,15 @@ const StyleHandler = ({ children }: IStyleHandler) => {
   );
   const darkMode = useSelector((state: AppState) => state.system.darkMode);
 
-  let thm = undefined;
+  const baseTheme = darkMode ? buckitDarkTheme : buckitLightTheme;
+
+  let thm: any = baseTheme;
 
   if (colorVariants) {
-    thm = generateOverrideTheme(colorVariants);
+    const externalOverrides = generateOverrideTheme(colorVariants);
+    if (externalOverrides) {
+      thm = merge({}, baseTheme, externalOverrides);
+    }
   }
 
   return (

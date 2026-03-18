@@ -241,7 +241,7 @@ const AddBucket = () => {
               title={"Buckets"}
               help={
                 <Fragment>
-                  MinIO uses buckets to organize objects. A bucket is similar to
+                  Buckit uses buckets to organize objects. A bucket is similar to
                   a folder or directory in a filesystem, where each bucket can
                   hold an arbitrary number of objects.
                   <br />
@@ -364,7 +364,7 @@ const AddBucket = () => {
                           be disabled <br />
                         </strong>
                       )}
-                      MinIO supports keeping multiple{" "}
+                      Buckit supports keeping multiple{" "}
                       <a
                         href="https://min.io/docs/minio/kubernetes/upstream/administration/object-management/object-versioning.html#minio-bucket-versioning"
                         target="blank"
@@ -410,7 +410,7 @@ const AddBucket = () => {
                           </a>{" "}
                           from versioning if Object Locking is not enabled.
                           <br />
-                          MinIO requires versioning to support replication.
+                          Buckit requires versioning to support replication.
                           <br />
                           Objects in excluded prefixes do not replicate to any
                           peer site or remote site.
@@ -509,7 +509,7 @@ const AddBucket = () => {
                       >
                         quota
                       </a>{" "}
-                      assigns a hard limit to a bucket beyond which MinIO does
+                      assigns a hard limit to a bucket beyond which Buckit does
                       not allow writes.
                     </Fragment>
                   }
@@ -559,7 +559,7 @@ const AddBucket = () => {
                     label={"Retention"}
                     helpTip={
                       <Fragment>
-                        MinIO supports setting both{" "}
+                        Buckit supports setting both{" "}
                         <a
                           href="https://min.io/docs/minio/macos/administration/object-management/object-retention.html#configure-bucket-default-object-retention"
                           target="blank"
@@ -604,7 +604,7 @@ const AddBucket = () => {
                             Compliance
                           </a>{" "}
                           lock protects Objects from write operations by all
-                          users, including the MinIO root user.
+                          users, including the Buckit root user.
                           <br />
                           <br />
                           <a

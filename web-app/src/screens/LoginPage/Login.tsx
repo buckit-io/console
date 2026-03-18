@@ -28,6 +28,7 @@ import { getLogoApplicationVariant, getLogoVar } from "../../config";
 import { RedirectRule } from "api/consoleApi";
 import { redirectRules } from "./login.utils";
 import { setHelpName } from "../../systemSlice";
+import BuckitLogo from "../../components/BuckitLogo";
 
 export const getTargetPath = () => {
   let targetPath = "/browser";
@@ -148,18 +149,53 @@ const Login = () => {
   return (
     <Fragment>
       <MainError />
-      <LoginWrapper
-        logoProps={{
-          applicationName: getLogoApplicationVariant(),
-          subVariant: getLogoVar(),
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          minHeight: "100vh",
+          background:
+            "linear-gradient(180deg, #0F172A 0%, #1E1B4B 100%)",
         }}
-        form={loginComponent}
-        formFooter={
+      >
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            width: 400,
+            maxWidth: "90vw",
+          }}
+        >
+          <Box sx={{ marginBottom: "24px" }}>
+            <BuckitLogo inverse={true} width={220} />
+          </Box>
           <Box
             sx={{
+              width: "100%",
+              background: "rgba(255,255,255,0.05)",
+              borderRadius: "8px",
+              padding: "32px",
+              backdropFilter: "blur(10px)",
+            }}
+          >
+            {loginComponent}
+          </Box>
+          <Box
+            sx={{
+              marginTop: "24px",
+              color: "rgba(255,255,255,0.5)",
+              fontSize: 12,
+              "& a": {
+                color: "rgba(255,255,255,0.6)",
+                textDecoration: "none",
+                "&:hover": { color: "#fff" },
+              },
               "& .separator": {
-                marginLeft: 4,
-                marginRight: 4,
+                marginLeft: 8,
+                marginRight: 8,
               },
             }}
           >
@@ -168,48 +204,15 @@ const Login = () => {
             </a>
             <span className={"separator"}>|</span>
             <a
-              href="https://github.com/minio/minio"
+              href="https://github.com/getbuckit/console"
               target="_blank"
               rel="noopener"
             >
               GitHub
             </a>
-            <span className={"separator"}>|</span>
-            <a
-              href="https://subnet.min.io/?ref=con"
-              target="_blank"
-              rel="noopener"
-            >
-              Support
-            </a>
-            <span className={"separator"}>|</span>
-            <a
-              href="https://min.io/download/?ref=con"
-              target="_blank"
-              rel="noopener"
-            >
-              Download
-            </a>
           </Box>
-        }
-        promoHeader={
-          <span style={{ fontSize: 28 }}>High-Performance Object Store</span>
-        }
-        promoInfo={
-          <span style={{ fontSize: 14, lineHeight: 1 }}>
-            MinIO is a cloud-native object store built to run on any
-            infrastructure - public, private or edge clouds. Primary use cases
-            include data lakes, databases, AI/ML, SaaS applications and fast
-            backup & recovery. MinIO is dual licensed under GNU AGPL v3 and
-            commercial license. To learn more, visit{" "}
-            <a href={"https://min.io/?ref=con"} target="_blank" rel="noopener">
-              www.min.io
-            </a>
-            .
-          </span>
-        }
-        backgroundAnimation={backgroundAnimation}
-      />
+        </Box>
+      </Box>
     </Fragment>
   );
 };

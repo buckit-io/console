@@ -15,9 +15,10 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import React from "react";
-import { Grid, ThemedLogo } from "mds";
+import { Grid } from "mds";
 import { useSelector } from "react-redux";
 import { AppState } from "../../../../store";
+import BuckitLogo from "../../../../components/BuckitLogo";
 
 interface IAutoColorIcon {
   marginRight: number;
@@ -45,7 +46,7 @@ const AutoColorIcon = ({ marginRight, marginTop }: IAutoColorIcon) => {
         },
       }}
     >
-      <ThemedLogo />
+      <BuckitLogo width={105} inverse={isDark} />
     </Grid>
   );
 };

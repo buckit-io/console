@@ -14,7 +14,8 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import React from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { useSelector } from "react-redux";
 import { Menu } from "mds";
 import { AppState, useAppDispatch } from "../../../store";
@@ -28,12 +29,17 @@ import {
 } from "../../../config";
 import { useLocation, useNavigate } from "react-router-dom";
 import { getLicenseConsent } from "../License/utils";
+import BuckitLogo from "../../../components/BuckitLogo";
 
 const MenuWrapper = () => {
   const dispatch = useAppDispatch();
   const features = useSelector(selFeatures);
   const navigate = useNavigate();
   const { pathname = "" } = useLocation();
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const [logoTarget, setLogoTarget] = useState<HTMLElement | null>(null);
+  const [collapsedIconTarget, setCollapsedIconTarget] =
+    useState<HTMLElement | null>(null);
 
   const sidebarOpen = useSelector(
     (state: AppState) => state.system.sidebarOpen,
@@ -54,27 +60,76 @@ const MenuWrapper = () => {
 
   const allowedMenuItems = validRoutes(features, licenseNotification);
 
+  const findLogoContainer = useCallback(() => {
+    if (!wrapperRef.current) return;
+    const el = wrapperRef.current.querySelector(
+      ".menuLogoContainer",
+    ) as HTMLElement | null;
+    if (el && el !== logoTarget) {
+      // Hide original MDS logo children
+      Array.from(el.children).forEach((child) => {
+        (child as HTMLElement).style.display = "none";
+      });
+      setLogoTarget(el);
+    }
+
+    // Also find collapsed icon and replace it
+    const collapsedEl = wrapperRef.current.querySelector(
+      ".collapsedMenuHeader .collapsedIcon",
+    ) as HTMLElement | null;
+    if (collapsedEl && collapsedEl !== collapsedIconTarget) {
+      // Hide original MinIO icon
+      Array.from(collapsedEl.children).forEach((child) => {
+        (child as HTMLElement).style.display = "none";
+      });
+      setCollapsedIconTarget(collapsedEl);
+    }
+  }, [logoTarget, collapsedIconTarget]);
+
+  useEffect(() => {
+    // Try immediately and also after a frame in case Menu hasn't rendered yet
+    findLogoContainer();
+    const rafId = requestAnimationFrame(findLogoContainer);
+    return () => cancelAnimationFrame(rafId);
+  }, [sidebarOpen, findLogoContainer]);
+
   return (
-    <Menu
-      isOpen={sidebarOpen}
-      displayGroupTitles
-      options={allowedMenuItems}
-      applicationLogo={{
-        applicationName: getLogoApplicationVariant(),
-        subVariant: getLogoVar(),
-      }}
-      callPathAction={(path) => {
-        navigate(path);
-      }}
-      signOutAction={() => {
-        navigate("/logout");
-      }}
-      collapseAction={() => {
-        dispatch(menuOpen(!sidebarOpen));
-      }}
-      currentPath={pathname}
-      mobileModeAuto={false}
-    />
+    <div ref={wrapperRef}>
+      <Menu
+        isOpen={sidebarOpen}
+        displayGroupTitles
+        options={allowedMenuItems}
+        applicationLogo={{
+          applicationName: getLogoApplicationVariant(),
+          subVariant: getLogoVar(),
+        }}
+        callPathAction={(path) => {
+          navigate(path);
+        }}
+        signOutAction={() => {
+          navigate("/logout");
+        }}
+        collapseAction={() => {
+          dispatch(menuOpen(!sidebarOpen));
+        }}
+        currentPath={pathname}
+        mobileModeAuto={false}
+      />
+      {sidebarOpen &&
+        logoTarget &&
+        createPortal(
+          <BuckitLogo inverse={true} width={180} layout="horizontal" />,
+          logoTarget,
+        )}
+      {!sidebarOpen &&
+        collapsedIconTarget &&
+        createPortal(
+          <div style={{ pointerEvents: "none" }}>
+            <BuckitLogo inverse={true} width={30} layout="icon" />
+          </div>,
+          collapsedIconTarget,
+        )}
+    </div>
   );
 };
 

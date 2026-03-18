@@ -17,7 +17,8 @@
 import React from "react";
 import ModalWrapper from "../Common/ModalWrapper/ModalWrapper";
 
-import { AGPLV3DarkLogo, Box, Button } from "mds";
+import { Box, Button } from "mds";
+import BuckitLogo from "../../../components/BuckitLogo";
 import { setLicenseConsent } from "./utils";
 import LicenseLink from "./LicenseLink";
 import LicenseFAQ from "./LicenseFAQ";
@@ -65,7 +66,7 @@ const LicenseConsentModal = ({
             },
           }}
         >
-          <AGPLV3DarkLogo />
+          <BuckitLogo width={188} />
         </Box>
         <Box
           sx={{

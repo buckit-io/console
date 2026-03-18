@@ -107,7 +107,7 @@ const ConfigurationOptions = () => {
         <Grid item xs={12} id={"settings-container"}>
           <ScreenTitle
             icon={<SettingsIcon />}
-            title={"MinIO Configuration:"}
+            title={"Buckit Configuration:"}
             actions={
               <Box
                 sx={{
@@ -162,7 +162,7 @@ const ConfigurationOptions = () => {
             iconComponent={<SettingsIcon />}
             help={
               <Fragment>
-                MinIO supports a variety of configurations ranging from
+                Buckit supports a variety of configurations ranging from
                 encryption, compression, region, notifications, etc.
                 <br />
                 <br />

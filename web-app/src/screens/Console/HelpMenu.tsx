@@ -195,7 +195,7 @@ const HelpMenu = () => {
       <div style={{ padding: 16 }}>
         <MoreLink
           LeadingIcon={MinIOTierIcon}
-          text={"Visit MinIO Documentation"}
+          text={"Visit Buckit Documentation"}
           link={"https://docs.min.io/?ref=con"}
           color={"#C5293F"}
         />
@@ -221,7 +221,7 @@ const HelpMenu = () => {
       <div style={{ padding: 16 }}>
         <MoreLink
           LeadingIcon={MinIOTierIcon}
-          text={"Visit MinIO Videos"}
+          text={"Visit Buckit Videos"}
           link={"https://resources.min.io/l/library?contentType=video"}
           color={"#C5293F"}
         />
@@ -247,7 +247,7 @@ const HelpMenu = () => {
       <div style={{ padding: 16 }}>
         <MoreLink
           LeadingIcon={MinIOTierIcon}
-          text={"Visit MinIO Blog"}
+          text={"Visit Buckit Blog"}
           link={"https://blog.min.io/?ref=con"}
           color={"#C5293F"}
         />

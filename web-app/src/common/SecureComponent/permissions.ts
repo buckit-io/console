@@ -480,7 +480,7 @@ export const permissionTooltipHelper = (scopes: string[], name: string) => {
   return (
     "You require additional permissions in order to " +
     name +
-    ". Please ask your MinIO administrator to grant you " +
+    ". Please ask your Buckit administrator to grant you " +
     niceScopes +
     " permission" +
     (scopes.length > 1 ? "s" : "") +

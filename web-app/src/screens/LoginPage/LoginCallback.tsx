@@ -19,8 +19,8 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import api from "../../common/api";
 import { baseUrl } from "../../history";
-import { Box, Button, LoginWrapper, WarnIcon } from "mds";
-import { getLogoApplicationVariant, getLogoVar } from "../../config";
+import { Box, Button, WarnIcon } from "mds";
+import BuckitLogo from "../../components/BuckitLogo";
 import get from "lodash/get";
 
 const CallBackContainer = styled.div(({ theme }) => ({
@@ -106,52 +106,62 @@ const LoginCallback = () => {
   }, [loading, navigate]);
   return error !== "" || errorDescription !== "" ? (
     <Fragment>
-      <LoginWrapper
-        logoProps={{
-          applicationName: getLogoApplicationVariant(),
-          subVariant: getLogoVar(),
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          minHeight: "100vh",
+          background:
+            "linear-gradient(180deg, #0F172A 0%, #1E1B4B 100%)",
         }}
-        form={
-          <CallBackContainer>
-            <div className={"errorTitle"}>
-              <span className={"messageIcon"}>
-                <WarnIcon />
-              </span>
-              <span className={"errorLabel"}>Error from IDP</span>
-            </div>
-            <div className={"simpleError"}>{error}</div>
-            <Box className={"errorDescription"}>{errorDescription}</Box>
-            <Button
-              id={"back-to-login"}
-              onClick={() => {
-                window.location.href = `${baseUrl}login`;
-              }}
-              type="submit"
-              variant="callAction"
-              fullWidth
-            >
-              Back to Login
-            </Button>
-          </CallBackContainer>
-        }
-        promoHeader={
-          <span style={{ fontSize: 28 }}>High-Performance Object Store</span>
-        }
-        promoInfo={
-          <span style={{ fontSize: 14, lineHeight: 1 }}>
-            MinIO is a cloud-native object store built to run on any
-            infrastructure - public, private or edge clouds. Primary use cases
-            include data lakes, databases, AI/ML, SaaS applications and fast
-            backup & recovery. MinIO is dual licensed under GNU AGPL v3 and
-            commercial license. To learn more, visit{" "}
-            <a href={"https://min.io/?ref=con"} target="_blank" rel="noopener">
-              www.min.io
-            </a>
-            .
-          </span>
-        }
-        backgroundAnimation={false}
-      />
+      >
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            width: 400,
+            maxWidth: "90vw",
+          }}
+        >
+          <Box sx={{ marginBottom: "24px" }}>
+            <BuckitLogo inverse={true} width={220} />
+          </Box>
+          <Box
+            sx={{
+              width: "100%",
+              background: "rgba(255,255,255,0.05)",
+              borderRadius: "8px",
+              padding: "32px",
+              backdropFilter: "blur(10px)",
+            }}
+          >
+            <CallBackContainer>
+              <div className={"errorTitle"}>
+                <span className={"messageIcon"}>
+                  <WarnIcon />
+                </span>
+                <span className={"errorLabel"}>Error from IDP</span>
+              </div>
+              <div className={"simpleError"}>{error}</div>
+              <Box className={"errorDescription"}>{errorDescription}</Box>
+              <Button
+                id={"back-to-login"}
+                onClick={() => {
+                  window.location.href = `${baseUrl}login`;
+                }}
+                type="submit"
+                variant="callAction"
+                fullWidth
+              >
+                Back to Login
+              </Button>
+            </CallBackContainer>
+          </Box>
+        </Box>
+      </Box>
     </Fragment>
   ) : null;
 };

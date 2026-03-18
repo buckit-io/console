@@ -24,3 +24,16 @@ input.removeArrows[type="number"],
 .removeArrows input[type="number"] {
   -moz-appearance: textfield;
 }
+
+/* Soften MDS buttons — rounder corners, lighter borders */
+button {
+  border-radius: 8px !important;
+}
+
+button[class*="regular"] {
+  border-color: #D1D5DB !important;
+}
+
+button[class*="regular"]:hover {
+  border-color: #9CA3AF !important;
+}
