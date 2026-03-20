@@ -16,7 +16,7 @@
 
 import React, { Fragment, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Box, Button, Loader, LoginWrapper, RefreshIcon } from "mds";
+import { Box, Button, Loader, RefreshIcon } from "mds";
 import { loginStrategyType } from "./login.types";
 import MainError from "../Console/Common/MainError/MainError";
 import { AppState, useAppDispatch } from "../../store";
@@ -24,7 +24,6 @@ import { useSelector } from "react-redux";
 import { getFetchConfigurationAsync } from "./loginThunks";
 import { resetForm } from "./loginSlice";
 import StrategyForm from "./StrategyForm";
-import { getLogoApplicationVariant, getLogoVar } from "../../config";
 import { RedirectRule } from "api/consoleApi";
 import { redirectRules } from "./login.utils";
 import { setHelpName } from "../../systemSlice";
@@ -55,10 +54,6 @@ const Login = () => {
   const navigateTo = useSelector((state: AppState) => state.login.navigateTo);
 
   const isK8S = useSelector((state: AppState) => state.login.isK8S);
-
-  const backgroundAnimation = useSelector(
-    (state: AppState) => state.login.backgroundAnimation,
-  );
 
   useEffect(() => {
     if (navigateTo !== "") {
@@ -156,8 +151,7 @@ const Login = () => {
           alignItems: "center",
           justifyContent: "center",
           minHeight: "100vh",
-          background:
-            "linear-gradient(180deg, #0F172A 0%, #1E1B4B 100%)",
+          background: "linear-gradient(180deg, #0F172A 0%, #1E1B4B 100%)",
         }}
       >
         <Box

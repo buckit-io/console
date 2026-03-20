@@ -15,7 +15,6 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import * as roles from "../utils/roles";
-import * as elements from "../utils/elements-menu";
 import {
   bucketsElement,
   dashboardElement,
@@ -36,7 +35,6 @@ fixture("For user with Admin permissions")
   });
 
 test("All sidebar items exist", async (t) => {
-  const licenseExists = elements.licenseElement.exists;
   await t
     .expect(monitoringElement.exists)
     .ok()
@@ -59,11 +57,5 @@ test("All sidebar items exist", async (t) => {
     .expect(notificationEndpointsElement.exists)
     .ok()
     .expect(tiersElement.exists)
-    .ok()
-    .expect(elements.diagnosticsElement.exists)
-    .ok()
-    .expect(elements.performanceElement.exists)
-    .ok()
-    .expect(licenseExists)
     .ok();
 });

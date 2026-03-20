@@ -380,8 +380,8 @@ const ListUsers = () => {
                         <br />
                         <br />
                         Each user can access only those resources and operations
-                        which are explicitly granted by the built-in role. Buckit
-                        denies access to any other resource or action by
+                        which are explicitly granted by the built-in role.
+                        Buckit denies access to any other resource or action by
                         default.
                         <br />
                         <br />

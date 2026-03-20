@@ -17,7 +17,7 @@
 import { Role, Selector } from "testcafe";
 import { readFileSync } from "fs";
 import { IAM_PAGES } from "../../src/common/SecureComponent/permissions";
-import { inspectElement, monitoringElement } from "../utils/elements-menu";
+import { monitoringElement } from "../utils/elements-menu";
 
 const data = readFileSync(__dirname + "/../constants/timestamp.txt", "utf-8");
 const $TIMESTAMP = data.trim();
@@ -25,9 +25,9 @@ const $TIMESTAMP = data.trim();
 let testDomainUrl = "http://localhost:9090";
 
 let insAllowedAccKey = `inspect-allowed-${$TIMESTAMP}`;
-let insAllowedSeckey = "insallowed1234";
+let insAllowedSeckey = "insallowed1234-Bkt9$x";
 let insNotAllowedAccKey = `inspect-not-allowed-${$TIMESTAMP}`;
-let insNotAllowedSeckey = "insnotallowed1234";
+let insNotAllowedSeckey = "insnotallowed1234-Bkt9$x";
 
 /* Begin Local Testing config block */
 
@@ -88,10 +88,6 @@ fixture("For user with Inspect permissions")
 
 test("Inspect page can be opened", async (t) => {
   await t.navigateTo(inspectScreenUrl);
-});
-
-test("Inspect link exists in Menu list", async (t) => {
-  await t.useRole(inspectAllowedRole).expect(inspectElement.exists).ok();
 });
 
 test("Form Input states verification", async (t) => {

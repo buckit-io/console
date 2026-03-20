@@ -25,7 +25,7 @@ export const bucketAssignPolicy = Role(
   async (t) => {
     await t
       .typeText("#accessKey", "bucketassignpolicy-" + unixTimestamp)
-      .typeText("#secretKey", "bucketassignpolicy")
+      .typeText("#secretKey", "bucketassignpolicy-Bkt9$x")
       .click(submitButton);
   },
   { preserveUrl: true },
@@ -36,7 +36,7 @@ export const bucketRead = Role(
   async (t) => {
     await t
       .typeText("#accessKey", "bucketread-" + unixTimestamp)
-      .typeText("#secretKey", "bucketread")
+      .typeText("#secretKey", "bucketread-Bkt9$x")
       .click(submitButton);
   },
   { preserveUrl: true },
@@ -47,7 +47,7 @@ export const bucketWrite = Role(
   async (t) => {
     await t
       .typeText("#accessKey", "bucketwrite-" + unixTimestamp)
-      .typeText("#secretKey", "bucketwrite")
+      .typeText("#secretKey", "bucketwrite-Bkt9$x")
       .click(submitButton);
   },
   { preserveUrl: true },
@@ -58,7 +58,7 @@ export const bucketReadWrite = Role(
   async (t) => {
     await t
       .typeText("#accessKey", "bucketreadwrite-" + unixTimestamp)
-      .typeText("#secretKey", "bucketreadwrite")
+      .typeText("#secretKey", "bucketreadwrite-Bkt9$x")
       .click(submitButton);
   },
   { preserveUrl: true },
@@ -69,7 +69,7 @@ export const bucketObjectTags = Role(
   async (t) => {
     await t
       .typeText("#accessKey", "bucketobjecttags-" + unixTimestamp)
-      .typeText("#secretKey", "bucketobjecttags")
+      .typeText("#secretKey", "bucketobjecttags-Bkt9$x")
       .click(submitButton);
   },
   { preserveUrl: true },
@@ -80,7 +80,7 @@ export const bucketCannotTag = Role(
   async (t) => {
     await t
       .typeText("#accessKey", "bucketcannottag-" + unixTimestamp)
-      .typeText("#secretKey", "bucketcannottag")
+      .typeText("#secretKey", "bucketcannottag-Bkt9$x")
       .click(submitButton);
   },
   { preserveUrl: true },
@@ -91,7 +91,7 @@ export const bucketSpecific = Role(
   async (t) => {
     await t
       .typeText("#accessKey", "bucketspecific-" + unixTimestamp)
-      .typeText("#secretKey", "bucketspecific")
+      .typeText("#secretKey", "bucketspecific-Bkt9$x")
       .click(submitButton);
   },
   { preserveUrl: true },
@@ -102,7 +102,7 @@ export const bucketWritePrefixOnly = Role(
   async (t) => {
     await t
       .typeText("#accessKey", "bucketwriteprefixonlypolicy-" + unixTimestamp)
-      .typeText("#secretKey", "bucketwriteprefixonlypolicy")
+      .typeText("#secretKey", "bucketwriteprefixonlypolicy-Bkt9$x")
       .click(submitButton);
   },
   { preserveUrl: true },
@@ -113,7 +113,7 @@ export const dashboard = Role(
   async (t) => {
     await t
       .typeText("#accessKey", "dashboard-" + unixTimestamp)
-      .typeText("#secretKey", "dashboard")
+      .typeText("#secretKey", "dashboard-Bkt9$x")
       .click(submitButton);
   },
   { preserveUrl: true },
@@ -124,7 +124,7 @@ export const diagnostics = Role(
   async (t) => {
     await t
       .typeText("#accessKey", "diagnostics-" + unixTimestamp)
-      .typeText("#secretKey", "diagnostics")
+      .typeText("#secretKey", "diagnostics-Bkt9$x")
       .click(submitButton);
   },
   { preserveUrl: true },
@@ -135,7 +135,7 @@ export const groups = Role(
   async (t) => {
     await t
       .typeText("#accessKey", "groups-" + unixTimestamp)
-      .typeText("#secretKey", "groups1234")
+      .typeText("#secretKey", "groups1234-Bkt9$x")
       .click(submitButton);
   },
   { preserveUrl: true },
@@ -146,7 +146,7 @@ export const heal = Role(
   async (t) => {
     await t
       .typeText("#accessKey", "heal-" + unixTimestamp)
-      .typeText("#secretKey", "heal1234")
+      .typeText("#secretKey", "heal1234-Bkt9$x")
       .click(submitButton);
   },
   { preserveUrl: true },
@@ -157,7 +157,7 @@ export const iamPolicies = Role(
   async (t) => {
     await t
       .typeText("#accessKey", "iampolicies-" + unixTimestamp)
-      .typeText("#secretKey", "iampolicies")
+      .typeText("#secretKey", "iampolicies-Bkt9$x")
       .click(submitButton);
   },
   { preserveUrl: true },
@@ -168,7 +168,7 @@ export const logs = Role(
   async (t) => {
     await t
       .typeText("#accessKey", "logs-" + unixTimestamp)
-      .typeText("#secretKey", "logs1234")
+      .typeText("#secretKey", "logs1234-Bkt9$x")
       .click(submitButton);
   },
   { preserveUrl: true },
@@ -179,7 +179,7 @@ export const notificationEndpoints = Role(
   async (t) => {
     await t
       .typeText("#accessKey", "notificationendpoints-" + unixTimestamp)
-      .typeText("#secretKey", "notificationendpoints")
+      .typeText("#secretKey", "notificationendpoints-Bkt9$x")
       .click(submitButton);
   },
   { preserveUrl: true },
@@ -190,7 +190,7 @@ export const settings = Role(
   async (t) => {
     await t
       .typeText("#accessKey", "settings-" + unixTimestamp)
-      .typeText("#secretKey", "settings")
+      .typeText("#secretKey", "settings-Bkt9$x")
       .click(submitButton);
   },
   { preserveUrl: true },
@@ -201,7 +201,7 @@ export const tiers = Role(
   async (t) => {
     await t
       .typeText("#accessKey", "tiers-" + unixTimestamp)
-      .typeText("#secretKey", "tiers1234")
+      .typeText("#secretKey", "tiers1234-Bkt9$x")
       .click(submitButton);
   },
   { preserveUrl: true },
@@ -212,7 +212,7 @@ export const trace = Role(
   async (t) => {
     await t
       .typeText("#accessKey", "trace-" + unixTimestamp)
-      .typeText("#secretKey", "trace1234")
+      .typeText("#secretKey", "trace1234-Bkt9$x")
       .click(submitButton);
   },
   { preserveUrl: true },
@@ -223,7 +223,7 @@ export const users = Role(
   async (t) => {
     await t
       .typeText("#accessKey", "users-" + unixTimestamp)
-      .typeText("#secretKey", "users1234")
+      .typeText("#secretKey", "users1234-Bkt9$x")
       .click(submitButton);
   },
   { preserveUrl: true },
@@ -234,7 +234,7 @@ export const watch = Role(
   async (t) => {
     await t
       .typeText("#accessKey", "watch-" + unixTimestamp)
-      .typeText("#secretKey", "watch1234")
+      .typeText("#secretKey", "watch1234-Bkt9$x")
       .click(submitButton);
   },
   { preserveUrl: true },
@@ -245,7 +245,7 @@ export const deleteObjectWithPrefixOnly = Role(
   async (t) => {
     await t
       .typeText("#accessKey", "delete-object-with-prefix-" + unixTimestamp)
-      .typeText("#secretKey", "deleteobjectwithprefix1234")
+      .typeText("#secretKey", "deleteobjectwithprefix1234-Bkt9$x")
       .click(submitButton);
   },
   { preserveUrl: true },
@@ -256,7 +256,7 @@ export const conditions1 = Role(
   async (t) => {
     await t
       .typeText("#accessKey", "conditions-" + unixTimestamp)
-      .typeText("#secretKey", "conditions1234")
+      .typeText("#secretKey", "conditions1234-Bkt9$x")
       .click(submitButton);
   },
   { preserveUrl: true },
@@ -267,7 +267,7 @@ export const conditions2 = Role(
   async (t) => {
     await t
       .typeText("#accessKey", "conditions-2-" + unixTimestamp)
-      .typeText("#secretKey", "conditions1234")
+      .typeText("#secretKey", "conditions1234-Bkt9$x")
       .click(submitButton);
   },
   { preserveUrl: true },
@@ -278,7 +278,7 @@ export const conditions3 = Role(
   async (t) => {
     await t
       .typeText("#accessKey", "conditions-3-" + unixTimestamp)
-      .typeText("#secretKey", "conditions1234")
+      .typeText("#secretKey", "conditions1234-Bkt9$x")
       .click(submitButton);
   },
   { preserveUrl: true },
@@ -289,7 +289,7 @@ export const conditions4 = Role(
   async (t) => {
     await t
       .typeText("#accessKey", "conditions-4-" + unixTimestamp)
-      .typeText("#secretKey", "conditions1234")
+      .typeText("#secretKey", "conditions1234-Bkt9$x")
       .click(submitButton);
   },
   { preserveUrl: true },
@@ -300,7 +300,7 @@ export const rewindEnabled = Role(
   async (t) => {
     await t
       .typeText("#accessKey", "rewind-allowed-" + unixTimestamp)
-      .typeText("#secretKey", "rewindallowed1234")
+      .typeText("#secretKey", "rewindallowed1234-Bkt9$x")
       .click(submitButton);
   },
   { preserveUrl: true },
@@ -311,7 +311,7 @@ export const rewindNotEnabled = Role(
   async (t) => {
     await t
       .typeText("#accessKey", "rewind-not-allowed-" + unixTimestamp)
-      .typeText("#secretKey", "rewindnotallowed1234")
+      .typeText("#secretKey", "rewindnotallowed1234-Bkt9$x")
       .click(submitButton);
   },
   { preserveUrl: true },

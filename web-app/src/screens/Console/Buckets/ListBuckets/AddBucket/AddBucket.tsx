@@ -241,9 +241,9 @@ const AddBucket = () => {
               title={"Buckets"}
               help={
                 <Fragment>
-                  Buckit uses buckets to organize objects. A bucket is similar to
-                  a folder or directory in a filesystem, where each bucket can
-                  hold an arbitrary number of objects.
+                  Buckit uses buckets to organize objects. A bucket is similar
+                  to a folder or directory in a filesystem, where each bucket
+                  can hold an arbitrary number of objects.
                   <br />
                   <br />
                   <b>Versioning</b> allows to keep multiple versions of the same

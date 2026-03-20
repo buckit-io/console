@@ -333,7 +333,7 @@ const ListTiersConfiguration = () => {
                   tooltip={
                     hasSetTier
                       ? ""
-                      : "You require additional permissions in order to create a new Tier. Please ask your MinIO administrator to grant you " +
+                      : "You require additional permissions in order to create a new Tier. Please ask your Buckit administrator to grant you " +
                         IAM_SCOPES.ADMIN_SET_TIER +
                         " permission in order to create a Tier."
                   }

@@ -25,15 +25,24 @@ input.removeArrows[type="number"],
   -moz-appearance: textfield;
 }
 
-/* Soften MDS buttons — rounder corners, lighter borders */
-button {
-  border-radius: 8px !important;
+/* Soften MDS buttons — rounder corners, lighter borders.
+   Scope to data-test-id buttons and MDS class-based buttons only,
+   avoiding styled-component internals (sc-* classes). */
+button[data-test-id],
+button[class*="regular"],
+button[class*="callAction"] {
+  border-radius: 6px !important;
 }
 
 button[class*="regular"] {
-  border-color: #D1D5DB !important;
+  border-color: #d1d5db !important;
 }
 
 button[class*="regular"]:hover {
-  border-color: #9CA3AF !important;
+  border-color: #9ca3af !important;
+}
+
+/* Brand-color page header icons (bucket, settings, etc.) */
+.headerBarIcon {
+  color: #d97706 !important;
 }

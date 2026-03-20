@@ -113,8 +113,7 @@ const LoginCallback = () => {
           alignItems: "center",
           justifyContent: "center",
           minHeight: "100vh",
-          background:
-            "linear-gradient(180deg, #0F172A 0%, #1E1B4B 100%)",
+          background: "linear-gradient(180deg, #0F172A 0%, #1E1B4B 100%)",
         }}
       >
         <Box

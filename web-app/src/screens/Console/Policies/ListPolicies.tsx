@@ -257,8 +257,8 @@ const ListPolicies = () => {
                   <br />
                   <br />
                   Buckit PBAC is built for compatibility with AWS IAM policy
-                  syntax, structure, and behavior. The Buckit documentation makes
-                  a best-effort to cover IAM-specific behavior and
+                  syntax, structure, and behavior. The Buckit documentation
+                  makes a best-effort to cover IAM-specific behavior and
                   functionality. Consider deferring to the IAM documentation for
                   more complete documentation on AWS IAM-specific topics.
                   <br />

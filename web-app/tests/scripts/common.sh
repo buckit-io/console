@@ -52,36 +52,36 @@ create_policies() {
 }
 
 create_users() {
-  mc admin user add minio bucketassignpolicy-$TIMESTAMP bucketassignpolicy
-  mc admin user add minio bucketread-$TIMESTAMP bucketread
-  mc admin user add minio bucketwrite-$TIMESTAMP bucketwrite
-  mc admin user add minio bucketreadwrite-$TIMESTAMP bucketreadwrite
-  mc admin user add minio bucketobjecttags-$TIMESTAMP bucketobjecttags
-  mc admin user add minio bucketcannottag-$TIMESTAMP bucketcannottag
-  mc admin user add minio bucketspecific-$TIMESTAMP bucketspecific
-  mc admin user add minio dashboard-$TIMESTAMP dashboard
-  mc admin user add minio diagnostics-$TIMESTAMP diagnostics
-  mc admin user add minio groups-$TIMESTAMP groups1234
-  mc admin user add minio heal-$TIMESTAMP heal1234
-  mc admin user add minio iampolicies-$TIMESTAMP iampolicies
-  mc admin user add minio logs-$TIMESTAMP logs1234
-  mc admin user add minio notificationendpoints-$TIMESTAMP notificationendpoints
-  mc admin user add minio settings-$TIMESTAMP settings
-  mc admin user add minio tiers-$TIMESTAMP tiers1234
-  mc admin user add minio trace-$TIMESTAMP trace1234
-  mc admin user add minio users-$TIMESTAMP users1234
-  mc admin user add minio watch-$TIMESTAMP watch1234
-  mc admin user add minio bucketwriteprefixonlypolicy-$TIMESTAMP bucketwriteprefixonlypolicy
-  mc admin user add minio inspect-allowed-$TIMESTAMP insallowed1234
-  mc admin user add minio inspect-not-allowed-$TIMESTAMP insnotallowed1234
-  mc admin user add minio prefix-policy-ui-crash-$TIMESTAMP poluicrashfix1234
-  mc admin user add minio delete-object-with-prefix-$TIMESTAMP deleteobjectwithprefix1234
-  mc admin user add minio conditions-$TIMESTAMP conditions1234
-  mc admin user add minio conditions-2-$TIMESTAMP conditions1234
-  mc admin user add minio conditions-3-$TIMESTAMP conditions1234
-  mc admin user add minio conditions-4-$TIMESTAMP conditions1234
-  mc admin user add minio rewind-allowed-$TIMESTAMP rewindallowed1234
-  mc admin user add minio rewind-not-allowed-$TIMESTAMP rewindnotallowed1234
+  mc admin user add minio bucketassignpolicy-$TIMESTAMP bucketassignpolicy-Bkt9\$x
+  mc admin user add minio bucketread-$TIMESTAMP bucketread-Bkt9\$x
+  mc admin user add minio bucketwrite-$TIMESTAMP bucketwrite-Bkt9\$x
+  mc admin user add minio bucketreadwrite-$TIMESTAMP bucketreadwrite-Bkt9\$x
+  mc admin user add minio bucketobjecttags-$TIMESTAMP bucketobjecttags-Bkt9\$x
+  mc admin user add minio bucketcannottag-$TIMESTAMP bucketcannottag-Bkt9\$x
+  mc admin user add minio bucketspecific-$TIMESTAMP bucketspecific-Bkt9\$x
+  mc admin user add minio dashboard-$TIMESTAMP dashboard-Bkt9\$x
+  mc admin user add minio diagnostics-$TIMESTAMP diagnostics-Bkt9\$x
+  mc admin user add minio groups-$TIMESTAMP groups1234-Bkt9\$x
+  mc admin user add minio heal-$TIMESTAMP heal1234-Bkt9\$x
+  mc admin user add minio iampolicies-$TIMESTAMP iampolicies-Bkt9\$x
+  mc admin user add minio logs-$TIMESTAMP logs1234-Bkt9\$x
+  mc admin user add minio notificationendpoints-$TIMESTAMP notificationendpoints-Bkt9\$x
+  mc admin user add minio settings-$TIMESTAMP settings-Bkt9\$x
+  mc admin user add minio tiers-$TIMESTAMP tiers1234-Bkt9\$x
+  mc admin user add minio trace-$TIMESTAMP trace1234-Bkt9\$x
+  mc admin user add minio users-$TIMESTAMP users1234-Bkt9\$x
+  mc admin user add minio watch-$TIMESTAMP watch1234-Bkt9\$x
+  mc admin user add minio bucketwriteprefixonlypolicy-$TIMESTAMP bucketwriteprefixonlypolicy-Bkt9\$x
+  mc admin user add minio inspect-allowed-$TIMESTAMP insallowed1234-Bkt9\$x
+  mc admin user add minio inspect-not-allowed-$TIMESTAMP insnotallowed1234-Bkt9\$x
+  mc admin user add minio prefix-policy-ui-crash-$TIMESTAMP poluicrashfix1234-Bkt9\$x
+  mc admin user add minio delete-object-with-prefix-$TIMESTAMP deleteobjectwithprefix1234-Bkt9\$x
+  mc admin user add minio conditions-$TIMESTAMP conditions1234-Bkt9\$x
+  mc admin user add minio conditions-2-$TIMESTAMP conditions1234-Bkt9\$x
+  mc admin user add minio conditions-3-$TIMESTAMP conditions1234-Bkt9\$x
+  mc admin user add minio conditions-4-$TIMESTAMP conditions1234-Bkt9\$x
+  mc admin user add minio rewind-allowed-$TIMESTAMP rewindallowed1234-Bkt9\$x
+  mc admin user add minio rewind-not-allowed-$TIMESTAMP rewindnotallowed1234-Bkt9\$x
 }
 
 create_buckets() {

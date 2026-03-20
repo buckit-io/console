@@ -24,7 +24,7 @@ const $TIMESTAMP = data.trim();
 let testDomainUrl = "http://localhost:9090";
 
 let insAllowedAccKey = `prefix-policy-ui-crash-${$TIMESTAMP}`;
-let insAllowedSeckey = "poluicrashfix1234";
+let insAllowedSeckey = "poluicrashfix1234-Bkt9$x";
 
 /* Begin Local Testing config block */
 
