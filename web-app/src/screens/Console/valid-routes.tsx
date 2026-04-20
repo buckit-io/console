@@ -29,16 +29,22 @@ import {
   AccountsMenuIcon,
   AuditLogsMenuIcon,
   BucketsMenuIcon,
+  CallHomeMenuIcon,
   DocumentationIcon,
   GroupsMenuIcon,
+  HealthMenuIcon,
   IdentityMenuIcon,
+  InspectMenuIcon,
   LambdaIcon,
+  LicenseIcon,
   LockOpenIcon,
   LoginIcon,
   LogsMenuIcon,
   MetricsMenuIcon,
   MonitoringMenuIcon,
   ObjectBrowserIcon,
+  PerformanceMenuIcon,
+  ProfileMenuIcon,
   RecoverIcon,
   SettingsIcon,
   TiersIcon,
@@ -95,6 +101,10 @@ export const validRoutes = (
 ) => {
   const ldapIsEnabled = (features && features.includes("ldap-idp")) || false;
   const kmsIsEnabled = (features && features.includes("kms")) || false;
+  const showSubnet =
+    typeof window !== "undefined" &&
+    window.location.hostname === "127.0.0.1" &&
+    window.location.port === "9002";
 
   let consoleMenus: IMenuItem[] = [
     {
@@ -254,7 +264,55 @@ export const validRoutes = (
       id: "configurations",
       icon: <SettingsIcon />,
     },
+    {
+      group: "Subnet",
+      path: IAM_PAGES.LICENSE,
+      name: "License",
+      id: "license",
+      icon: <LicenseIcon />,
+      badge: licenseNotification,
+      forceDisplay: true,
+    },
+    {
+      group: "Subnet",
+      name: "Health",
+      id: "diagnostics",
+      icon: <HealthMenuIcon />,
+      path: IAM_PAGES.TOOLS_DIAGNOSTICS,
+    },
+    {
+      group: "Subnet",
+      name: "Performance",
+      id: "performance",
+      icon: <PerformanceMenuIcon />,
+      path: IAM_PAGES.TOOLS_SPEEDTEST,
+    },
+    {
+      group: "Subnet",
+      name: "Profile",
+      id: "profile",
+      icon: <ProfileMenuIcon />,
+      path: IAM_PAGES.PROFILE,
+    },
+    {
+      group: "Subnet",
+      name: "Inspect",
+      id: "inspectObjects",
+      path: IAM_PAGES.SUPPORT_INSPECT,
+      icon: <InspectMenuIcon />,
+    },
+    {
+      group: "Subnet",
+      name: "Call Home",
+      id: "callhome",
+      icon: <CallHomeMenuIcon />,
+      path: IAM_PAGES.CALL_HOME,
+    },
   ];
+
+  if (!showSubnet) {
+    consoleMenus = consoleMenus.filter((item) => item.group !== "Subnet");
+  }
 
   return consoleMenus.reduce((acc: IMenuItem[], item) => {
     const validation = validateItem(item);

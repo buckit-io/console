@@ -130,10 +130,9 @@ const Login = () => {
       );
   }
 
-  let docsURL = "https://min.io/docs/minio/linux/index.html?ref=con";
+  let docsURL = "https://getbuckit.github.io/docs/index.html";
   if (isK8S) {
-    docsURL =
-      "https://min.io/docs/minio/kubernetes/upstream/index.html?ref=con";
+    docsURL = "https://getbuckit.github.io/docs/index.html";
   }
 
   useEffect(() => {
@@ -198,7 +197,7 @@ const Login = () => {
             </a>
             <span className={"separator"}>|</span>
             <a
-              href="https://github.com/getbuckit/console"
+              href="https://github.com/getbuckit/buckit"
               target="_blank"
               rel="noopener"
             >
