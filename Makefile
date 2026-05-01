@@ -16,8 +16,13 @@ console:
 	@(GO111MODULE=on CGO_ENABLED=0 go build -trimpath --tags=kqueue --ldflags "-s -w" -o console ./cmd/console)
 
 getdeps:
+	# temporary disable golangci-lint download as it is has a checksum failure
+	# @mkdir -p ${GOPATH}/bin
+	# @echo "Installing golangci-lint" && curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(GOPATH)/bin
+
 	@mkdir -p ${GOPATH}/bin
-	@echo "Installing golangci-lint" && curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(GOPATH)/bin
+	@echo "Installing golangci-lint"
+	@GOBIN=$(GOPATH)/bin go install github.com/golangci/golangci-lint/v2/cmd/golangci-lint@v2.12.0
 
 verifiers: getdeps fmt lint
 
