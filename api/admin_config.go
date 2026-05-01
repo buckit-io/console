@@ -22,13 +22,13 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/getbuckit/console/api/operations"
-	"github.com/getbuckit/console/models"
+	"github.com/buckit-io/console/api/operations"
+	"github.com/buckit-io/console/models"
 	"github.com/go-openapi/runtime/middleware"
 	"github.com/go-openapi/swag"
 	madmin "github.com/minio/madmin-go/v3"
 
-	cfgApi "github.com/getbuckit/console/api/operations/configuration"
+	cfgApi "github.com/buckit-io/console/api/operations/configuration"
 )
 
 func registerConfigHandlers(api *operations.ConsoleAPI) {

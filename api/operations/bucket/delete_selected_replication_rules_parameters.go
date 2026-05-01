@@ -32,7 +32,7 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/validate"
 
-	"github.com/getbuckit/console/models"
+	"github.com/buckit-io/console/models"
 )
 
 // NewDeleteSelectedReplicationRulesParams creates a new DeleteSelectedReplicationRulesParams object

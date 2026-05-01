@@ -24,7 +24,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/getbuckit/console/models"
+	"github.com/buckit-io/console/models"
 )
 
 func TestLogSearch(t *testing.T) {

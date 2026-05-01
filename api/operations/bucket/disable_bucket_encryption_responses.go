@@ -27,7 +27,7 @@ import (
 
 	"github.com/go-openapi/runtime"
 
-	"github.com/getbuckit/console/models"
+	"github.com/buckit-io/console/models"
 )
 
 // DisableBucketEncryptionOKCode is the HTTP code returned for type DisableBucketEncryptionOK

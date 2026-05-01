@@ -36,7 +36,7 @@ import (
 
 	"github.com/minio/minio-go/v7"
 
-	"github.com/getbuckit/console/models"
+	"github.com/buckit-io/console/models"
 	"github.com/minio/minio-go/v7/pkg/credentials"
 	"github.com/stretchr/testify/assert"
 )

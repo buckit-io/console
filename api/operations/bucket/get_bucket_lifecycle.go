@@ -27,7 +27,7 @@ import (
 
 	"github.com/go-openapi/runtime/middleware"
 
-	"github.com/getbuckit/console/models"
+	"github.com/buckit-io/console/models"
 )
 
 // GetBucketLifecycleHandlerFunc turns a function with the right signature into a get bucket lifecycle handler

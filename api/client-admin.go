@@ -28,11 +28,11 @@ import (
 	"strings"
 	"time"
 
-	"github.com/getbuckit/console/pkg"
+	"github.com/buckit-io/console/pkg"
 
-	"github.com/getbuckit/console/pkg/utils"
+	"github.com/buckit-io/console/pkg/utils"
 
-	"github.com/getbuckit/console/models"
+	"github.com/buckit-io/console/models"
 	"github.com/minio/madmin-go/v3"
 	"github.com/minio/minio-go/v7/pkg/credentials"
 	iampolicy "github.com/minio/pkg/v3/policy"

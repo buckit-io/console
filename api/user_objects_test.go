@@ -29,10 +29,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/getbuckit/console/api/operations/object"
+	"github.com/buckit-io/console/api/operations/object"
 	"github.com/go-openapi/runtime/middleware"
 
-	"github.com/getbuckit/console/models"
+	"github.com/buckit-io/console/models"
 	"github.com/go-openapi/swag"
 	mc "github.com/minio/mc/cmd"
 	"github.com/minio/mc/pkg/probe"

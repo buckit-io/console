@@ -27,7 +27,7 @@ import (
 
 	"github.com/go-openapi/runtime/middleware"
 
-	"github.com/getbuckit/console/models"
+	"github.com/buckit-io/console/models"
 )
 
 // DeleteBucketLifecycleRuleHandlerFunc turns a function with the right signature into a delete bucket lifecycle rule handler

@@ -28,8 +28,8 @@ import (
 	"sync/atomic"
 	"time"
 
-	xhttp "github.com/getbuckit/console/pkg/http"
-	"github.com/getbuckit/console/pkg/logger/target/types"
+	xhttp "github.com/buckit-io/console/pkg/http"
+	"github.com/buckit-io/console/pkg/logger/target/types"
 )
 
 // Timeout for the webhook http call

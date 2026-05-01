@@ -22,7 +22,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/getbuckit/console/models"
+	"github.com/buckit-io/console/models"
 	"github.com/go-openapi/swag"
 	"github.com/minio/madmin-go/v3"
 	"github.com/stretchr/testify/assert"

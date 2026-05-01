@@ -28,7 +28,7 @@ import (
 
 	iampolicy "github.com/minio/pkg/v3/policy"
 
-	"github.com/getbuckit/console/pkg/auth"
+	"github.com/buckit-io/console/pkg/auth"
 
 	"github.com/minio/minio-go/v7/pkg/credentials"
 	"github.com/stretchr/testify/assert"

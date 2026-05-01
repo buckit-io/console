@@ -31,7 +31,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/getbuckit/console/models"
+	"github.com/buckit-io/console/models"
 
 	"github.com/stretchr/testify/assert"
 )

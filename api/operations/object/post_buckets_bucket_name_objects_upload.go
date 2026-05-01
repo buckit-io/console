@@ -27,7 +27,7 @@ import (
 
 	"github.com/go-openapi/runtime/middleware"
 
-	"github.com/getbuckit/console/models"
+	"github.com/buckit-io/console/models"
 )
 
 // PostBucketsBucketNameObjectsUploadHandlerFunc turns a function with the right signature into a post buckets bucket name objects upload handler

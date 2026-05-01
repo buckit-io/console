@@ -22,9 +22,9 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/getbuckit/console/api/operations"
-	logApi "github.com/getbuckit/console/api/operations/logging"
-	"github.com/getbuckit/console/models"
+	"github.com/buckit-io/console/api/operations"
+	logApi "github.com/buckit-io/console/api/operations/logging"
+	"github.com/buckit-io/console/models"
 	"github.com/go-openapi/runtime/middleware"
 	iampolicy "github.com/minio/pkg/v3/policy"
 )

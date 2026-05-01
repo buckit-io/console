@@ -20,11 +20,11 @@ import (
 	"context"
 	"time"
 
-	"github.com/getbuckit/console/api/operations"
-	"github.com/getbuckit/console/models"
+	"github.com/buckit-io/console/api/operations"
+	"github.com/buckit-io/console/models"
 	"github.com/go-openapi/runtime/middleware"
 
-	svcApi "github.com/getbuckit/console/api/operations/service"
+	svcApi "github.com/buckit-io/console/api/operations/service"
 )
 
 func registerServiceHandlers(api *operations.ConsoleAPI) {

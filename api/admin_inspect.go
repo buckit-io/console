@@ -23,9 +23,9 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/getbuckit/console/api/operations"
-	inspectApi "github.com/getbuckit/console/api/operations/inspect"
-	"github.com/getbuckit/console/models"
+	"github.com/buckit-io/console/api/operations"
+	inspectApi "github.com/buckit-io/console/api/operations/inspect"
+	"github.com/buckit-io/console/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/runtime/middleware"
 	"github.com/minio/madmin-go/v3"

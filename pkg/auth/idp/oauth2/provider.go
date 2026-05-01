@@ -28,8 +28,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/getbuckit/console/pkg/auth/token"
-	"github.com/getbuckit/console/pkg/auth/utils"
+	"github.com/buckit-io/console/pkg/auth/token"
+	"github.com/buckit-io/console/pkg/auth/utils"
 	"github.com/minio/minio-go/v7/pkg/credentials"
 	"github.com/minio/minio-go/v7/pkg/set"
 	"github.com/minio/pkg/v3/env"

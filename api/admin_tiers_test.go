@@ -22,8 +22,8 @@ import (
 	"fmt"
 	"testing"
 
-	tieringApi "github.com/getbuckit/console/api/operations/tiering"
-	"github.com/getbuckit/console/models"
+	tieringApi "github.com/buckit-io/console/api/operations/tiering"
+	"github.com/buckit-io/console/models"
 	"github.com/minio/madmin-go/v3"
 	"github.com/stretchr/testify/assert"
 )

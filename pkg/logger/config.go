@@ -23,8 +23,8 @@ import (
 
 	"github.com/google/uuid"
 
-	"github.com/getbuckit/console/pkg/logger/config"
-	"github.com/getbuckit/console/pkg/logger/target/http"
+	"github.com/buckit-io/console/pkg/logger/config"
+	"github.com/buckit-io/console/pkg/logger/target/http"
 	"github.com/minio/pkg/v3/env"
 )
 

@@ -28,11 +28,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/getbuckit/console/pkg/utils"
+	"github.com/buckit-io/console/pkg/utils"
 
-	"github.com/getbuckit/console/api/operations"
-	systemApi "github.com/getbuckit/console/api/operations/system"
-	"github.com/getbuckit/console/models"
+	"github.com/buckit-io/console/api/operations"
+	systemApi "github.com/buckit-io/console/api/operations/system"
+	"github.com/buckit-io/console/models"
 	"github.com/go-openapi/runtime/middleware"
 )
 

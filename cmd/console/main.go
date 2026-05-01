@@ -23,7 +23,7 @@ import (
 	"sort"
 	"time"
 
-	"github.com/getbuckit/console/pkg"
+	"github.com/buckit-io/console/pkg"
 	"github.com/minio/cli"
 	"github.com/minio/pkg/v3/console"
 	"github.com/minio/pkg/v3/trie"

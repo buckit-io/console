@@ -27,7 +27,7 @@ import (
 
 	"github.com/go-openapi/runtime/middleware"
 
-	"github.com/getbuckit/console/models"
+	"github.com/buckit-io/console/models"
 )
 
 // DeleteAllReplicationRulesHandlerFunc turns a function with the right signature into a delete all replication rules handler

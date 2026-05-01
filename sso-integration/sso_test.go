@@ -30,11 +30,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/getbuckit/console/models"
+	"github.com/buckit-io/console/models"
 
-	"github.com/getbuckit/console/api"
-	"github.com/getbuckit/console/api/operations"
-	consoleoauth2 "github.com/getbuckit/console/pkg/auth/idp/oauth2"
+	"github.com/buckit-io/console/api"
+	"github.com/buckit-io/console/api/operations"
+	consoleoauth2 "github.com/buckit-io/console/pkg/auth/idp/oauth2"
 	"github.com/go-openapi/loads"
 	"github.com/stretchr/testify/assert"
 )

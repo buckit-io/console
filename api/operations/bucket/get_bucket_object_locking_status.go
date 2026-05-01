@@ -27,7 +27,7 @@ import (
 
 	"github.com/go-openapi/runtime/middleware"
 
-	"github.com/getbuckit/console/models"
+	"github.com/buckit-io/console/models"
 )
 
 // GetBucketObjectLockingStatusHandlerFunc turns a function with the right signature into a get bucket object locking status handler

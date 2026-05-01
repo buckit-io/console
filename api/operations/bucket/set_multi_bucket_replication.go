@@ -27,7 +27,7 @@ import (
 
 	"github.com/go-openapi/runtime/middleware"
 
-	"github.com/getbuckit/console/models"
+	"github.com/buckit-io/console/models"
 )
 
 // SetMultiBucketReplicationHandlerFunc turns a function with the right signature into a set multi bucket replication handler

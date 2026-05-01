@@ -21,7 +21,7 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/getbuckit/console/pkg/utils"
+	"github.com/buckit-io/console/pkg/utils"
 )
 
 // KeyVal - appended to ReqInfo.Tags

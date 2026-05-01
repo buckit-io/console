@@ -23,8 +23,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/getbuckit/console/pkg/logger/color"
-	"github.com/getbuckit/console/pkg/logger/message/log"
+	"github.com/buckit-io/console/pkg/logger/color"
+	"github.com/buckit-io/console/pkg/logger/message/log"
 	c "github.com/minio/pkg/v3/console"
 )
 

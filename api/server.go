@@ -47,7 +47,7 @@ import (
 	flags "github.com/jessevdk/go-flags"
 	"golang.org/x/net/netutil"
 
-	"github.com/getbuckit/console/api/operations"
+	"github.com/buckit-io/console/api/operations"
 )
 
 const (

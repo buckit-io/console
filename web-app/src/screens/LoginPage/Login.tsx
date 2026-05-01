@@ -197,7 +197,7 @@ const Login = () => {
             </a>
             <span className={"separator"}>|</span>
             <a
-              href="https://github.com/getbuckit/buckit"
+              href="https://github.com/buckit-io/buckit"
               target="_blank"
               rel="noopener"
             >

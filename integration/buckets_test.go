@@ -28,8 +28,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/getbuckit/console/api"
-	"github.com/getbuckit/console/api/operations"
+	"github.com/buckit-io/console/api"
+	"github.com/buckit-io/console/api/operations"
 	"github.com/go-openapi/loads"
 )
 

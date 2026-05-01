@@ -22,8 +22,8 @@ import (
 	"net/http"
 	"testing"
 
-	accountApi "github.com/getbuckit/console/api/operations/account"
-	"github.com/getbuckit/console/models"
+	accountApi "github.com/buckit-io/console/api/operations/account"
+	"github.com/buckit-io/console/models"
 	"github.com/stretchr/testify/assert"
 )
 

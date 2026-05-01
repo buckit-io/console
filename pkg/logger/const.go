@@ -19,7 +19,7 @@ package logger
 import (
 	"context"
 
-	"github.com/getbuckit/console/pkg/logger/target/http"
+	"github.com/buckit-io/console/pkg/logger/target/http"
 )
 
 // Audit/Logger constants

@@ -1,4 +1,4 @@
-module github.com/getbuckit/console
+module github.com/buckit-io/console
 
 go 1.25.0
 

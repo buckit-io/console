@@ -20,9 +20,9 @@ import (
 	"context"
 	"errors"
 
-	"github.com/getbuckit/console/api/operations"
-	configurationApi "github.com/getbuckit/console/api/operations/configuration"
-	"github.com/getbuckit/console/models"
+	"github.com/buckit-io/console/api/operations"
+	configurationApi "github.com/buckit-io/console/api/operations/configuration"
+	"github.com/buckit-io/console/models"
 	"github.com/go-openapi/runtime/middleware"
 )
 

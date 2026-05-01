@@ -62,7 +62,7 @@ In the BuckIt repository open `go.mod` and after the first `require()` directive
 )
 
 replace (
-github.com/getbuckit/console => "../console"
+github.com/buckit-io/console => "../console"
 )
 
 require (

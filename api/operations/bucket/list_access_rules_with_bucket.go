@@ -27,7 +27,7 @@ import (
 
 	"github.com/go-openapi/runtime/middleware"
 
-	"github.com/getbuckit/console/models"
+	"github.com/buckit-io/console/models"
 )
 
 // ListAccessRulesWithBucketHandlerFunc turns a function with the right signature into a list access rules with bucket handler

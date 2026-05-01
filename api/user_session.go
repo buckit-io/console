@@ -23,7 +23,7 @@ import (
 	"strconv"
 	"time"
 
-	policies "github.com/getbuckit/console/api/policy"
+	policies "github.com/buckit-io/console/api/policy"
 	"github.com/minio/madmin-go/v3"
 
 	jwtgo "github.com/golang-jwt/jwt/v4"
@@ -31,11 +31,11 @@ import (
 
 	minioIAMPolicy "github.com/minio/pkg/v3/policy"
 
-	"github.com/getbuckit/console/api/operations"
-	authApi "github.com/getbuckit/console/api/operations/auth"
-	"github.com/getbuckit/console/models"
-	"github.com/getbuckit/console/pkg/auth/idp/oauth2"
-	"github.com/getbuckit/console/pkg/auth/ldap"
+	"github.com/buckit-io/console/api/operations"
+	authApi "github.com/buckit-io/console/api/operations/auth"
+	"github.com/buckit-io/console/models"
+	"github.com/buckit-io/console/pkg/auth/idp/oauth2"
+	"github.com/buckit-io/console/pkg/auth/ldap"
 	"github.com/go-openapi/runtime/middleware"
 )
 

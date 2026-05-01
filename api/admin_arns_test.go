@@ -23,10 +23,10 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/getbuckit/console/api/operations/system"
-	"github.com/getbuckit/console/models"
+	"github.com/buckit-io/console/api/operations/system"
+	"github.com/buckit-io/console/models"
 
-	"github.com/getbuckit/console/api/operations"
+	"github.com/buckit-io/console/api/operations"
 	"github.com/go-openapi/loads"
 	"github.com/minio/madmin-go/v3"
 

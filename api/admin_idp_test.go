@@ -27,9 +27,9 @@ import (
 
 	"github.com/minio/madmin-go/v3"
 
-	"github.com/getbuckit/console/api/operations"
-	"github.com/getbuckit/console/api/operations/idp"
-	"github.com/getbuckit/console/models"
+	"github.com/buckit-io/console/api/operations"
+	"github.com/buckit-io/console/api/operations/idp"
+	"github.com/buckit-io/console/models"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
 )

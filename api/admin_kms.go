@@ -21,9 +21,9 @@ import (
 	"context"
 	"sort"
 
-	"github.com/getbuckit/console/api/operations"
-	kmsAPI "github.com/getbuckit/console/api/operations/k_m_s"
-	"github.com/getbuckit/console/models"
+	"github.com/buckit-io/console/api/operations"
+	kmsAPI "github.com/buckit-io/console/api/operations/k_m_s"
+	"github.com/buckit-io/console/models"
 	"github.com/go-openapi/runtime/middleware"
 	"github.com/minio/madmin-go/v3"
 )

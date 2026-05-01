@@ -24,9 +24,9 @@ import (
 	"os"
 	"testing"
 
-	"github.com/getbuckit/console/api/operations"
-	subnetApi "github.com/getbuckit/console/api/operations/subnet"
-	"github.com/getbuckit/console/models"
+	"github.com/buckit-io/console/api/operations"
+	subnetApi "github.com/buckit-io/console/api/operations/subnet"
+	"github.com/buckit-io/console/models"
 	"github.com/minio/madmin-go/v3"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"

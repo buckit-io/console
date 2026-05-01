@@ -23,9 +23,9 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/getbuckit/console/pkg/logger"
+	"github.com/buckit-io/console/pkg/logger"
 
-	"github.com/getbuckit/console/api"
+	"github.com/buckit-io/console/api"
 	"github.com/minio/cli"
 )
 

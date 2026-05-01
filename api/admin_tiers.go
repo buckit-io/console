@@ -21,11 +21,11 @@ import (
 	"encoding/base64"
 	"strconv"
 
+	"github.com/buckit-io/console/api/operations"
+	"github.com/buckit-io/console/api/operations/tiering"
+	tieringApi "github.com/buckit-io/console/api/operations/tiering"
+	"github.com/buckit-io/console/models"
 	"github.com/dustin/go-humanize"
-	"github.com/getbuckit/console/api/operations"
-	"github.com/getbuckit/console/api/operations/tiering"
-	tieringApi "github.com/getbuckit/console/api/operations/tiering"
-	"github.com/getbuckit/console/models"
 	"github.com/go-openapi/runtime/middleware"
 	"github.com/minio/madmin-go/v3"
 )

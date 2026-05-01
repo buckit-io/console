@@ -25,14 +25,14 @@ import (
 	"net/url"
 	"os"
 
-	"github.com/getbuckit/console/pkg/utils"
+	"github.com/buckit-io/console/pkg/utils"
 
-	xhttp "github.com/getbuckit/console/pkg/http"
+	xhttp "github.com/buckit-io/console/pkg/http"
 
-	"github.com/getbuckit/console/api/operations"
-	subnetApi "github.com/getbuckit/console/api/operations/subnet"
-	"github.com/getbuckit/console/models"
-	"github.com/getbuckit/console/pkg/subnet"
+	"github.com/buckit-io/console/api/operations"
+	subnetApi "github.com/buckit-io/console/api/operations/subnet"
+	"github.com/buckit-io/console/models"
+	"github.com/buckit-io/console/pkg/subnet"
 	"github.com/go-openapi/runtime/middleware"
 	"github.com/minio/madmin-go/v3"
 )

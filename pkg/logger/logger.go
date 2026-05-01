@@ -33,11 +33,11 @@ import (
 
 	"github.com/minio/pkg/v3/env"
 
-	"github.com/getbuckit/console/pkg"
+	"github.com/buckit-io/console/pkg"
 	"github.com/minio/pkg/v3/certs"
 
-	"github.com/getbuckit/console/pkg/logger/config"
-	"github.com/getbuckit/console/pkg/logger/message/log"
+	"github.com/buckit-io/console/pkg/logger/config"
+	"github.com/buckit-io/console/pkg/logger/message/log"
 	"github.com/minio/highwayhash"
 	"github.com/minio/minio-go/v7/pkg/set"
 )

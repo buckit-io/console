@@ -27,10 +27,10 @@ import (
 	"os"
 	"time"
 
-	"github.com/getbuckit/console/pkg/logger"
-	"github.com/getbuckit/console/pkg/utils"
+	"github.com/buckit-io/console/pkg/logger"
+	"github.com/buckit-io/console/pkg/utils"
 
-	subnet "github.com/getbuckit/console/pkg/subnet"
+	subnet "github.com/buckit-io/console/pkg/subnet"
 	mc "github.com/minio/mc/cmd"
 	"github.com/minio/websocket"
 )

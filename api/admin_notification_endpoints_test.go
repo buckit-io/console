@@ -24,8 +24,8 @@ import (
 
 	"github.com/go-openapi/swag"
 
-	cfgApi "github.com/getbuckit/console/api/operations/configuration"
-	"github.com/getbuckit/console/models"
+	cfgApi "github.com/buckit-io/console/api/operations/configuration"
+	"github.com/buckit-io/console/models"
 )
 
 func Test_addNotificationEndpoint(t *testing.T) {

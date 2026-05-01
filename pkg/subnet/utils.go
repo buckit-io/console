@@ -27,7 +27,7 @@ import (
 	"net/http"
 	"time"
 
-	xhttp "github.com/getbuckit/console/pkg/http"
+	xhttp "github.com/buckit-io/console/pkg/http"
 	"github.com/mattn/go-ieproxy"
 	"github.com/tidwall/gjson"
 

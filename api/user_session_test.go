@@ -22,11 +22,11 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/getbuckit/console/pkg/utils"
+	"github.com/buckit-io/console/pkg/utils"
 
-	"github.com/getbuckit/console/models"
-	"github.com/getbuckit/console/pkg/auth/idp/oauth2"
-	"github.com/getbuckit/console/pkg/auth/ldap"
+	"github.com/buckit-io/console/models"
+	"github.com/buckit-io/console/pkg/auth/idp/oauth2"
+	"github.com/buckit-io/console/pkg/auth/ldap"
 	"github.com/stretchr/testify/assert"
 )
 

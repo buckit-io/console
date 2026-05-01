@@ -24,8 +24,8 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/getbuckit/console/api/operations"
-	"github.com/getbuckit/console/api/operations/public"
+	"github.com/buckit-io/console/api/operations"
+	"github.com/buckit-io/console/api/operations/public"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/runtime/middleware"
 	"github.com/go-openapi/swag"

@@ -25,7 +25,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/getbuckit/console/models"
+	"github.com/buckit-io/console/models"
 	iampolicy "github.com/minio/pkg/v3/policy"
 	"github.com/stretchr/testify/assert"
 )

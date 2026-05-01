@@ -27,7 +27,7 @@ import (
 
 	"github.com/go-openapi/runtime/middleware"
 
-	"github.com/getbuckit/console/models"
+	"github.com/buckit-io/console/models"
 )
 
 // SetBucketRetentionConfigHandlerFunc turns a function with the right signature into a set bucket retention config handler

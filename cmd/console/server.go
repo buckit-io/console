@@ -22,9 +22,9 @@ import (
 	"path/filepath"
 	"syscall"
 
-	"github.com/getbuckit/console/api"
-	"github.com/getbuckit/console/api/operations"
-	"github.com/getbuckit/console/pkg/certs"
+	"github.com/buckit-io/console/api"
+	"github.com/buckit-io/console/api/operations"
+	"github.com/buckit-io/console/pkg/certs"
 	"github.com/go-openapi/loads"
 	"github.com/jessevdk/go-flags"
 	"github.com/minio/cli"

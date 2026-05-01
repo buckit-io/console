@@ -27,7 +27,7 @@ import (
 
 	"github.com/go-openapi/runtime/middleware"
 
-	"github.com/getbuckit/console/models"
+	"github.com/buckit-io/console/models"
 )
 
 // DeleteMultipleServiceAccountsHandlerFunc turns a function with the right signature into a delete multiple service accounts handler

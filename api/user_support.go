@@ -20,10 +20,10 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/getbuckit/console/api/operations"
-	"github.com/getbuckit/console/api/operations/support"
-	"github.com/getbuckit/console/models"
-	"github.com/getbuckit/console/pkg/subnet"
+	"github.com/buckit-io/console/api/operations"
+	"github.com/buckit-io/console/api/operations/support"
+	"github.com/buckit-io/console/models"
+	"github.com/buckit-io/console/pkg/subnet"
 	"github.com/go-openapi/runtime/middleware"
 	"golang.org/x/net/context"
 )
