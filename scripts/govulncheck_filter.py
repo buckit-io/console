@@ -9,6 +9,7 @@ from collections import Counter
 
 ALLOWED_OSVS = {
     "GO-2026-5662",
+    "GO-2026-5932",
 }
 
 
