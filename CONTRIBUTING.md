@@ -1,4 +1,4 @@
-# BuckIt Console Server Contribution Guide [![Slack](https://slack.min.io/slack?type=svg)](https://slack.min.io)
+# BuckIt Console Server Contribution Guide
 
 This is a REST portal server created using [go-swagger](https://github.com/go-swagger/go-swagger)
 
@@ -79,5 +79,4 @@ To remove a dependency
 ### What are the coding guidelines for console?
 
 ``console`` is fully conformant with Golang style.
-Refer: [Effective Go](https://github.com/golang/go/wiki/CodeReviewComments) article from Golang project. If you observe
-offending code, please feel free to send a pull request or ping us on [Slack](https://slack.min.io).
+Refer: [Effective Go](https://github.com/golang/go/wiki/CodeReviewComments) article from Golang project. 

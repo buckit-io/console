@@ -1,9 +1,9 @@
-# Developing BuckIt Console
+# Developing Buckit Console
 
-The BuckIt Console requires the [BuckIt Server](https://github.com/minio/minio). For development purposes, you also need
-to run both the BuckIt Console web app and the BuckIt Console server.
+The Buckit Console requires the [Buckit Server](https://github.com/buckit-io/buckit). For development purposes, you also need
+to run both the Buckit Console web app and the Buckit Console server.
 
-## Running BuckIt Console server
+## Running Buckit Console server
 
 Build the server in the main folder by running:
 
@@ -16,20 +16,20 @@ make
 > To start the server run:
 
 ```
-CONSOLE_ACCESS_KEY=<your-access-key>
-CONSOLE_SECRET_KEY=<your-secret-key>
-CONSOLE_MINIO_SERVER=<minio-server-endpoint>
+CONSOLE_PBKDF_PASSPHRASE=<your-jwt-passphrase>
+CONSOLE_PBKDF_SALT=<your-jwt-salt>
+CONSOLE_MINIO_SERVER=<buckit-server-endpoint>
 CONSOLE_DEV_MODE=on
 ./console server
 ```
 
-## Running BuckIt Console web app
+## Running Buckit Console web app
 
 Refer to `/web-app` [instructions](/web-app/README.md) to run the web app locally.
 
-# Building with BuckIt
+# Building with Buckit
 
-To test console in its shipping format, you need to build it from the BuckIt repository, the following step will guide
+To test console in its shipping format, you need to build it from the Buckit repository. The following steps will guide
 you to do that.
 
 ### 0. Building with UI Changes
@@ -43,19 +43,19 @@ In the console folder run
 make assets
 ```
 
-This will regenerate all the static assets that will be served by BuckIt.
+This will regenerate all the static assets that will be served by Buckit.
 
-### 1. Clone the `BuckIt` repository
+### 1. Clone the `Buckit` repository
 
-In the parent folder of where you cloned this `console` repository, clone the BuckIt Repository
+In the parent folder of where you cloned this `console` repository, clone the Buckit repository.
 
 ```shell
-git clone https://github.com/minio/minio.git
+git clone https://github.com/buckit-io/buckit.git
 ```
 
 ### 2. Update `go.mod` to use your local version
 
-In the BuckIt repository open `go.mod` and after the first `require()` directive add a `replace()` directive
+In the Buckit repository, open `go.mod` and after the first `require()` directive add a `replace()` directive.
 
 ```
 ...
@@ -69,9 +69,9 @@ require (
 ...
 ```
 
-### 3. Build `BuckIt`
+### 3. Build `Buckit`
 
-Still in the BuckIt folder, run
+Still in the Buckit folder, run
 
 ```shell
 make build
@@ -110,7 +110,7 @@ $ docker exec my-openldap-container ldapsearch -x -H ldap://localhost -b uid=bil
 
 ### Change the password for user billy
 
-Set the new password for `billy` to `minio123` and enter `admin` as the default `LDAP Password`
+Set the new password for `billy` to `buckit123` and enter `admin` as the default `LDAP Password`
 
 ```
 $ docker exec -it my-openldap-container /bin/bash
@@ -120,7 +120,7 @@ Re-enter new password:
 Enter LDAP Password:
 ```
 
-### Add the consoleAdmin policy to user billy on BuckIt
+### Add the consoleAdmin policy to user billy on Buckit
 
 ```
 $ cat > consoleAdmin.json << EOF
@@ -147,21 +147,21 @@ $ cat > consoleAdmin.json << EOF
   ]
 }
 EOF
-$ mc admin policy create myminio consoleAdmin consoleAdmin.json
-$ mc admin policy attach myminio consoleAdmin --user="uid=billy,dc=example,dc=org"
+$ bm admin policy create mybuckit consoleAdmin consoleAdmin.json
+$ bm admin policy attach mybuckit consoleAdmin --user="uid=billy,dc=example,dc=org"
 ```
 
-## Run BuckIt
+## Run Buckit
 
 ```
-export MINIO_ACCESS_KEY=minio
-export MINIO_SECRET_KEY=minio123
+export MINIO_ACCESS_KEY=buckit
+export MINIO_SECRET_KEY=buckit123
 export MINIO_IDENTITY_LDAP_SERVER_ADDR='localhost:389'
 export MINIO_IDENTITY_LDAP_USERNAME_FORMAT='uid=%s,dc=example,dc=org'
 export MINIO_IDENTITY_LDAP_USERNAME_SEARCH_FILTER='(|(objectclass=posixAccount)(uid=%s))'
 export MINIO_IDENTITY_LDAP_TLS_SKIP_VERIFY=on
 export MINIO_IDENTITY_LDAP_SERVER_INSECURE=on
-./minio server ~/Data
+./buckit server ~/Data
 ```
 
 ## Run Console

@@ -1,6 +1,6 @@
-# Systemd service for BuckIt Console
+# Systemd service for Buckit Console
 
-Systemd script for BuckIt Console.
+Systemd script for Buckit Console.
 
 ## Installation
 
@@ -10,10 +10,10 @@ Systemd script for BuckIt Console.
 
 ## Create the Environment configuration file
 
-This file serves as input to BuckIt Console systemd service.
+This file serves as input to Buckit Console systemd service.
 
 ```sh
-$ cat <<EOT >> /etc/default/minio-console
+$ cat <<EOT >> /etc/default/console
 # Special opts
 CONSOLE_OPTS="--port 8443"
 
@@ -23,28 +23,29 @@ CONSOLE_PBKDF_PASSPHRASE=CHANGEME
 # required to encrypt JWT payload
 CONSOLE_PBKDF_SALT=CHANGEME
 
-# BuckIt Endpoint
-CONSOLE_MINIO_SERVER=http://minio.endpoint:9000
+# Buckit endpoint
+CONSOLE_MINIO_SERVER=http://buckit.endpoint:9000
 
 EOT
 ```
 
 ## Systemctl
 
-Download `minio-console.service` in  `/etc/systemd/system/`
+Copy `console.service` to `/etc/systemd/system/`
 
 ```
-( cd /etc/systemd/system/; curl -O https://raw.githubusercontent.com/minio/console/master/systemd/minio-console.service )
+cp systemd/console.service /etc/systemd/system/console.service
 ```
 
 Enable startup on boot
 
 ```
-systemctl enable minio-console.service
+systemctl enable console.service
 ```
 
 ## Note
 
-- Replace ``User=console-user`` and ``Group=console-user`` in minio-console.service file with your local setup.
-- Ensure that ``CONSOLE_PBKDF_PASSPHRASE`` and ``CONSOLE_PBKDF_SALT`` are set to appropriate values.
-- Ensure that ``CONSOLE_MINIO_SERVER`` is set to appropriate server endpoint.
+- Replace `User=console-user` and `Group=console-user` in `console.service`.
+- Ensure that `CONSOLE_PBKDF_PASSPHRASE` and `CONSOLE_PBKDF_SALT` are set to appropriate values.
+- Ensure that `CONSOLE_MINIO_SERVER` is set to appropriate server endpoint.
+- Update `EnvironmentFile=` in `console.service` if you use a path other than `/etc/default/console`.

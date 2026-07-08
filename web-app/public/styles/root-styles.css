@@ -4,8 +4,9 @@
   font-weight: 600;
   font-display: swap;
   src: url("/fonts/Montserrat-SemiBold-subset.woff2") format("woff2");
-  unicode-range: U+0020, U+0042-0043, U+0049, U+004B, U+004F, U+0053-0055,
-    U+0061-0063, U+0065, U+0067, U+006A, U+0072, U+0074;
+  unicode-range:
+    U+0020, U+0042-0043, U+0049, U+004B, U+004F, U+0053-0055, U+0061-0063,
+    U+0065, U+0067, U+006A, U+0072, U+0074;
 }
 
 @font-face {
@@ -14,8 +15,9 @@
   font-weight: 700;
   font-display: swap;
   src: url("/fonts/Montserrat-Bold-subset.woff2") format("woff2");
-  unicode-range: U+0020, U+0042-0043, U+0049, U+004B, U+004F, U+0053-0055,
-    U+0061-0063, U+0065, U+0067, U+006A, U+0072, U+0074;
+  unicode-range:
+    U+0020, U+0042-0043, U+0049, U+004B, U+004F, U+0053-0055, U+0061-0063,
+    U+0065, U+0067, U+006A, U+0072, U+0074;
 }
 
 body {
