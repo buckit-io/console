@@ -2,8 +2,8 @@
 
 A graphical user interface for [Buckit](https://github.com/buckit-io/buckit)
 
-
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
+
 **Table of Contents**
 
 - [Buckit Console](#buckit-console)
@@ -81,9 +81,7 @@ bm admin policy attach mybuckit consoleAdmin --user=console
   "Version": "2012-10-17",
   "Statement": [
     {
-      "Action": [
-        "admin:ServerInfo"
-      ],
+      "Action": ["admin:ServerInfo"],
       "Effect": "Allow",
       "Sid": ""
     },
@@ -108,9 +106,7 @@ bm admin policy attach mybuckit consoleAdmin --user=console
         "s3:GetBucketPolicy"
       ],
       "Effect": "Allow",
-      "Resource": [
-        "arn:aws:s3:::*"
-      ],
+      "Resource": ["arn:aws:s3:::*"],
       "Sid": ""
     }
   ]
@@ -189,22 +185,23 @@ You can verify that the apis work by doing the request on `localhost:9090/api/v1
 In some cases it may be convenient to log all HTTP requests. This can be enabled by setting
 the `CONSOLE_DEBUG_LOGLEVEL` environment variable to one of the following values:
 
- - `0` (default) uses no logging.
- - `1` log single line per request for server-side errors (status-code 5xx).
- - `2` log single line per request for client-side and server-side errors (status-code 4xx/5xx).
- - `3` log single line per request for all requests (status-code 4xx/5xx).
- - `4` log details per request for server-side errors (status-code 5xx).
- - `5` log details per request for client-side and server-side errors (status-code 4xx/5xx).
- - `6` log details per request for all requests (status-code 4xx/5xx).
+- `0` (default) uses no logging.
+- `1` log single line per request for server-side errors (status-code 5xx).
+- `2` log single line per request for client-side and server-side errors (status-code 4xx/5xx).
+- `3` log single line per request for all requests (status-code 4xx/5xx).
+- `4` log details per request for server-side errors (status-code 5xx).
+- `5` log details per request for client-side and server-side errors (status-code 4xx/5xx).
+- `6` log details per request for all requests (status-code 4xx/5xx).
 
- A single line logging has the following information:
- - Remote endpoint (IP + port) of the request. Note that reverse proxies may hide the actual remote endpoint of the client's browser.
- - HTTP method and URL
- - Status code of the response (websocket connections are hijacked, so no response is shown)
- - Duration of the request
+A single line logging has the following information:
+
+- Remote endpoint (IP + port) of the request. Note that reverse proxies may hide the actual remote endpoint of the client's browser.
+- HTTP method and URL
+- Status code of the response (websocket connections are hijacked, so no response is shown)
+- Duration of the request
 
 The detailed logging also includes all request and response headers (if any).
- 
+
 # Contribute to Buckit Console
 
 Please follow the [Contributor's Guide](https://github.com/buckit-io/console/blob/master/CONTRIBUTING.md).

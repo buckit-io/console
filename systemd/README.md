@@ -45,7 +45,7 @@ systemctl enable console.service
 
 ## Note
 
-- Replace ``User=console-user`` and ``Group=console-user`` in `console.service`.
-- Ensure that ``CONSOLE_PBKDF_PASSPHRASE`` and ``CONSOLE_PBKDF_SALT`` are set to appropriate values.
-- Ensure that ``CONSOLE_MINIO_SERVER`` is set to appropriate server endpoint.
+- Replace `User=console-user` and `Group=console-user` in `console.service`.
+- Ensure that `CONSOLE_PBKDF_PASSPHRASE` and `CONSOLE_PBKDF_SALT` are set to appropriate values.
+- Ensure that `CONSOLE_MINIO_SERVER` is set to appropriate server endpoint.
 - Update `EnvironmentFile=` in `console.service` if you use a path other than `/etc/default/console`.
