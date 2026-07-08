@@ -17,6 +17,7 @@
 package api
 
 import (
+	"context"
 	"errors"
 	"fmt"
 
@@ -25,7 +26,6 @@ import (
 	"github.com/buckit-io/console/models"
 	"github.com/buckit-io/console/pkg/subnet"
 	"github.com/go-openapi/runtime/middleware"
-	"golang.org/x/net/context"
 )
 
 type ConfigurationSetItem struct {
@@ -56,10 +56,9 @@ func registerSupportHandlers(api *operations.ConsoleAPI) {
 
 // getCallHomeOptionResponse returns the selected option value
 func getCallHomeOptionResponse(session *models.Principal, params support.GetCallHomeOptionValueParams) (*models.CallHomeGetResponse, *CodedAPIError) {
-	ctx, cancel := context.WithCancel(params.HTTPRequest.Context())
-	defer cancel()
+	ctx := params.HTTPRequest.Context()
 
-	mAdmin, err := NewMinioAdminClient(params.HTTPRequest.Context(), session)
+	mAdmin, err := NewMinioAdminClient(ctx, session)
 	if err != nil {
 		return nil, ErrorWithContext(ctx, err)
 	}
@@ -130,10 +129,9 @@ func getCallHomeRule(ctx context.Context, client MinioAdmin) (*models.CallHomeGe
 
 // editCallHomeOptionResponse returns if there was an error setting the option
 func editCallHomeOptionResponse(session *models.Principal, params support.SetCallHomeStatusParams) *CodedAPIError {
-	ctx, cancel := context.WithCancel(params.HTTPRequest.Context())
-	defer cancel()
+	ctx := params.HTTPRequest.Context()
 
-	mAdmin, err := NewMinioAdminClient(params.HTTPRequest.Context(), session)
+	mAdmin, err := NewMinioAdminClient(ctx, session)
 	if err != nil {
 		return ErrorWithContext(ctx, err)
 	}
