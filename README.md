@@ -1,6 +1,6 @@
 # Buckit Console
 
-A graphical user interface for [Buckit](https://github.com/buckit-io/buckit)
+A graphical user interface for [Buckit](https://github.com/buckit-io/buckit) object storage, derived from the open source [MinIO Console](https://github.com/minio/console) project and not affiliated with MinIO.
 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 
