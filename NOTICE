@@ -1,3 +1,20 @@
+This repository contains Buckit's fork of the MinIO Console project (`console`).
+
+Copyright (c) 2026 Buckit contributors for modifications.
+
+The original project was developed by MinIO, Inc. and its contributors.
+
+This repository is distributed under the GNU Affero General Public License,
+Version 3 (AGPL-3.0). See the LICENSE file for the complete license text.
+
+Buckit is independently developed and maintained. Buckit is not affiliated
+with, endorsed by, or sponsored by MinIO, Inc. "MinIO" is a trademark of
+MinIO, Inc.
+
+-------------------------------------------------------------------
+
+Original upstream notice:
+
 This file is part of MinIO Console Server
 Copyright (c) 2023 MinIO, Inc.
 
@@ -13,10 +30,3 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
--------------------------------------------------------------------
-Modifications and Updates:
-Copyright (c) 2026 Buckit Authors
-
-Modified portions of this project are released under the AGPL-3.0 
-license in accordance with the original licensing terms.
