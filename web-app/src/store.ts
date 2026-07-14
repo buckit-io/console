@@ -21,7 +21,6 @@ import systemReducer from "./systemSlice";
 import loginReducer from "./screens/LoginPage/loginSlice";
 import traceReducer from "./screens/Console/Trace/traceSlice";
 import logReducer from "./screens/Console/Logs/logsSlice";
-import healthInfoReducer from "./screens/Console/HealthInfo/healthInfoSlice";
 import watchReducer from "./screens/Console/Watch/watchSlice";
 import consoleReducer from "./screens/Console/consoleSlice";
 import addBucketsReducer from "./screens/Console/Buckets/ListBuckets/AddBucket/addBucketsSlice";
@@ -29,8 +28,6 @@ import bucketDetailsReducer from "./screens/Console/Buckets/BucketDetails/bucket
 import objectBrowserReducer from "./screens/Console/ObjectBrowser/objectBrowserSlice";
 import dashboardReducer from "./screens/Console/Dashboard/dashboardSlice";
 import createUserReducer from "./screens/Console/Users/AddUsersSlice";
-import licenseReducer from "./screens/Console/License/licenseSlice";
-import registerReducer from "./screens/Console/Support/registerSlice";
 import destinationSlice from "./screens/Console/EventDestinations/destinationsSlice";
 import { objectBrowserWSMiddleware } from "./websockets/objectBrowserWSMiddleware";
 
@@ -46,11 +43,8 @@ const rootReducer = combineReducers({
   addBucket: addBucketsReducer,
   bucketDetails: bucketDetailsReducer,
   objectBrowser: objectBrowserReducer,
-  healthInfo: healthInfoReducer,
   dashboard: dashboardReducer,
-  register: registerReducer,
   createUser: createUserReducer,
-  license: licenseReducer,
   destination: destinationSlice,
 });
 

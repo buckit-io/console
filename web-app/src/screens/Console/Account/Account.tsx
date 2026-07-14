@@ -306,7 +306,7 @@ const Account = () => {
                   <br />
                   You can learn more at our{" "}
                   <a
-                    href="https://min.io/docs/minio/linux/administration/identity-access-management/minio-user-management.html?ref=con#id3"
+                    href="https://buckit.sh/docs/administration/identity-access-management/user-management.html"
                     target="_blank"
                     rel="noopener"
                   >

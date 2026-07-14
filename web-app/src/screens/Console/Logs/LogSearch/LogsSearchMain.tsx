@@ -236,7 +236,7 @@ const LogsSearchMain = () => {
           <MissingIntegration
             entity={"Audit Logs"}
             iconComponent={<SearchIcon />}
-            documentationLink="https://min.io/docs/minio/windows/operations/monitoring/minio-logging.html?ref=con"
+            documentationLink="https://buckit.sh/docs/operations/monitoring/logging.html"
           />
         ) : (
           <Fragment>

@@ -25,8 +25,6 @@ import {
   HelpIcon,
   HelpIconFilled,
   IconButton,
-  MinIOTierIcon,
-  TabItemProps,
   Tabs,
 } from "mds";
 import { useSelector } from "react-redux";
@@ -68,10 +66,6 @@ const HelpMenu = () => {
 
   const [helpItems, setHelpItems] = useState<DocItem[]>([]);
   const [headerDocs, setHeaderDocs] = useState<string | null>(null);
-  const [helpItemsVideo, setHelpItemsVideo] = useState<DocItem[]>([]);
-  const [headerVideo, setHeaderVideo] = useState<string | null>(null);
-  const [helpItemsBlog, setHelpItemsBlog] = useState<DocItem[]>([]);
-  const [headerBlog, setHeaderBlog] = useState<string | null>(null);
   const [helpMenuOpen, setHelpMenuOpen] = useState<boolean>(false);
 
   const systemHelpName = useSelector(
@@ -106,75 +100,16 @@ const HelpMenu = () => {
   useOutsideAlerter(wrapperRef);
 
   useEffect(() => {
-    let docsTotal = 0;
-    let blogTotal = 0;
-    let videoTotal = 0;
-    if (helpTopics[systemHelpName]) {
-      if (helpTopics[systemHelpName]["docs"]) {
-        setHeaderDocs(helpTopics[systemHelpName]["docs"]["header"]);
-        setHelpItems(helpTopics[systemHelpName]["docs"]["links"]);
-        docsTotal = helpTopics[systemHelpName]["docs"]["links"].length;
-      }
+    const helpTopic = helpTopics[systemHelpName] || helpTopics.help;
+    const docs = helpTopic.docs;
 
-      if (helpTopics[systemHelpName]["blog"]) {
-        setHeaderBlog(helpTopics[systemHelpName]["blog"]["header"]);
-        setHelpItemsBlog(helpTopics[systemHelpName]["blog"]["links"]);
-        blogTotal = helpTopics[systemHelpName]["blog"]["links"].length;
-      }
+    setHeaderDocs(docs.header);
+    setHelpItems(docs.links);
 
-      if (helpTopics[systemHelpName]["video"]) {
-        setHeaderVideo(helpTopics[systemHelpName]["video"]["header"]);
-        setHelpItemsVideo(helpTopics[systemHelpName]["video"]["links"]);
-        videoTotal = helpTopics[systemHelpName]["video"]["links"].length;
-      }
-
-      let autoSelect = "docs";
-      let hadToFlip = false;
-      // if no docs, eval video o blog
-      if (docsTotal === 0 && headerDocs === null && helpTabName === "docs") {
-        // if no blog, default video?
-        if (videoTotal !== 0 || headerVideo !== null) {
-          autoSelect = "video";
-        } else {
-          autoSelect = "blog";
-        }
-        hadToFlip = true;
-      }
-      if (videoTotal === 0 && headerVideo === null && helpTabName === "video") {
-        // if no blog, default video?
-        if (docsTotal !== 0 || headerDocs !== null) {
-          autoSelect = "docs";
-        } else {
-          autoSelect = "blog";
-        }
-        hadToFlip = true;
-      }
-      if (blogTotal === 0 && headerBlog === null && helpTabName === "blog") {
-        // if no blog, default video?
-        if (docsTotal !== 0 || headerDocs !== null) {
-          autoSelect = "docs";
-        } else {
-          autoSelect = "video";
-        }
-        hadToFlip = true;
-      }
-      if (hadToFlip) {
-        dispatch(setHelpTabName(autoSelect));
-      }
-    } else {
-      setHelpItems(helpTopics["help"]["docs"]["links"]);
-      setHelpItemsBlog([]);
-      setHelpItemsVideo([]);
+    if (helpTabName !== "docs") {
+      dispatch(setHelpTabName("docs"));
     }
-  }, [
-    systemHelpName,
-    helpTabName,
-    dispatch,
-    helpTopics,
-    headerBlog,
-    headerDocs,
-    headerVideo,
-  ]);
+  }, [systemHelpName, helpTabName, dispatch, helpTopics]);
 
   const helpContent = (
     <Box className={"helpContainer"}>
@@ -194,100 +129,24 @@ const HelpMenu = () => {
         ))}
       <div style={{ padding: 16 }}>
         <MoreLink
-          LeadingIcon={MinIOTierIcon}
           text={"Visit Buckit Documentation"}
-          link={"https://docs.min.io/?ref=con"}
-          color={"#C5293F"}
+          link={"https://buckit.sh/docs/"}
+          color={"#3874A6"}
         />
       </div>
     </Box>
   );
-  const helpContentVideo = (
-    <Box className={"helpContainer"}>
-      {headerVideo && (
-        <Fragment>
-          <div style={{ paddingLeft: 16, paddingRight: 16 }}>
-            <ReactMarkdown>{`${headerVideo}`}</ReactMarkdown>
-          </div>
-          <div style={{ borderBottom: "1px solid #dedede" }} />
-        </Fragment>
-      )}
-      {helpItemsVideo &&
-        helpItemsVideo.map((aHelpItem, idx) => (
-          <Box className={"helpItemBlock"} key={`help-item-${aHelpItem}`}>
-            <HelpItem item={aHelpItem} />
-          </Box>
-        ))}
-      <div style={{ padding: 16 }}>
-        <MoreLink
-          LeadingIcon={MinIOTierIcon}
-          text={"Visit Buckit Videos"}
-          link={"https://resources.min.io/l/library?contentType=video"}
-          color={"#C5293F"}
-        />
-      </div>
-    </Box>
-  );
-  const helpContentBlog = (
-    <Box className={"helpContainer"}>
-      {headerBlog && (
-        <Fragment>
-          <div style={{ paddingLeft: 16, paddingRight: 16 }}>
-            <ReactMarkdown>{`${headerBlog}`}</ReactMarkdown>
-          </div>
-          <div style={{ borderBottom: "1px solid #dedede" }} />
-        </Fragment>
-      )}
-      {helpItemsBlog &&
-        helpItemsBlog.map((aHelpItem, idx) => (
-          <Box className={"helpItemBlock"} key={`help-item-${aHelpItem}`}>
-            <HelpItem item={aHelpItem} />
-          </Box>
-        ))}
-      <div style={{ padding: 16 }}>
-        <MoreLink
-          LeadingIcon={MinIOTierIcon}
-          text={"Visit Buckit Blog"}
-          link={"https://blog.min.io/?ref=con"}
-          color={"#C5293F"}
-        />
-      </div>
-    </Box>
-  );
-
-  const constructHMTabs = () => {
-    const helpMenuElements: TabItemProps[] = [];
-
-    if (helpItems.length !== 0) {
-      helpMenuElements.push({
-        tabConfig: { label: "Documentation", id: "docs" },
-        content: helpContent,
-      });
-    }
-
-    if (helpItemsVideo.length !== 0) {
-      helpMenuElements.push({
-        tabConfig: { label: "Video", id: "video" },
-        content: helpContentVideo,
-      });
-    }
-
-    if (helpItemsBlog.length !== 0) {
-      helpMenuElements.push({
-        tabConfig: { label: "Blog", id: "blog" },
-        content: helpContentBlog,
-      });
-    }
-
-    return helpMenuElements;
-  };
-
   return (
     <Fragment>
       {helpMenuOpen && (
         <HelpMenuContainer ref={wrapperRef}>
           <Tabs
-            options={constructHMTabs()}
+            options={[
+              {
+                tabConfig: { label: "Documentation", id: "docs" },
+                content: helpContent,
+              },
+            ]}
             currentTabOrPath={helpTabName}
             onTabClick={(item) => dispatch(setHelpTabName(item))}
             optionsInitialComponent={

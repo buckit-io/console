@@ -21,7 +21,6 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { api } from "api";
 import {
-  BucketEncryptionInfo,
   BucketQuota,
   BucketVersioningResponse,
   GetBucketRetentionConfig,
@@ -65,9 +64,6 @@ const SetAccessPolicy = withSuspense(
 const SetRetentionConfig = withSuspense(
   React.lazy(() => import("./SetRetentionConfig")),
 );
-const EnableBucketEncryption = withSuspense(
-  React.lazy(() => import("./EnableBucketEncryption")),
-);
 const EnableVersioningModal = withSuspense(
   React.lazy(() => import("./EnableVersioningModal")),
 );
@@ -84,8 +80,6 @@ const BucketSummary = () => {
   const bucketInfo = useSelector(selBucketDetailsInfo);
   const distributedSetup = useSelector(selDistSet);
 
-  const [encryptionCfg, setEncryptionCfg] =
-    useState<BucketEncryptionInfo | null>(null);
   const [bucketSize, setBucketSize] = useState<number | "0">("0");
   const [hasObjectLocking, setHasObjectLocking] = useState<boolean | undefined>(
     false,
@@ -96,7 +90,6 @@ const BucketSummary = () => {
   const [loadingObjectLocking, setLoadingLocking] = useState<boolean>(true);
   const [loadingSize, setLoadingSize] = useState<boolean>(true);
   const [bucketLoading, setBucketLoading] = useState<boolean>(true);
-  const [loadingEncryption, setLoadingEncryption] = useState<boolean>(true);
   const [loadingVersioning, setLoadingVersioning] = useState<boolean>(true);
   const [loadingQuota, setLoadingQuota] = useState<boolean>(true);
   const [loadingReplication, setLoadingReplication] = useState<boolean>(true);
@@ -105,13 +98,10 @@ const BucketSummary = () => {
     useState<BucketVersioningResponse>();
   const [quotaEnabled, setQuotaEnabled] = useState<boolean>(false);
   const [quota, setQuota] = useState<BucketQuota | null>(null);
-  const [encryptionEnabled, setEncryptionEnabled] = useState<boolean>(false);
   const [retentionEnabled, setRetentionEnabled] = useState<boolean>(false);
   const [retentionConfig, setRetentionConfig] =
     useState<GetBucketRetentionConfig | null>(null);
   const [retentionConfigOpen, setRetentionConfigOpen] =
-    useState<boolean>(false);
-  const [enableEncryptionScreenOpen, setEnableEncryptionScreenOpen] =
     useState<boolean>(false);
   const [enableQuotaScreenOpen, setEnableQuotaScreenOpen] =
     useState<boolean>(false);
@@ -137,11 +127,6 @@ const BucketSummary = () => {
     IAM_SCOPES.S3_GET_ACTIONS,
   ]);
 
-  const displayGetBucketEncryptionConfiguration = hasPermission(bucketName, [
-    IAM_SCOPES.S3_GET_BUCKET_ENCRYPTION_CONFIGURATION,
-    IAM_SCOPES.S3_GET_ACTIONS,
-  ]);
-
   const displayGetBucketQuota = hasPermission(bucketName, [
     IAM_SCOPES.ADMIN_GET_BUCKET_QUOTA,
   ]);
@@ -153,37 +138,6 @@ const BucketSummary = () => {
       setBucketLoading(false);
     }
   }, [loadingBucket, setBucketLoading]);
-
-  useEffect(() => {
-    if (loadingEncryption) {
-      if (displayGetBucketEncryptionConfiguration) {
-        api.buckets
-          .getBucketEncryptionInfo(bucketName)
-          .then((res) => {
-            if (res.data.algorithm) {
-              setEncryptionEnabled(true);
-              setEncryptionCfg(res.data);
-            }
-            setLoadingEncryption(false);
-          })
-          .catch((err) => {
-            err = errorToHandler(err.error);
-            if (
-              err.errorMessage ===
-              "The server side encryption configuration was not found"
-            ) {
-              setEncryptionEnabled(false);
-              setEncryptionCfg(null);
-            }
-            setLoadingEncryption(false);
-          });
-      } else {
-        setEncryptionEnabled(false);
-        setEncryptionCfg(null);
-        setLoadingEncryption(false);
-      }
-    }
-  }, [loadingEncryption, bucketName, displayGetBucketEncryptionConfiguration]);
 
   useEffect(() => {
     if (loadingVersioning && distributedSetup) {
@@ -320,7 +274,6 @@ const BucketSummary = () => {
     setBucketLoading(true);
     setLoadingSize(true);
     setLoadingVersioning(true);
-    setLoadingEncryption(true);
     setLoadingRetention(true);
   };
 
@@ -331,10 +284,6 @@ const BucketSummary = () => {
     setEnableQuotaScreenOpen(true);
   };
 
-  const closeEnableBucketEncryption = () => {
-    setEnableEncryptionScreenOpen(false);
-    setLoadingEncryption(true);
-  };
   const closeEnableBucketQuota = () => {
     setEnableQuotaScreenOpen(false);
     setLoadingQuota(true);
@@ -367,15 +316,6 @@ const BucketSummary = () => {
 
   return (
     <Fragment>
-      {enableEncryptionScreenOpen && (
-        <EnableBucketEncryption
-          open={enableEncryptionScreenOpen}
-          selectedBucket={bucketName}
-          encryptionEnabled={encryptionEnabled}
-          encryptionCfg={encryptionCfg}
-          closeModalAndRefresh={closeEnableBucketEncryption}
-        />
-      )}
       {enableQuotaScreenOpen && (
         <EnableQuota
           open={enableQuotaScreenOpen}
@@ -466,48 +406,6 @@ const BucketSummary = () => {
 
                 <SecureComponent
                   scopes={[
-                    IAM_SCOPES.S3_GET_BUCKET_ENCRYPTION_CONFIGURATION,
-                    IAM_SCOPES.S3_GET_ACTIONS,
-                  ]}
-                  resource={bucketName}
-                >
-                  <EditablePropertyItem
-                    iamScopes={[
-                      IAM_SCOPES.S3_PUT_BUCKET_ENCRYPTION_CONFIGURATION,
-                      IAM_SCOPES.S3_PUT_ACTIONS,
-                    ]}
-                    resourceName={bucketName}
-                    property={"Encryption:"}
-                    value={encryptionEnabled ? "Enabled" : "Disabled"}
-                    onEdit={() => {
-                      setEnableEncryptionScreenOpen(true);
-                    }}
-                    isLoading={loadingEncryption}
-                    helpTip={
-                      <Fragment>
-                        MinIO supports enabling automatic{" "}
-                        <a
-                          href="https://min.io/docs/minio/kubernetes/upstream/administration/server-side-encryption/server-side-encryption-sse-kms.html"
-                          target="blank"
-                        >
-                          SSE-KMS
-                        </a>{" "}
-                        and{" "}
-                        <a
-                          href="https://min.io/docs/minio/kubernetes/upstream/administration/server-side-encryption/server-side-encryption-sse-s3.html"
-                          target="blank"
-                        >
-                          SSE-S3
-                        </a>{" "}
-                        encryption of all objects written to a bucket using a
-                        specific External Key (EK) stored on the external KMS.
-                      </Fragment>
-                    }
-                  />
-                </SecureComponent>
-
-                <SecureComponent
-                  scopes={[
                     IAM_SCOPES.S3_GET_REPLICATION_CONFIGURATION,
                     IAM_SCOPES.S3_GET_ACTIONS,
                   ]}
@@ -570,7 +468,7 @@ const BucketSummary = () => {
                     <Fragment>
                       Setting a{" "}
                       <a
-                        href="https://min.io/docs/minio/linux/reference/minio-mc/mc-quota-set.html"
+                        href="https://buckit.sh/docs/administration/console/managing-objects.html"
                         target="blank"
                       >
                         quota
@@ -676,7 +574,7 @@ const BucketSummary = () => {
                         MinIO{" "}
                         <a
                           target="blank"
-                          href="https://min.io/docs/minio/macos/administration/object-management.html#object-retention"
+                          href="https://buckit.sh/docs/administration/object-management/object-retention.html"
                         >
                           Object Locking
                         </a>{" "}

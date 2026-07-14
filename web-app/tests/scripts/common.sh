@@ -28,7 +28,6 @@ create_policies() {
   mc admin policy create minio bucketcannottag-$TIMESTAMP web-app/tests/policies/bucketCannotTag.json
   mc admin policy create minio bucketspecific-$TIMESTAMP web-app/tests/policies/bucketSpecific.json
   mc admin policy create minio dashboard-$TIMESTAMP web-app/tests/policies/dashboard.json
-  mc admin policy create minio diagnostics-$TIMESTAMP web-app/tests/policies/diagnostics.json
   mc admin policy create minio groups-$TIMESTAMP web-app/tests/policies/groups.json
   mc admin policy create minio iampolicies-$TIMESTAMP web-app/tests/policies/iamPolicies.json
   mc admin policy create minio logs-$TIMESTAMP web-app/tests/policies/logs.json
@@ -39,8 +38,6 @@ create_policies() {
   mc admin policy create minio users-$TIMESTAMP web-app/tests/policies/users.json
   mc admin policy create minio watch-$TIMESTAMP web-app/tests/policies/watch.json
   mc admin policy create minio bucketwriteprefixonlypolicy-$TIMESTAMP web-app/tests/policies/bucketWritePrefixOnlyPolicy.json
-  mc admin policy create minio inspect-allowed-$TIMESTAMP web-app/tests/policies/inspect-allowed.json
-  mc admin policy create minio inspect-not-allowed-$TIMESTAMP web-app/tests/policies/inspect-not-allowed.json
   mc admin policy create minio fix-prefix-policy-ui-crash-$TIMESTAMP web-app/tests/policies/fix-prefix-policy-ui-crash.json
   mc admin policy create minio delete-object-with-prefix-$TIMESTAMP web-app/tests/policies/deleteObjectWithPrefix.json
   mc admin policy create minio conditions-policy-$TIMESTAMP web-app/tests/policies/conditionsPolicy.json
@@ -60,7 +57,6 @@ create_users() {
   mc admin user add minio bucketcannottag-$TIMESTAMP bucketcannottag-Bkt9\$x
   mc admin user add minio bucketspecific-$TIMESTAMP bucketspecific-Bkt9\$x
   mc admin user add minio dashboard-$TIMESTAMP dashboard-Bkt9\$x
-  mc admin user add minio diagnostics-$TIMESTAMP diagnostics-Bkt9\$x
   mc admin user add minio groups-$TIMESTAMP groups1234-Bkt9\$x
   mc admin user add minio heal-$TIMESTAMP heal1234-Bkt9\$x
   mc admin user add minio iampolicies-$TIMESTAMP iampolicies-Bkt9\$x
@@ -72,8 +68,6 @@ create_users() {
   mc admin user add minio users-$TIMESTAMP users1234-Bkt9\$x
   mc admin user add minio watch-$TIMESTAMP watch1234-Bkt9\$x
   mc admin user add minio bucketwriteprefixonlypolicy-$TIMESTAMP bucketwriteprefixonlypolicy-Bkt9\$x
-  mc admin user add minio inspect-allowed-$TIMESTAMP insallowed1234-Bkt9\$x
-  mc admin user add minio inspect-not-allowed-$TIMESTAMP insnotallowed1234-Bkt9\$x
   mc admin user add minio prefix-policy-ui-crash-$TIMESTAMP poluicrashfix1234-Bkt9\$x
   mc admin user add minio delete-object-with-prefix-$TIMESTAMP deleteobjectwithprefix1234-Bkt9\$x
   mc admin user add minio conditions-$TIMESTAMP conditions1234-Bkt9\$x
@@ -99,7 +93,6 @@ assign_policies() {
   mc admin policy attach minio bucketcannottag-$TIMESTAMP --user bucketcannottag-$TIMESTAMP
   mc admin policy attach minio bucketspecific-$TIMESTAMP --user bucketspecific-$TIMESTAMP
   mc admin policy attach minio dashboard-$TIMESTAMP --user dashboard-$TIMESTAMP
-  mc admin policy attach minio diagnostics-$TIMESTAMP --user diagnostics-$TIMESTAMP
   mc admin policy attach minio groups-$TIMESTAMP --user groups-$TIMESTAMP
   mc admin policy attach minio heal-$TIMESTAMP --user heal-$TIMESTAMP
   mc admin policy attach minio iampolicies-$TIMESTAMP --user iampolicies-$TIMESTAMP
@@ -111,8 +104,6 @@ assign_policies() {
   mc admin policy attach minio users-$TIMESTAMP --user users-$TIMESTAMP
   mc admin policy attach minio watch-$TIMESTAMP --user watch-$TIMESTAMP
   mc admin policy attach minio bucketwriteprefixonlypolicy-$TIMESTAMP --user bucketwriteprefixonlypolicy-$TIMESTAMP
-  mc admin policy attach minio inspect-allowed-$TIMESTAMP --user inspect-allowed-$TIMESTAMP
-  mc admin policy attach minio inspect-not-allowed-$TIMESTAMP --user inspect-not-allowed-$TIMESTAMP
   mc admin policy attach minio delete-object-with-prefix-$TIMESTAMP --user delete-object-with-prefix-$TIMESTAMP
   mc admin policy attach minio conditions-policy-$TIMESTAMP --user conditions-$TIMESTAMP
   mc admin policy attach minio conditions-policy-2-$TIMESTAMP --user conditions-2-$TIMESTAMP

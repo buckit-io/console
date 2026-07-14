@@ -211,11 +211,6 @@ test-permissions-4:
 	@(env bash $(PWD)/web-app/tests/scripts/permissions.sh "web-app/tests/permissions-4/")
 	@(docker stop minio)
 
-test-permissions-5:
-	@(docker run -v /data1 -v /data2 -v /data3 -v /data4 -d --name minio --rm -p 9000:9000 -e MINIO_ROOT_USER="minioadmin" -e MINIO_ROOT_PASSWORD="pHc2r5q5!5" quay.io/minio/minio:latest server /data{1...4})
-	@(env bash $(PWD)/web-app/tests/scripts/permissions.sh "web-app/tests/permissions-5/")
-	@(docker stop minio)
-
 test-permissions-6:
 	@(docker run -v /data1 -v /data2 -v /data3 -v /data4 -d --name minio --rm -p 9000:9000 -e MINIO_ROOT_USER="minioadmin" -e MINIO_ROOT_PASSWORD="pHc2r5q5!5" quay.io/minio/minio:latest server /data{1...4})
 	@(env bash $(PWD)/web-app/tests/scripts/permissions.sh "web-app/tests/permissions-6/")

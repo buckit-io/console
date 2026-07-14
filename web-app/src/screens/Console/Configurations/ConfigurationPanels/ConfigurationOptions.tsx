@@ -168,7 +168,7 @@ const ConfigurationOptions = () => {
                 <br />
                 You can learn more at our{" "}
                 <a
-                  href="https://min.io/docs/minio/linux/reference/minio-mc-admin/mc-admin-config.html?ref=con#id4"
+                  href="https://buckit.sh/docs/reference/bm-admin/bm-admin-config.html"
                   target="_blank"
                   rel="noopener"
                 >

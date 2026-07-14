@@ -199,7 +199,7 @@ const AccessRule = () => {
             <Fragment>
               Setting an{" "}
               <a
-                href="https://min.io/docs/minio/linux/reference/minio-mc/mc-anonymous-set.html"
+                href="https://buckit.sh/docs/reference/bm-cli/bm-anonymous-set.html"
                 target="blank"
               >
                 Anonymous

@@ -16,7 +16,6 @@
 
 import React from "react";
 import { PageLayout, Box } from "mds";
-import Copyright from "../common/Copyright";
 
 const NotFound: React.FC = () => {
   return (
@@ -49,9 +48,6 @@ const NotFound: React.FC = () => {
           }}
         >
           Sorry, the page could not be found.
-        </Box>
-        <Box sx={{ marginTop: 20 }}>
-          <Copyright />
         </Box>
       </Box>
     </PageLayout>

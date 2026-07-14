@@ -225,7 +225,7 @@ const SiteReplication = () => {
                     <br />
                     You can learn more at our{" "}
                     <a
-                      href="https://min.io/docs/minio/linux/operations/install-deploy-manage/multi-site-replication.html?ref=con"
+                      href="https://buckit.sh/docs/operations/replication/multi-site-replication.html"
                       target="_blank"
                       rel="noopener"
                     >
