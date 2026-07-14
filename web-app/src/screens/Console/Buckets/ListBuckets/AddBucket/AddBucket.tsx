@@ -294,7 +294,7 @@ const AddBucket = () => {
                       <br />
                       Please deploy a server in{" "}
                       <a
-                        href="https://min.io/docs/minio/linux/operations/install-deploy-manage/deploy-minio-multi-node-multi-drive.html?ref=con"
+                        href="https://buckit.sh/docs/operations/deployments/baremetal-deploy-server.html"
                         target="_blank"
                         rel="noopener"
                       >
@@ -366,7 +366,7 @@ const AddBucket = () => {
                       )}
                       Buckit supports keeping multiple{" "}
                       <a
-                        href="https://min.io/docs/minio/kubernetes/upstream/administration/object-management/object-versioning.html#minio-bucket-versioning"
+                        href="https://buckit.sh/docs/administration/object-management/object-versioning.html"
                         target="blank"
                       >
                         versions
@@ -375,14 +375,14 @@ const AddBucket = () => {
                       <br />
                       Versioning is required to enable{" "}
                       <a
-                        href="https://min.io/docs/minio/macos/administration/object-management.html#object-retention"
+                        href="https://buckit.sh/docs/administration/object-management/object-retention.html"
                         target="blank"
                       >
                         Object Locking
                       </a>{" "}
                       and{" "}
                       <a
-                        href="https://min.io/docs/minio/macos/administration/object-management/object-retention.html#object-retention-modes"
+                        href="https://buckit.sh/docs/administration/object-management/object-retention.html"
                         target="blank"
                       >
                         Retention
@@ -405,7 +405,7 @@ const AddBucket = () => {
                       helpTip={
                         <Fragment>
                           You can choose to{" "}
-                          <a href="https://min.io/docs/minio/windows/administration/object-management/object-versioning.html#exclude-folders-from-versioning">
+                          <a href="https://buckit.sh/docs/administration/object-management/object-versioning.html">
                             exclude folders and prefixes
                           </a>{" "}
                           from versioning if Object Locking is not enabled.
@@ -474,7 +474,7 @@ const AddBucket = () => {
                       )}
                       You can only enable{" "}
                       <a
-                        href="https://min.io/docs/minio/macos/administration/object-management.html#object-retention"
+                        href="https://buckit.sh/docs/administration/object-management/object-retention.html"
                         target="blank"
                       >
                         Object Locking
@@ -482,7 +482,7 @@ const AddBucket = () => {
                       when first creating a bucket.
                       <br />
                       <br />
-                      <a href="https://min.io/docs/minio/windows/administration/object-management/object-versioning.html#exclude-folders-from-versioning">
+                      <a href="https://buckit.sh/docs/administration/object-management/object-versioning.html">
                         Exclude folders and prefixes
                       </a>{" "}
                       options will not be available if this option is enabled.
@@ -504,7 +504,7 @@ const AddBucket = () => {
                     <Fragment>
                       Setting a{" "}
                       <a
-                        href="https://min.io/docs/minio/linux/reference/minio-mc/mc-quota-set.html"
+                        href="https://buckit.sh/docs/administration/console/managing-objects.html"
                         target="blank"
                       >
                         quota
@@ -561,7 +561,7 @@ const AddBucket = () => {
                       <Fragment>
                         Buckit supports setting both{" "}
                         <a
-                          href="https://min.io/docs/minio/macos/administration/object-management/object-retention.html#configure-bucket-default-object-retention"
+                          href="https://buckit.sh/docs/administration/object-management/object-retention.html"
                           target="blank"
                         >
                           bucket-default
@@ -598,7 +598,7 @@ const AddBucket = () => {
                         <Fragment>
                           {" "}
                           <a
-                            href="https://min.io/docs/minio/macos/administration/object-management/object-retention.html#minio-object-locking-compliance"
+                            href="https://buckit.sh/docs/administration/object-management/object-retention.html"
                             target="blank"
                           >
                             Compliance
@@ -608,7 +608,7 @@ const AddBucket = () => {
                           <br />
                           <br />
                           <a
-                            href="https://min.io/docs/minio/macos/administration/object-management/object-retention.html#minio-object-locking-governance"
+                            href="https://buckit.sh/docs/administration/object-management/object-retention.html"
                             target="blank"
                           >
                             Governance

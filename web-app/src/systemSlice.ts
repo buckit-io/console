@@ -17,7 +17,6 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { snackBarMessage, SRInfoStateType } from "./types";
 import { ErrorResponseHandler, IEmbeddedCustomStyles } from "./common/types";
 import { AppState } from "./store";
-import { SubnetInfo } from "./screens/Console/License/types";
 import { isDarkModeOn } from "./utils/stylesUtils";
 
 // determine whether we have the sidebar state stored on localstorage
@@ -37,10 +36,8 @@ interface SystemState {
   loadingProgress: number;
   snackBar: snackBarMessage;
   modalSnackBar: snackBarMessage;
-  serverDiagnosticStatus: string;
   distributedSetup: boolean;
   siteReplicationInfo: SRInfoStateType;
-  licenseInfo: null | SubnetInfo;
   overrideStyles: null | IEmbeddedCustomStyles;
   anonymousMode: boolean;
   helpName: string;
@@ -70,9 +67,7 @@ const initialState: SystemState = {
     detailedErrorMsg: "",
     type: "message",
   },
-  serverDiagnosticStatus: "",
   distributedSetup: false,
-  licenseInfo: null,
   overrideStyles: null,
   anonymousMode: false,
   helpName: "help",
@@ -145,17 +140,11 @@ const systemSlice = createSlice({
         type: "error",
       };
     },
-    setServerDiagStat: (state, action: PayloadAction<string>) => {
-      state.serverDiagnosticStatus = action.payload;
-    },
     globalSetDistributedSetup: (state, action: PayloadAction<boolean>) => {
       state.distributedSetup = action.payload;
     },
     setSiteReplicationInfo: (state, action: PayloadAction<SRInfoStateType>) => {
       state.siteReplicationInfo = action.payload;
-    },
-    setSystemLicenseInfo: (state, action: PayloadAction<SubnetInfo | null>) => {
-      state.licenseInfo = action.payload;
     },
     setHelpName: (state, action: PayloadAction<string>) => {
       state.helpName = action.payload;
@@ -196,7 +185,6 @@ export const {
   setErrorSnackMessage,
   setModalErrorSnackMessage,
   setModalSnackMessage,
-  setServerDiagStat,
   globalSetDistributedSetup,
   setSiteReplicationInfo,
   setOverrideStyles,

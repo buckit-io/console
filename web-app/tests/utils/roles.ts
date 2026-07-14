@@ -119,17 +119,6 @@ export const dashboard = Role(
   { preserveUrl: true },
 );
 
-export const diagnostics = Role(
-  loginUrlServer,
-  async (t) => {
-    await t
-      .typeText("#accessKey", "diagnostics-" + unixTimestamp)
-      .typeText("#secretKey", "diagnostics-Bkt9$x")
-      .click(submitButton);
-  },
-  { preserveUrl: true },
-);
-
 export const groups = Role(
   loginUrl,
   async (t) => {

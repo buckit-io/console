@@ -76,9 +76,3 @@ export const configurationsElement = getMenuElement("configurations");
 export const notificationEndpointsElement = getMenuElement("lambda");
 
 export const tiersElement = getMenuElement("tiers");
-
-export const diagnosticsElement = getMenuElement("diagnostics");
-export const performanceElement = getMenuElement("performance");
-export const inspectElement = getMenuElement("inspectObjects");
-
-export const licenseElement = getMenuElement("license");

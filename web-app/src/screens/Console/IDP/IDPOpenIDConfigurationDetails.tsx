@@ -32,9 +32,7 @@ const IDPOpenIDConfigurationDetails = () => {
         <AddIDPConfigurationHelpBox
           helpText={"Learn more about OpenID Connect Configurations"}
           contents={openIDHelpBoxContents}
-          docLink={
-            "https://min.io/docs/minio/linux/operations/external-iam.html?ref=con#minio-external-iam-oidc"
-          }
+          docLink={"https://buckit.sh/docs/operations/external-iam.html"}
           docText={"Learn more about OpenID Connect Configurations"}
         />
       }

@@ -141,7 +141,7 @@ const SetRetentionConfig = ({
                 <Fragment>
                   {" "}
                   <a
-                    href="https://min.io/docs/minio/macos/administration/object-management/object-retention.html#minio-object-locking-compliance"
+                    href="https://buckit.sh/docs/administration/object-management/object-retention.html"
                     target="blank"
                   >
                     Compliance
@@ -151,7 +151,7 @@ const SetRetentionConfig = ({
                   <br />
                   <br />
                   <a
-                    href="https://min.io/docs/minio/macos/administration/object-management/object-retention.html#minio-object-locking-governance"
+                    href="https://buckit.sh/docs/administration/object-management/object-retention.html"
                     target="blank"
                   >
                     Governance
