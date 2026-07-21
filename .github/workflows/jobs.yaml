@@ -107,26 +107,26 @@ jobs:
         run: |
           ./check-deadcode.sh
 
-  latest-minio:
-    name: Build latest MinIO
+  latest-buckit:
+    name: Build latest Buckit
     runs-on: [ubuntu-latest]
     strategy:
       matrix:
         go-version: [1.25.x]
     steps:
-      # To build minio image, we need to clone the repository first
-      - name: Clone github.com/minio/minio
+      # To build the Buckit image, clone the server repository first.
+      - name: Clone github.com/buckit-io/buckit
         uses: actions/checkout@v3
         with:
-          repository: minio/minio
-      - name: Check-out matching MinIO branch
+          repository: buckit-io/buckit
+      - name: Check-out matching Buckit branch
         env:
           GH_BRANCH: ${{ github.head_ref || github.ref_name }}
           GH_PR_REPO: ${{ github.event.pull_request.head.repo.full_name }}
         run: |
           GH_PR_ACCOUNT=`echo $GH_PR_REPO | sed "s/\\/.*//"`
-          if [ ! -z "$GH_PR_ACCOUNT" ] && [ ! "$GH_PR_ACCOUNT" = "minio" ]; then
-            ALTREPO="https://github.com/$GH_PR_ACCOUNT/minio.git"
+          if [ ! -z "$GH_PR_ACCOUNT" ] && [ ! "$GH_PR_ACCOUNT" = "buckit-io" ]; then
+            ALTREPO="https://github.com/$GH_PR_ACCOUNT/buckit.git"
             echo "Attempting to fetch $ALTREPO..."
             git remote add alt $ALTREPO
             (git fetch alt && git checkout "alt/$GH_BRANCH") || echo "$ALTREPO ($GH_BRANCH) not available, so keeping default repository/branch"
@@ -135,11 +135,10 @@ jobs:
         uses: actions/setup-go@v5
         with:
           go-version: ${{ matrix.go-version }}
-        id: go-minio
+        id: go-buckit
       - name: Build on ${{ matrix.os }}
-        if: steps.minio-latest-cache.outputs.cache-hit != 'true'
         run: |
-          echo "Create minio binary";
+          echo "Create Buckit binary";
           make build;
   compile-binary:
     name: Compiles on Go ${{ matrix.go-version }} and ${{ matrix.os }}
@@ -762,7 +761,7 @@ jobs:
       - lint-job
       - ui-assets
       - semgrep-static-code-analysis
-      - latest-minio
+      - latest-buckit
     runs-on: ubuntu-latest
 
     strategy:
@@ -772,30 +771,23 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v3
-      - name: Clone github.com/minio/minio
+      - name: Clone github.com/buckit-io/buckit
         uses: actions/checkout@master
         with:
-          repository: minio/minio
-          path: "minio_repository"
-      - name: Check-out matching MinIO branch
+          repository: buckit-io/buckit
+          path: "buckit_repository"
+      - name: Check-out matching Buckit branch
         env:
           GH_BRANCH: ${{ github.head_ref || github.ref_name }}
           GH_PR_REPO: ${{ github.event.pull_request.head.repo.full_name }}
         run: |
           GH_PR_ACCOUNT=`echo $GH_PR_REPO | sed "s/\\/.*//"`
-          if [ ! -z "$GH_PR_ACCOUNT" ] && [ ! "$GH_PR_ACCOUNT" = "minio" ]; then
-            ALTREPO="https://github.com/$GH_PR_ACCOUNT/minio.git"
+          if [ ! -z "$GH_PR_ACCOUNT" ] && [ ! "$GH_PR_ACCOUNT" = "buckit-io" ]; then
+            ALTREPO="https://github.com/$GH_PR_ACCOUNT/buckit.git"
             echo "Attempting to fetch $ALTREPO..."
             git remote add alt $ALTREPO
             (git fetch alt && git checkout "alt/$GH_BRANCH") || echo "$ALTREPO ($GH_BRANCH) not available, so keeping default repository/branch"
           fi
-      - uses: actions/cache@v4
-        id: minio-latest-cache
-        name: MinIO Latest Cache
-        with:
-          path: |
-            ./minio
-          key: ${{ runner.os }}-minio-latest-${{ hashFiles('./minio_repository/go.sum') }}
       - name: Set up Go ${{ matrix.go-version }} on ${{ matrix.os }}
         uses: actions/setup-go@v5
         with:
@@ -804,25 +796,25 @@ jobs:
 
       - name: Build on ${{ matrix.os }}
         run: |
-          echo "The idea is to build minio image from downloaded repository";
-          cd $GITHUB_WORKSPACE/minio_repository;
-          echo "Get git version to build MinIO Image";
+          echo "Build a Buckit image from the checked-out repository";
+          cd $GITHUB_WORKSPACE/buckit_repository;
+          echo "Get git version to build Buckit image";
           VERSION=`git rev-parse HEAD`;
           echo $VERSION;
-          echo "Build MinIO binary";
+          echo "Build Buckit binary";
           make build;
           echo "Stage files for Docker build";
           GOARCH=$(go env GOARCH);
-          cp minio minio-${GOARCH}.${VERSION};
-          touch minio-${GOARCH}.${VERSION}.minisig;
-          sha256sum minio-${GOARCH}.${VERSION} > minio-${GOARCH}.${VERSION}.sha256sum;
-          echo "Create MinIO image";
-          docker build --build-arg TARGETARCH=${GOARCH} --build-arg RELEASE=${VERSION} -q --no-cache -t minio/minio:$VERSION . -f Dockerfile;
+          cp buckit buckit-${GOARCH}.${VERSION};
+          touch buckit-${GOARCH}.${VERSION}.minisig;
+          sha256sum buckit-${GOARCH}.${VERSION} > buckit-${GOARCH}.${VERSION}.sha256sum;
+          echo "Create Buckit image";
+          docker build --build-arg TARGETARCH=${GOARCH} --build-arg RELEASE=${VERSION} -q --no-cache -t buckitio/buckit:$VERSION . -f Dockerfile;
 
           echo "Jumping back to console repository to run the integration test"
           cd $GITHUB_WORKSPACE;
           echo "We are going to use the built image on test-integration";
-          MINIO_VERSION="minio/minio:$VERSION";
+          MINIO_VERSION="buckitio/buckit:$VERSION";
           echo $MINIO_VERSION;
 
           echo "Create bucket for replication with versioning"
@@ -864,7 +856,7 @@ jobs:
       - lint-job
       - ui-assets
       - semgrep-static-code-analysis
-      - latest-minio
+      - latest-buckit
     runs-on: [ubuntu-latest]
 
     strategy:
@@ -881,53 +873,45 @@ jobs:
           go-version: ${{ matrix.go-version }}
         id: go
 
-      - name: Clone github.com/minio/minio
+      - name: Clone github.com/buckit-io/buckit
         uses: actions/checkout@master
         with:
-          repository: minio/minio
-          path: "minio_repository"
-      - name: Check-out matching MinIO branch
+          repository: buckit-io/buckit
+          path: "buckit_repository"
+      - name: Check-out matching Buckit branch
         env:
           GH_BRANCH: ${{ github.head_ref || github.ref_name }}
           GH_PR_REPO: ${{ github.event.pull_request.head.repo.full_name }}
         run: |
           GH_PR_ACCOUNT=`echo $GH_PR_REPO | sed "s/\\/.*//"`
-          if [ ! -z "$GH_PR_ACCOUNT" ] && [ ! "$GH_PR_ACCOUNT" = "minio" ]; then
-            ALTREPO="https://github.com/$GH_PR_ACCOUNT/minio.git"
+          if [ ! -z "$GH_PR_ACCOUNT" ] && [ ! "$GH_PR_ACCOUNT" = "buckit-io" ]; then
+            ALTREPO="https://github.com/$GH_PR_ACCOUNT/buckit.git"
             echo "Attempting to fetch $ALTREPO..."
             git remote add alt $ALTREPO
             (git fetch alt && git checkout "alt/$GH_BRANCH") || echo "$ALTREPO ($GH_BRANCH) not available, so keeping default repository/branch"
           fi
-      - uses: actions/cache@v4
-        id: minio-latest-cache
-        name: MinIO Latest Cache
-        with:
-          path: |
-            ./minio
-          key: ${{ runner.os }}-minio-latest-${{ hashFiles('./minio_repository/go.sum') }}
-
       - name: Build on ${{ matrix.os }}
         run: |
-          echo "The idea is to build minio image from downloaded repository";
-          cd $GITHUB_WORKSPACE/minio_repository;
-          echo "Get git version to build MinIO Image";
+          echo "Build a Buckit image from the checked-out repository";
+          cd $GITHUB_WORKSPACE/buckit_repository;
+          echo "Get git version to build Buckit image";
           VERSION=`git rev-parse HEAD`;
           echo $VERSION;
-          echo "Build MinIO binary";
+          echo "Build Buckit binary";
           make build;
           echo "Stage files for Docker build";
           GOARCH=$(go env GOARCH);
-          cp minio minio-${GOARCH}.${VERSION};
-          touch minio-${GOARCH}.${VERSION}.minisig;
-          sha256sum minio-${GOARCH}.${VERSION} > minio-${GOARCH}.${VERSION}.sha256sum;
-          echo "Create MinIO image";
-          docker build --build-arg TARGETARCH=${GOARCH} --build-arg RELEASE=${VERSION} -q --no-cache -t minio/minio:$VERSION . -f Dockerfile;
+          cp buckit buckit-${GOARCH}.${VERSION};
+          touch buckit-${GOARCH}.${VERSION}.minisig;
+          sha256sum buckit-${GOARCH}.${VERSION} > buckit-${GOARCH}.${VERSION}.sha256sum;
+          echo "Create Buckit image";
+          docker build --build-arg TARGETARCH=${GOARCH} --build-arg RELEASE=${VERSION} -q --no-cache -t buckitio/buckit:$VERSION . -f Dockerfile;
 
           echo "Jumping back to console repository to run the integration test"
           cd $GITHUB_WORKSPACE;
 
           echo "We are going to use the built image on test-integration";
-          MINIO_VERSION="minio/minio:$VERSION";
+          MINIO_VERSION="buckitio/buckit:$VERSION";
           echo $MINIO_VERSION;
 
           make test-replication MINIO_VERSION=$MINIO_VERSION;
@@ -952,7 +936,7 @@ jobs:
       - lint-job
       - ui-assets
       - semgrep-static-code-analysis
-      - latest-minio
+      - latest-buckit
     runs-on: ubuntu-latest
 
     strategy:
@@ -969,64 +953,51 @@ jobs:
           go-version: ${{ matrix.go-version }}
         id: go
 
-      - name: Clone github.com/minio/minio
+      - name: Clone github.com/buckit-io/buckit
         uses: actions/checkout@master
         with:
-          repository: minio/minio
-          path: "minio_repository"
-      - name: Check-out matching MinIO branch
+          repository: buckit-io/buckit
+          path: "buckit_repository"
+      - name: Check-out matching Buckit branch
         env:
           GH_BRANCH: ${{ github.head_ref || github.ref_name }}
           GH_PR_REPO: ${{ github.event.pull_request.head.repo.full_name }}
         run: |
           GH_PR_ACCOUNT=`echo $GH_PR_REPO | sed "s/\\/.*//"`
-          if [ ! -z "$GH_PR_ACCOUNT" ] && [ ! "$GH_PR_ACCOUNT" = "minio" ]; then
-            ALTREPO="https://github.com/$GH_PR_ACCOUNT/minio.git"
+          if [ ! -z "$GH_PR_ACCOUNT" ] && [ ! "$GH_PR_ACCOUNT" = "buckit-io" ]; then
+            ALTREPO="https://github.com/$GH_PR_ACCOUNT/buckit.git"
             echo "Attempting to fetch $ALTREPO..."
             git remote add alt $ALTREPO
             (git fetch alt && git checkout "alt/$GH_BRANCH") || echo "$ALTREPO ($GH_BRANCH) not available, so keeping default repository/branch"
           fi
 
-      - name: Checkout proper minio/minio branch
-        run: |
-
-          git checkout "${{ github.head_ref || github.ref_name }}" || echo "Okay, we'll stay on the master branch"
-
-      - uses: actions/cache@v4
-        id: minio-latest-cache
-        name: MinIO Latest Cache
-        with:
-          path: |
-            ./minio
-          key: ${{ runner.os }}-minio-latest-${{ hashFiles('./minio_repository/go.sum') }}
-
       - name: Build on ${{ matrix.os }}
         run: |
-          echo "The idea is to build minio image from downloaded repository";
-          cd $GITHUB_WORKSPACE/minio_repository;
+          echo "Build a Buckit image from the checked-out repository";
+          cd $GITHUB_WORKSPACE/buckit_repository;
           echo "replace github.com/buckit-io/console => ../" >> go.mod
 
           echo "updates to go.mod needed; to update it: go mod tidy"
           go mod tidy -compat=1.23
 
-          echo "Get git version to build MinIO Image";
+          echo "Get git version to build Buckit image";
           VERSION=`git rev-parse HEAD`;
           echo $VERSION;
-          echo "Build MinIO binary";
+          echo "Build Buckit binary";
           make build;
           echo "Stage files for Docker build";
           GOARCH=$(go env GOARCH);
-          cp minio minio-${GOARCH}.${VERSION};
-          touch minio-${GOARCH}.${VERSION}.minisig;
-          sha256sum minio-${GOARCH}.${VERSION} > minio-${GOARCH}.${VERSION}.sha256sum;
-          echo "Create MinIO image";
-          docker build --build-arg TARGETARCH=${GOARCH} --build-arg RELEASE=${VERSION} -q --no-cache -t minio/minio:$VERSION . -f Dockerfile;
+          cp buckit buckit-${GOARCH}.${VERSION};
+          touch buckit-${GOARCH}.${VERSION}.minisig;
+          sha256sum buckit-${GOARCH}.${VERSION} > buckit-${GOARCH}.${VERSION}.sha256sum;
+          echo "Create Buckit image";
+          docker build --build-arg TARGETARCH=${GOARCH} --build-arg RELEASE=${VERSION} -q --no-cache -t buckitio/buckit:$VERSION . -f Dockerfile;
 
           echo "Jumping back to console repository to run the integration test"
           cd $GITHUB_WORKSPACE;
 
           echo "We are going to use the built image on test-integration";
-          MINIO_VERSION="minio/minio:$VERSION";
+          MINIO_VERSION="buckitio/buckit:$VERSION";
           echo $MINIO_VERSION;
 
           make test-sso-integration MINIO_VERSION=$MINIO_VERSION;
