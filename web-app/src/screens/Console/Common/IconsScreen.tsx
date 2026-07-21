@@ -699,13 +699,13 @@ const IconsScreen = () => {
         <Grid item xs={3} sm={2} md={1}>
           <cicons.MinIOTierIcon />
           <br />
-          MinIOTierIcon
+          BuckitTierIcon
         </Grid>
 
         <Grid item xs={3} sm={2} md={1}>
           <cicons.MinIOTierIconXs />
           <br />
-          MinIOTierIconXs
+          BuckitTierIconXs
         </Grid>
 
         <Grid item xs={3} sm={2} md={1}>

@@ -310,7 +310,7 @@ const IDPLDAPConfigurationDetails = () => {
                           <Tooltip
                             tooltip={
                               envOverride
-                                ? "Configuration cannot be edited in this module as LDAP environment variables are set for this MinIO instance."
+                                ? "Configuration cannot be edited in this module as LDAP environment variables are set for this Buckit instance."
                                 : ""
                             }
                           >
@@ -328,7 +328,7 @@ const IDPLDAPConfigurationDetails = () => {
                             <Tooltip
                               tooltip={
                                 envOverride
-                                  ? "Configuration cannot be disabled / enabled in this module as LDAP environment variables are set for this MinIO instance."
+                                  ? "Configuration cannot be disabled / enabled in this module as LDAP environment variables are set for this Buckit instance."
                                   : ""
                               }
                             >

@@ -473,7 +473,7 @@ const BucketSummary = () => {
                       >
                         quota
                       </a>{" "}
-                      assigns a hard limit to a bucket beyond which MinIO does
+                      assigns a hard limit to a bucket beyond which Buckit does
                       not allow writes.
                     </Fragment>
                   }
@@ -571,7 +571,7 @@ const BucketSummary = () => {
                     isLoading={loadingRetention}
                     helpTip={
                       <Fragment>
-                        MinIO{" "}
+                        Buckit{" "}
                         <a
                           target="blank"
                           href="https://buckit.sh/docs/administration/object-management/object-retention.html"

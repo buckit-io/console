@@ -546,7 +546,7 @@
         {
           "title": "Publish Server Logs to HTTP Webhook",
           "url": "https://buckit.sh/docs/operations/monitoring/logging.html",
-          "body": "You can configure a new HTTP webhook endpoint  to which Buckit publishes minio server logs using  either environment variables or by setting  runtime configuration settings."
+          "body": "You can configure a new HTTP webhook endpoint to which Buckit publishes server logs using either environment variables or by setting runtime configuration settings."
         },
         {
           "title": "Monitoring Logs",
