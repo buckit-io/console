@@ -824,10 +824,7 @@ jobs:
           chmod +x mc
 
           echo "Create the folder to put the all.out file"
-          # Buckit's profiler closes the legacy Console WebSocket profile stream
-          # without a ZIP payload, unlike MinIO. Exclude that incompatible test
-          # while retaining the rest of the integration suite and coverage.
-          make test-integration MINIO_VERSION=$MINIO_VERSION INTEGRATION_TEST_FLAGS="-test.skip=TestStartProfiling";
+          make test-integration MINIO_VERSION=$MINIO_VERSION;
 
       - uses: actions/cache@v4
         id: coverage-cache
