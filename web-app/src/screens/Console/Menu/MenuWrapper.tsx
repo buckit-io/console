@@ -85,6 +85,10 @@ const MenuWrapper = () => {
           subVariant: getLogoVar(),
         }}
         callPathAction={(path) => {
+          if (/^https?:\/\//.test(path)) {
+            window.location.assign(path);
+            return;
+          }
           navigate(path);
         }}
         signOutAction={() => {
