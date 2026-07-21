@@ -215,7 +215,7 @@ const ErrorLogs = () => {
                 { value: "all", label: "All Log Types" },
                 {
                   value: "minio",
-                  label: "MinIO",
+                  label: "Buckit",
                 },
                 { value: "application", label: "Application" },
               ]}

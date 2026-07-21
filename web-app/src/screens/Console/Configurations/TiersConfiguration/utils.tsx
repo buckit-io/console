@@ -33,7 +33,7 @@ export const azureServiceName = "azure";
 export const tierTypes = [
   {
     serviceName: minioServiceName,
-    targetTitle: "MinIO",
+    targetTitle: "Buckit",
     logo: <MinIOTierIcon />,
     logoXs: <MinIOTierIconXs />,
   },

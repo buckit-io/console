@@ -314,7 +314,7 @@ const BucketReplicationPanel = () => {
         <HelpTip
           content={
             <Fragment>
-              MinIO{" "}
+              Buckit{" "}
               <a
                 target="blank"
                 href="https://buckit.sh/docs/administration/bucket-replication.html"
@@ -386,7 +386,7 @@ const BucketReplicationPanel = () => {
             iconComponent={<BucketsIcon />}
             help={
               <Fragment>
-                MinIO supports server-side and client-side replication of
+                Buckit supports server-side and client-side replication of
                 objects between source and destination buckets.
                 <br />
                 <br />

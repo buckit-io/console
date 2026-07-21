@@ -33,6 +33,7 @@ import { modalStyleUtils } from "../../../../Common/FormComponents/common/styleL
 import KeyRevealer from "../../../../Tools/KeyRevealer";
 import { setErrorSnackMessage } from "../../../../../../systemSlice";
 import { useAppDispatch } from "../../../../../../store";
+import { api } from "../../../../../../api";
 
 interface IInspectObjectProps {
   closeInspectModalAndRefresh: (refresh: boolean) => void;
@@ -56,30 +57,41 @@ const InspectObject = ({
   if (!inspectPath) {
     return null;
   }
-  const makeRequest = async (url: string) => {
-    return await fetch(url, { method: "GET" });
-  };
-
   const performInspect = async () => {
-    let basename = document.baseURI.replace(window.location.origin, "");
-    const urlOfInspectApi = `${window.location.origin}${basename}/api/v1/admin/inspect?volume=${encodeURIComponent(volumeName)}&file=${encodeURIComponent(inspectPath + "/xl.meta")}&encrypt=${isEncrypt}`;
+    const query = new URLSearchParams({
+      volume: volumeName,
+      file: `${inspectPath}/xl.meta`,
+      encrypt: String(isEncrypt),
+    });
 
-    makeRequest(urlOfInspectApi)
+    fetch(`${api.baseUrl}/admin/inspect?${query}`, { method: "GET" })
       .then(async (res) => {
         if (!res.ok) {
-          const resErr: any = await res.json();
+          const resErr: any = await res.json().catch(() => ({}));
 
           dispatch(
             setErrorSnackMessage({
-              errorMessage: resErr.message,
-              detailedError: resErr.code,
+              errorMessage: resErr.message || "Unable to inspect object",
+              detailedError: resErr.code || res.statusText,
             }),
           );
+          return;
         }
-        const blob: Blob = await res.blob();
 
-        //@ts-ignore
-        const filename = res.headers.get("content-disposition").split('"')[1];
+        const filename = res.headers
+          .get("content-disposition")
+          ?.match(/filename="([^"]+)"/)?.[1];
+        if (!filename) {
+          dispatch(
+            setErrorSnackMessage({
+              errorMessage: "The inspection response did not include a file.",
+              detailedError: "missing content-disposition header",
+            }),
+          );
+          return;
+        }
+
+        const blob: Blob = await res.blob();
         const decryptKey = getCookieValue(filename) || "";
 
         performDownload(blob, filename);

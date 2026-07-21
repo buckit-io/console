@@ -206,7 +206,7 @@ const SiteReplication = () => {
                 iconComponent={<ClustersIcon />}
                 help={
                   <Fragment>
-                    This feature allows multiple independent MinIO sites (or
+                    This feature allows multiple independent Buckit sites (or
                     clusters) that are using the same external IDentity Provider
                     (IDP) to be configured as replicas.
                     <br />
@@ -244,7 +244,7 @@ const SiteReplication = () => {
             iconComponent={<ClustersIcon />}
             help={
               <Fragment>
-                This feature allows multiple independent MinIO sites (or
+                This feature allows multiple independent Buckit sites (or
                 clusters) that are using the same external IDentity Provider
                 (IDP) to be configured as replicas. In this situation the set of
                 replica sites are referred to as peer sites or just sites.

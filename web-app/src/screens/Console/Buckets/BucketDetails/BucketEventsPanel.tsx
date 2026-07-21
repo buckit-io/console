@@ -180,7 +180,7 @@ const BucketEventsPanel = () => {
         <HelpTip
           content={
             <Fragment>
-              MinIO{" "}
+              Buckit{" "}
               <a
                 target="blank"
                 href="https://buckit.sh/docs/administration/monitoring.html"
@@ -235,9 +235,9 @@ const BucketEventsPanel = () => {
               iconComponent={<LambdaIcon />}
               help={
                 <Fragment>
-                  MinIO bucket notifications allow administrators to send
+                  Buckit bucket notifications allow administrators to send
                   notifications to supported external services on certain object
-                  or bucket events. MinIO supports bucket and object-level S3
+                  or bucket events. Buckit supports bucket and object-level S3
                   events similar to the Amazon S3 Event Notifications.
                   <br />
                   <br />

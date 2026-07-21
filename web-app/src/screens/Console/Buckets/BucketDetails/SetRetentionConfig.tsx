@@ -147,7 +147,7 @@ const SetRetentionConfig = ({
                     Compliance
                   </a>{" "}
                   lock protects Objects from write operations by all users,
-                  including the MinIO root user.
+                  including the Buckit root user.
                   <br />
                   <br />
                   <a

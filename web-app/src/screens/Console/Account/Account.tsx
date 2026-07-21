@@ -295,8 +295,8 @@ const Account = () => {
               iconComponent={<AccountIcon />}
               help={
                 <Fragment>
-                  MinIO access keys are child identities of an authenticated
-                  MinIO user, including externally managed identities. Each
+                  Buckit access keys are child identities of an authenticated
+                  Buckit user, including externally managed identities. Each
                   access key inherits its privileges based on the policies
                   attached to it’s parent user or those groups in which the
                   parent user has membership. Access Keys also support an
