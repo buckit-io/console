@@ -399,7 +399,7 @@ func getAccountBuckets(ctx context.Context, client MinioAdmin) ([]*models.Bucket
 
 		if bucket.Details != nil {
 			if bucket.Details.Tagging != nil {
-				bucketElem.Details.Tags = bucket.Details.Tagging.ToMap()
+				bucketElem.Details.Tags = bucketTagsToMap(bucket.Details.Tagging)
 			}
 
 			bucketElem.Details.Locking = bucket.Details.Locking
@@ -417,6 +417,17 @@ func getAccountBuckets(ctx context.Context, client MinioAdmin) ([]*models.Bucket
 		bucketInfos = append(bucketInfos, bucketElem)
 	}
 	return bucketInfos, nil
+}
+
+// bucketTagsToMap tolerates account-info responses that contain a tags wrapper
+// without its optional tag set.
+func bucketTagsToMap(bucketTags *tags.Tags) (tagMap map[string]string) {
+	defer func() {
+		if recover() != nil {
+			tagMap = nil
+		}
+	}()
+	return bucketTags.ToMap()
 }
 
 // getListBucketsResponse performs listBuckets() and serializes it to the handler's output

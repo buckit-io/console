@@ -58,6 +58,14 @@ var (
 	minioRemoveBucketTaggingMock        func(ctx context.Context, bucketName string) error
 )
 
+func TestBucketTagsToMap(t *testing.T) {
+	assert.Nil(t, bucketTagsToMap(&tags.Tags{}))
+
+	bucketTags, err := tags.MapToBucketTags(map[string]string{"environment": "test"})
+	assert.NoError(t, err)
+	assert.Equal(t, map[string]string{"environment": "test"}, bucketTagsToMap(bucketTags))
+}
+
 // Define a mock struct of minio Client interface implementation
 type minioClientMock struct{}
 

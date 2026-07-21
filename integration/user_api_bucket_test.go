@@ -2155,9 +2155,15 @@ func TestListBuckets(t *testing.T) {
 
 	// 2. List buckets
 	listBucketsResponse, listBucketsError := ListBuckets()
-	assert.Nil(listBucketsError)
-	assert.NotNil(listBucketsResponse)
-	assert.NotNil(listBucketsResponse.Body)
+	if !assert.NoError(listBucketsError) {
+		return
+	}
+	if !assert.NotNil(listBucketsResponse) {
+		return
+	}
+	if !assert.NotNil(listBucketsResponse.Body) {
+		return
+	}
 	// 3. Verify list of buckets
 	b, _ := io.ReadAll(listBucketsResponse.Body)
 	assert.Equal(200, listBucketsResponse.StatusCode,
