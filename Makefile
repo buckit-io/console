@@ -5,6 +5,7 @@ BUILD_VERSION:=$(shell git describe --exact-match --tags $(git log -n1 --pretty=
 BUILD_TIME:=$(shell date 2>/dev/null)
 TAG ?= "minio/console:$(BUILD_VERSION)-dev"
 MINIO_VERSION ?= "quay.io/minio/minio:latest"
+INTEGRATION_ISOLATE_RESTART ?= false
 TARGET_BUCKET ?= "target"
 NODE_VERSION := $(shell cat .nvmrc)
 
@@ -81,13 +82,19 @@ test-integration:
 	@echo "docker run with MinIO Version below:"
 	@echo $(MINIO_VERSION)
 	@echo "MinIO 1"
-	@(docker run -v /data1 -v /data2 -v /data3 -v /data4 --net=mynet123 -d --name minio --rm -p 9000:9000 -p 9091:9091 -e MINIO_KMS_SECRET_KEY=my-minio-key:OSMM+vkKUTCvQs9YL/CVMIMt43HFhkUpqJxTmGl6rYw= $(MINIO_VERSION) server /data{1...4} --console-address ':9091' && sleep 5)
+	@(docker run -v /data1 -v /data2 -v /data3 -v /data4 --net=mynet123 -d --name minio --rm -p 9000:9000 -p 9091:9091 -e MINIO_KMS_SECRET_KEY=my-minio-key:OSMM+vkKUTCvQs9YL/CVMIMt43HFhkUpqJxTmGl6rYw= -e MINIO_ROOT_USER="minioadmin" -e MINIO_ROOT_PASSWORD="minioadmin" $(MINIO_VERSION) server /data{1...4} --console-address ':9091' && sleep 5)
 	@echo "MinIO 2"
-	@(docker run -v /data1 -v /data2 -v /data3 -v /data4 --net=mynet123 -d --name minio2 --rm -p 9001:9001 -p 9092:9092 -e MINIO_KMS_SECRET_KEY=my-minio-key:OSMM+vkKUTCvQs9YL/CVMIMt43HFhkUpqJxTmGl6rYw= $(MINIO_VERSION) server /data{1...4} --address ':9001' --console-address ':9092' && sleep 5)
+	@(docker run -v /data1 -v /data2 -v /data3 -v /data4 --net=mynet123 -d --name minio2 --rm -p 9001:9001 -p 9092:9092 -e MINIO_KMS_SECRET_KEY=my-minio-key:OSMM+vkKUTCvQs9YL/CVMIMt43HFhkUpqJxTmGl6rYw= -e MINIO_ROOT_USER="minioadmin" -e MINIO_ROOT_PASSWORD="minioadmin" $(MINIO_VERSION) server /data{1...4} --address ':9001' --console-address ':9092' && sleep 5)
 	@echo "Postgres"
 	@(docker run --net=mynet123 --ip=173.18.0.4 --name pgsqlcontainer --rm -p 5432:5432 -e POSTGRES_PASSWORD=password -d postgres && sleep 5)
 	@echo "execute test and get coverage for test-integration:"
-	@(cd integration && go test -coverpkg=../api -c -tags testrunmain . && mkdir -p coverage &&  ./integration.test -test.v -test.run "^Test*" -test.coverprofile=coverage/system.out)
+	@(cd integration && go test -coverpkg=../api -c -tags testrunmain . && mkdir -p coverage && \
+	  if [ "$(INTEGRATION_ISOLATE_RESTART)" = "true" ]; then \
+	    ./integration.test -test.v -test.run "^Test*" -test.skip=TestRestartService -test.coverprofile=coverage/system.out && \
+	    ./integration.test -test.v -test.run TestRestartService; \
+	  else \
+	    ./integration.test -test.v -test.run "^Test*" -test.coverprofile=coverage/system.out; \
+	  fi)
 	@(docker stop pgsqlcontainer)
 	@(docker stop minio)
 	@(docker stop minio2)
