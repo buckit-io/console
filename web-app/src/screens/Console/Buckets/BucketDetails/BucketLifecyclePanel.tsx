@@ -370,8 +370,8 @@ const BucketLifecyclePanel = () => {
                 <Fragment>
                   Buckit Object Lifecycle Management allows creating rules for
                   time or date based automatic transition or expiry of objects.
-                  For object transition, Buckit automatically moves the object to
-                  a configured remote storage tier.
+                  For object transition, Buckit automatically moves the object
+                  to a configured remote storage tier.
                   <br />
                   <br />
                   You can learn more at our{" "}

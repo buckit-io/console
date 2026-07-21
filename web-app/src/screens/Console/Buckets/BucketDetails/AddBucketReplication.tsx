@@ -200,8 +200,8 @@ const AddBucketReplication = () => {
                     matching rule with highest configured priority.
                   </Box>
                   <Box sx={{ paddingTop: "10px" }}>
-                    Buckit supports automatically replicating existing objects in
-                    a bucket; this setting is enabled by default. Please note
+                    Buckit supports automatically replicating existing objects
+                    in a bucket; this setting is enabled by default. Please note
                     that objects created before replication was configured or
                     while replication is disabled are not synchronized to the
                     target deployment in case this setting is not enabled.

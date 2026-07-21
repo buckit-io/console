@@ -174,8 +174,8 @@ const EditBucketReplication = () => {
                       the matching rule with highest configured priority.
                     </Box>
                     <Box sx={{ paddingTop: "10px" }}>
-                      Buckit supports enabling replication of existing objects in
-                      a bucket.
+                      Buckit supports enabling replication of existing objects
+                      in a bucket.
                     </Box>
                     <Box sx={{ paddingTop: "10px" }}>
                       Buckit does not enable existing object replication by
@@ -185,10 +185,11 @@ const EditBucketReplication = () => {
                       objects is enabled.
                     </Box>
                     <Box sx={{ paddingTop: "10px" }}>
-                      Buckit supports replicating delete operations, where Buckit
-                      synchronizes deleting specific object versions and new
-                      delete markers. Delete operation replication uses the same
-                      replication process as all other replication operations.
+                      Buckit supports replicating delete operations, where
+                      Buckit synchronizes deleting specific object versions and
+                      new delete markers. Delete operation replication uses the
+                      same replication process as all other replication
+                      operations.
                     </Box>{" "}
                   </Fragment>
                 }

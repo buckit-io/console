@@ -69,9 +69,9 @@ const TierTypeSelector = () => {
               title={"Tier Types"}
               help={
                 <Fragment>
-                  Buckit supports creating object transition lifecycle management
-                  rules, where Buckit can automatically move an object to a
-                  remote storage “tier”.
+                  Buckit supports creating object transition lifecycle
+                  management rules, where Buckit can automatically move an
+                  object to a remote storage “tier”.
                   <br />
                   <br />
                   Buckit supports the following Tier types:

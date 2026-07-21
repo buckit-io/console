@@ -489,7 +489,7 @@ const IDPConfigurationDetails = ({
                 <Tooltip
                   tooltip={
                     envOverride
-                        ? "Configuration cannot be disabled / enabled in this module as OpenID environment variables are set for this Buckit instance."
+                      ? "Configuration cannot be disabled / enabled in this module as OpenID environment variables are set for this Buckit instance."
                       : ""
                   }
                 >
