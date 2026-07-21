@@ -824,7 +824,7 @@ jobs:
           chmod +x mc
 
           echo "Create the folder to put the all.out file"
-          make test-integration MINIO_VERSION=$MINIO_VERSION;
+          make test-integration MINIO_VERSION=$MINIO_VERSION INTEGRATION_ISOLATE_RESTART=true;
 
       - uses: actions/cache@v4
         id: coverage-cache

@@ -5,6 +5,7 @@ BUILD_VERSION:=$(shell git describe --exact-match --tags $(git log -n1 --pretty=
 BUILD_TIME:=$(shell date 2>/dev/null)
 TAG ?= "minio/console:$(BUILD_VERSION)-dev"
 MINIO_VERSION ?= "quay.io/minio/minio:latest"
+INTEGRATION_ISOLATE_RESTART ?= false
 TARGET_BUCKET ?= "target"
 NODE_VERSION := $(shell cat .nvmrc)
 
@@ -87,7 +88,13 @@ test-integration:
 	@echo "Postgres"
 	@(docker run --net=mynet123 --ip=173.18.0.4 --name pgsqlcontainer --rm -p 5432:5432 -e POSTGRES_PASSWORD=password -d postgres && sleep 5)
 	@echo "execute test and get coverage for test-integration:"
-	@(cd integration && go test -coverpkg=../api -c -tags testrunmain . && mkdir -p coverage &&  ./integration.test -test.v -test.run "^Test*" -test.coverprofile=coverage/system.out)
+	@(cd integration && go test -coverpkg=../api -c -tags testrunmain . && mkdir -p coverage && \
+	  if [ "$(INTEGRATION_ISOLATE_RESTART)" = "true" ]; then \
+	    ./integration.test -test.v -test.run "^Test*" -test.skip=TestRestartService -test.coverprofile=coverage/system.out && \
+	    ./integration.test -test.v -test.run TestRestartService; \
+	  else \
+	    ./integration.test -test.v -test.run "^Test*" -test.coverprofile=coverage/system.out; \
+	  fi)
 	@(docker stop pgsqlcontainer)
 	@(docker stop minio)
 	@(docker stop minio2)
